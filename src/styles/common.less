@@ -1,0 +1,39 @@
+/* 规范所有sku-开头的class的盒模型 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+  font-size: 14px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a[class^="mku-"] {
+  text-decoration: none;
+}
+
+input[class^="mku-"],
+textarea[class^="mku-"] {
+  outline: none;
+  appearance: none;
+}
+ul,
+li {
+  list-style: none;
+}
+/* 去除浮动 */
+.mku-global-clear {
+  zoom: 1;
+}
+.mku-global-clear:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
