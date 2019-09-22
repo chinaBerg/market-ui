@@ -50,6 +50,25 @@ export default {
     > h6 {
       font-size: 12px;
     }
+    > table {
+      width: 100%;
+      border: 1px solid #EBEEF5;
+      border-collapse: collapse;
+      border-spacing: 0;
+      empty-cells: show;
+      th, td {
+        border: 1px solid #EBEEF5;
+      }
+      th {
+        padding: 10px;
+        font-weight: normal;
+        background: #fafafa;
+      }
+      td {
+        padding: 10px;
+        font-size: 12px;
+      }
+    }
   }
 }
 </style>

@@ -23,13 +23,13 @@ export default {
       let offset = -this.gutter / 2 + 'px'
       return {
         marginLeft: offset,
-        marginRight: offset,
+        marginRight: offset
       }
     }
-  },
+  }
 }
 </script>
 
 <style lang="less">
-  
+
 </style>

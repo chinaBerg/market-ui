@@ -54,6 +54,7 @@ export default {
     }
     .hljs {
       padding: 0;
+      line-height: 1.6;
       background: transparent;
     }
   }

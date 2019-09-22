@@ -12,7 +12,8 @@ export default {
       type: [String, Number],
       validator: val => {
         return +val >= 0 && +val <= 24
-      }
+      },
+      default: 24
     }
   },
   inject: ['gutter'],
@@ -24,7 +25,7 @@ export default {
         paddingRight: offset
       }
     }
-  },
+  }
 }
 </script>
 

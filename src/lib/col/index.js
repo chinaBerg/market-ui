@@ -1,4 +1,4 @@
-import MkuCol from './src/col'
+import MkuCol from '../grid/col'
 
 MkuCol.install = function (Vue) {
   Vue.component(MkuCol.name, MkuCol)
