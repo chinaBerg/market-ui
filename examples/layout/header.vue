@@ -24,7 +24,7 @@ export default {
   left: 0;
   z-index: 10;
   width: 100%;
-  height: 80px;
+  height: 64px;
   background: #fff;
   box-shadow: 0 0 10px #ccc;
   .header__logo {
@@ -32,7 +32,7 @@ export default {
     justify-content: center;
     align-items: center;
     width: 200px;
-    height: 80px;
+    height: 64px;
     background: linear-gradient(to right, #01a0fb, #28f39c);
     color: #fff;
     font-size: 26px;

@@ -6,7 +6,7 @@ export default [
       type: 'component',
       title: 'Input 输入框'
     },
-    component: () => import('../docs/input/input.md')
+    component: () => import('../docs/zh_CN/input.md')
   },
   {
     path: '/grid',
@@ -15,6 +15,6 @@ export default [
       type: 'component',
       title: 'Grid 栅格'
     },
-    component: () => import('../docs/grid/grid.md')
+    component: () => import('../docs/zh_CN/grid.md')
   }
 ]

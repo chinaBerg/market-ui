@@ -31,15 +31,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../src/styles/color';
+
 .nav-slide-container {
   position: fixed;
-  top: 80px;
+  top: 64px;
   left: 0;
   bottom: 0;
   z-index: 9;
   width: 200px;
-  background: #fff;
-  border-right: 1px solid #ccc;
+  background: @background-color-base;
+  border-right: 1px solid @border-color-lighter;
   overflow-x: hidden;
   overflow-y: auto;
 }

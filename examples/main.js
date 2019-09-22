@@ -6,8 +6,9 @@ import router from './router'
 import MarketUi from '../src/index'
 import MarketUiExample from './components/mku-example'
 
-import '../src/styles/index.less'
 import 'highlight.js/styles/color-brewer.css'
+import './assets/styles/common.less'
+import './docs-styles/index.less'
 
 Vue.use(MarketUi)
 Vue.component('mku-example', MarketUiExample)

@@ -34,10 +34,10 @@ export default {
       transform: translateY(-60px);
     }
     .mku-home__head {
-      color: #fff;
       text-align: center;
       h3 {
         font-size: 30px;
+        color: #fff;
         &::first-letter {
           transform: rotateX(-45deg);
           font-size: 36px;
@@ -45,9 +45,10 @@ export default {
         }
       }
       p {
-        font-size: 16px;
         margin-top: 20px;
+        font-size: 16px;
         letter-spacing: 20px;
+        color: #fff;
         user-select: none;
       }
     }

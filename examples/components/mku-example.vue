@@ -28,11 +28,12 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import '../../src/styles/color';
 .mku-example {
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   padding-bottom: 40px;
   border: 1px solid @border-color-lighter;
   border-radius: 4px;
@@ -63,13 +64,16 @@ export default {
     width: 100%;
     height: 40px;
     line-height: 40px;
+    border-top: 1px solid @border-color-lighter;
     background: @background-color-base;
     text-align: center;
+    font-size: 12px;
     cursor: pointer;
-    color: @color-primary;
-    border-top: 1px solid @border-color-lighter;
+    transition: all .3s;
     &:hover {
       opacity: .8;
+      background: @border-color-lighter;
+      color: @color-primary;
     }
   }
 }
