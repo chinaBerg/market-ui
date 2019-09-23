@@ -1,6 +1,7 @@
 <template>
   <div class="mku-input-wrapper">
     <input
+      ref="input"
       :class="['mku-input', {
         'mku-input--large': size === 'large',
         'mku-input--default': size === 'default',
@@ -69,7 +70,6 @@ export default {
   data () {
     return {
       currentValue: this.value,
-      isFocus: false,
       isMouseover: false
     }
   },
@@ -85,24 +85,37 @@ export default {
     }
   },
   methods: {
+    // 值变化的回调
     handleInput (event) {
       const value = event.target.value
       this.currentValue = value
       this.$emit('input', value)
       this.dispatch('MkuFormItem', 'on-form-change', value)
+      this.$emit('change', value)
     },
-    handleFocus () {
-      this.isFocus = true
+    // 获取焦点的回调
+    handleFocus (event) {
+      this.$emit('focus', event)
     },
+    // 失去焦点回调
     handleBlur () {
-      this.isFocus = false
       this.dispatch('MkuFormItem', 'on-form-blur', this.currentValue)
+      this.$emit('blur', event)
     },
+    // 点击清空按钮
     handleClear () {
       this.currentValue = ''
       this.$emit('input', this.currentValue)
       this.dispatch('MkuFormItem', 'on-form-change', this.currentValue)
       this.$emit('clear')
+    },
+    // 使组件获取焦点
+    focus () {
+      this.$refs.input.focus()
+    },
+    // 使组件失去焦点
+    blur () {
+      this.$refs.input.blur()
     }
   }
 }
@@ -122,7 +135,7 @@ export default {
     border-radius: 4px;
     border: 1px solid @border-color-base;
     background: @background-color-base;
-    transition: border .2s, box-shadow .2s;
+    transition: border .4s, box-shadow .4s;
     &:focus:not([readonly]),
     &:hover:not(:disabled):not([readonly]) {
       border: 1px solid @color-primary;

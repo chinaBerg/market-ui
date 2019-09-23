@@ -33,13 +33,13 @@ export default {
 .mku-example {
   position: relative;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   padding-bottom: 40px;
   border: 1px solid @border-color-lighter;
   border-radius: 4px;
   transition: box-shadow .3s;
   &:hover {
-    box-shadow: @shadow-primary;
+    box-shadow: @shadow-border-base;
   }
   .mku-example__component {
     padding: 20px;
