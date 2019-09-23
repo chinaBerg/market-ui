@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../src/styles/color';
+// @import '../../src/styles/color';
 
 .nav-slide-container {
   position: fixed;
@@ -40,8 +40,7 @@ export default {
   bottom: 0;
   z-index: 9;
   width: 200px;
-  background: @background-color-base;
-  border-right: 1px solid @border-color-lighter;
+  background: #fff;
   overflow-x: hidden;
   overflow-y: auto;
 }

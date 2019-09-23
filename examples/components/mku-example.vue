@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../src/styles/color';
+@border-color-lighter: #EBEEF5;
 .mku-example {
   position: relative;
   margin-top: 10px;
@@ -40,7 +40,7 @@ export default {
   overflow: hidden;
   transition: box-shadow .3s;
   &:hover {
-    box-shadow: @shadow-border-base;
+    box-shadow: 0 0 6px #dcdee2;
   }
   .mku-example__component {
     padding: 20px;
@@ -67,7 +67,7 @@ export default {
     height: 40px;
     line-height: 40px;
     border-top: 1px solid @border-color-lighter;
-    background: @background-color-base;
+    background: #fff;
     text-align: center;
     font-size: 12px;
     cursor: pointer;
@@ -75,7 +75,7 @@ export default {
     &:hover {
       opacity: .8;
       background: @border-color-lighter;
-      color: @color-primary;
+      color: #2d8cf0;
     }
   }
 }

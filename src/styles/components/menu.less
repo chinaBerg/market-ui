@@ -1,0 +1,28 @@
+@import '../colors/color.less';
+
+.mku-Menu-wrapper {
+}
+.mku-Menu--vertical {
+  &:not(.mku-Menu--dark) {
+    border-right: 1px solid #dcdee2;
+  }
+}
+.mku-Menu--horizontal {
+  border-bottom: 1px solid #dcdee2;
+}
+.mku-Menu--light {
+  background: #fff;
+}
+.mku-Menu--dark {
+  color: rgba(255, 255, 255, 0.6);
+  background: #011429;
+}
+
+.mku-menu-item {
+  width: 100%;
+  padding: 6px 10px;
+}
+.mku-menu-item--active {
+  color: @color-white;
+  background: @color-primary;
+}

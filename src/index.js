@@ -1,13 +1,19 @@
 import MkuButton from './lib/button'
-
 import MkuRow from './lib/row'
 import MkuCol from './lib/col'
+import MkuMenu from './lib/menu'
+import MkuMenuItem from './lib/menu-item'
+import MkuSubmenu from './lib/submenu'
+
 import MkuInput from './lib/input'
 
 const components = [
   MkuButton,
   MkuRow,
   MkuCol,
+  MkuMenu,
+  MkuMenuItem,
+  MkuSubmenu,
   MkuInput
 ]
 
