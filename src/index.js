@@ -1,8 +1,11 @@
+import MkuButton from './lib/button'
+
 import MkuRow from './lib/row'
 import MkuCol from './lib/col'
 import MkuInput from './lib/input'
 
 const components = [
+  MkuButton,
   MkuRow,
   MkuCol,
   MkuInput
