@@ -6,9 +6,10 @@ import router from './router'
 import MarketUi from '../src/index'
 import MarketUiExample from './components/mku-example'
 
-import 'highlight.js/styles/color-brewer.css'
-import './assets/styles/common.less'
-import './docs-styles/index.less'
+import 'highlight.js/styles/color-brewer.css' // 代码高亮的css
+import './assets/styles/common.less' // doc的公共css
+import './docs-styles/index.less' // doc文件对应的样式
+import '../src/styles/index.less' // 引入组件样式
 
 Vue.use(MarketUi)
 Vue.component('mku-example', MarketUiExample)

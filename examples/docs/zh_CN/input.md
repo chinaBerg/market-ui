@@ -245,3 +245,8 @@ export default {
  | clear  | 组件由clearable属性定义的按钮清空时触发 | -            |
 
 ### Input Methods
+
+ | 方法名 | 说明           | 回调函数参数 |
+ | :----- | :------------- | :----------- |
+ | focus  | 使组件获取焦点 | Event        |
+ | blur   | 使组件失去焦点 | Event        |
