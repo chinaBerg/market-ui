@@ -59,6 +59,16 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    // 作为link进行连接跳转，类似于a标签
+    href: {
+      type: String,
+      default: ''
+    },
+    // 外链跳转方式，只有href设置了之后生效
+    target: {
+      type: String,
+      default: '_self'
     }
   },
   data () {
@@ -85,7 +95,9 @@ export default {
   },
   methods: {
     handleClick () {
-      if (this.loading) {
+      if (this.loading) return
+      if (this.href) {
+        window.open(this.href, this.target)
         return
       }
       this.$emit('click')

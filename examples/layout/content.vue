@@ -23,9 +23,9 @@ export default {
 
 <style lang="less">
 .main-container {
-  background: #fff;
+  background: #f0f2f5;
   .main-content {
-    padding: 80px 40px 0 240px;
+    padding: 80px 40px 20px 240px;
   }
   .market-doc-container {
     > h1, > h2, > h3, > h4, > h5, > h6 {
@@ -56,6 +56,7 @@ export default {
       border-collapse: collapse;
       border-spacing: 0;
       empty-cells: show;
+      background: #fff;
       th, td {
         border: 1px solid #EBEEF5;
       }

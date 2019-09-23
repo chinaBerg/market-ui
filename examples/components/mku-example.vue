@@ -35,8 +35,9 @@ export default {
   margin-top: 10px;
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border: 1px solid @border-color-lighter;
+  background: #fff;
   border-radius: 4px;
+  overflow: hidden;
   transition: box-shadow .3s;
   &:hover {
     box-shadow: @shadow-border-base;
