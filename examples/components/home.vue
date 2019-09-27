@@ -17,7 +17,7 @@ export default {
   name: 'MkuHome',
   methods: {
     handleStart () {
-      this.$router.push('/input')
+      this.$router.push('/component/input')
     }
   }
 }

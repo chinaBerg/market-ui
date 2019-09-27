@@ -3,9 +3,11 @@
     <div class="mku-example__component">
       <slot name="source"></slot>
     </div>
-    <div class="mku-example__code" v-show="isShowCode">
-      <slot name="highlight"></slot>
-    </div>
+    <mku-collapse-transition :duration=".3">
+      <div class="mku-example__code" v-show="isShowCode">
+        <slot name="highlight"></slot>
+      </div>
+    </mku-collapse-transition>
     <div class="mku-example__button" @click="handleClick">
       {{isShowCode ? '收起代码' : '展开代码'}}
     </div>
@@ -13,8 +15,12 @@
 </template>
 
 <script>
+import MkuCollapseTransition from '../../src/lib/collapse-transition'
 export default {
   name: 'MkuExample',
+  components: {
+    MkuCollapseTransition
+  },
   data () {
     return {
       isShowCode: false
@@ -46,10 +52,12 @@ export default {
     padding: 20px;
   }
   .mku-example__code {
-    padding: 20px;
     border-radius: 4px;
     border-top: 1px solid @border-color-lighter;
     background: #fafafa;
+    > pre {
+      padding: 20px;
+    }
     pre {
       margin: 0;
     }

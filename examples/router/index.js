@@ -5,6 +5,9 @@ import hljs from 'highlight.js'
 
 Vue.use(Router)
 
+const navConfigs = NavConfigs.map(item => item.children).flat(Infinity)
+console.log(navConfigs)
+
 const router = new Router({
   mode: 'hash',
   routes: [
@@ -17,14 +20,16 @@ const router = new Router({
       },
       component: () => import('@/components/home')
     },
-    ...NavConfigs
-  ]
+    ...navConfigs
+  ],
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
 
 router.afterEach(route => {
   // https://github.com/highlightjs/highlight.js/issues/909#issuecomment-131686186
   Vue.nextTick(() => Array.from(document.querySelectorAll('pre code')).forEach(hljs.highlightBlock))
-  console.log(route.meta.title)
   document.title = 'Market-Ui | ' + (route.meta && route.meta.title) || ''
 })
 

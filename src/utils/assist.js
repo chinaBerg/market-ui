@@ -75,7 +75,9 @@ const deepCopy = val => {
   let res
   if (isArray(val)) {
     res = []
-    for (let i = 0, current; current = val[i++];) {
+    let i = 0
+    let current
+    for (; current = val[i++];) {
       res.push(deepCopy(current))
     }
     return res
@@ -89,6 +91,14 @@ const deepCopy = val => {
   }
   return val
 }
+
+// 去除两头空格
+const trim = (str) => {
+  if (!str) return ''
+  if (str.trim) return str.trim()
+  return str.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
+}
+
 export {
   findComponentUpward,
   findComponentsUpward,
@@ -100,5 +110,6 @@ export {
   isNull,
   isUndefined,
   isFunction,
-  deepCopy
+  deepCopy,
+  trim
 }

@@ -1,12 +1,26 @@
 <template>
   <div class="nav-slide-container">
     <ul>
-      <li
-        v-for="(item, index) in navConfig"
-        :key="index"
-        @click="handleRouteClick(item)"
-      >
-        {{item.meta.title}}
+      <li class="nav-slide-item"
+        >
+        <h3 class="">组件</h3>
+        <mku-menu>
+          <mku-menu-group
+            :title="group.name"
+            v-for="(group, groupIndex) in navConfig"
+            :key="groupIndex"
+          >
+            <mku-menu-item
+              class-name="nav-item__name"
+              v-for="(item, index) in group.children"
+              :key="index"
+              :name="item.name"
+              :route="{path: item.path}"
+            >
+              {{item.meta.title}}
+            </mku-menu-item>
+          </mku-menu-group>
+        </mku-menu>
       </li>
     </ul>
   </div>
@@ -26,6 +40,9 @@ export default {
     handleRouteClick (item) {
       this.$router.push(item.path)
     }
+    // handleMenuClick () {
+    //   this.$router.push(item.path)
+    // }
   }
 }
 </script>
@@ -43,5 +60,16 @@ export default {
   background: #fff;
   overflow-x: hidden;
   overflow-y: auto;
+  .nav-slide-item {
+    > h3 {
+      display: block;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .nav-item__name {
+      text-indent: 1em;
+    }
+  }
 }
 </style>
