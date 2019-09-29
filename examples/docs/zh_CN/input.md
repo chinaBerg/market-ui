@@ -193,8 +193,12 @@ export default {
     />
   </mku-col>
   <mku-col span="8">
-    <button @click="handleButtonClick('focus')">使得input获取焦点</button>
-    <button @click="handleButtonClick('blur')">使得input失去焦点</button>
+    <mku-button type="primary" @click="handleButtonClick('focus')">
+      使得input获取焦点
+    </mku-button>
+    <mku-button type="primary" @click="handleButtonClick('blur')">
+      使得input失去焦点
+    </mku-button>
   </mku-col>
 </mku-row>
 

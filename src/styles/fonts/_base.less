@@ -1,0 +1,21 @@
+@iconFontFamily: mku-icon;
+@iconFontPath: './fonts/';
+
+@font-face {
+  font-family: @iconFontFamily;
+  src: url('@{iconFontPath}iconfont.eot');
+  src: url('@{iconFontPath}iconfont.eot?#iefix') format('embedded-opentype'),
+      url('@{iconFontPath}iconfont.woff2') format('woff2'),
+      url('@{iconFontPath}iconfont.woff') format('woff'),
+      url('@{iconFontPath}iconfont.ttf') format('truetype'),
+      url('@{iconFontPath}iconfont.svg#iconfont') format('svg');
+}
+
+.@{iconFontFamily} {
+  font-family: @iconFontFamily;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

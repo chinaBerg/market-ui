@@ -3,7 +3,7 @@
     <nav-slide />
     <div class="main-content">
       <router-view />
-      <main-footer />
+      <!-- <main-footer /> -->
     </div>
   </div>
 </template>

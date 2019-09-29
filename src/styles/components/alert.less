@@ -1,0 +1,66 @@
+@import '../colors/color';
+
+.mku-alert {
+  border-radius: 4px;
+    border: 1px solid @color-primary;
+    background-color: rgba(118, 203, 249, .23);
+  .mku-alert-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+  }
+  .mku-alert__icon {
+    display: flex;
+    align-items: center;
+    min-width: 26px;
+    margin-right: 6px;
+    color: @color-primary;
+  }
+  .mku-alert__content {
+    flex: 1;
+    overflow: hidden;
+  }
+  .mku-alert__title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .mku-alert__desc {
+    margin-top: 4px;
+    font-size: 12px;
+    color: @color-text-secondary;
+  }
+  .mku-alert__close {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}
+/* success的样式 */
+.mku-alert--success {
+  border: 1px solid @color-success;
+  background-color: rgba(24, 190, 197, .13);
+  .mku-alert__icon {
+    color: @color-success;
+  }
+}
+/* error的样式 */
+.mku-alert--error {
+  border: 1px solid @color-danger;
+  background-color: rgba(237, 64, 19, .13);
+  .mku-alert__icon {
+    color: @color-danger;
+  }
+}
+/* error的样式 */
+.mku-alert--warning {
+  border: 1px solid @color-warning;
+  background-color: #fffbe6;
+  .mku-alert__icon {
+    color: @color-warning;
+  }
+}

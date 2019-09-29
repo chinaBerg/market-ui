@@ -57,8 +57,8 @@ export default {
     // 拼接箭头的class name
     iconArrowClasss () {
       return [
-        'iconfont',
-        'iconarrow-down',
+        'mku-icon',
+        'mku-icon-arrow-down',
         'mku-icon__arrow',
         {
           'mku-icon__arrow--up': this.isOpen

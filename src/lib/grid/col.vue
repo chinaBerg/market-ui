@@ -1,5 +1,5 @@
 <template>
-  <div :class="['mku-col', `mku-col-${span}`]" :style="colStyle">
+  <div :class="['mku-col', `mku-col-${span}`, className]" :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -14,6 +14,10 @@ export default {
         return +val >= 0 && +val <= 24
       },
       default: 24
+    },
+    className: {
+      type: String,
+      default: ''
     }
   },
   inject: ['gutter'],

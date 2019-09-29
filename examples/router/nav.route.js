@@ -23,6 +23,15 @@ export default [
     name: '基础',
     children: [
       {
+        path: '/component/icon',
+        name: 'Icon',
+        meta: {
+          type: 'component',
+          title: 'Icon 图标'
+        },
+        component: () => import('../docs/zh_CN/icon.md')
+      },
+      {
         path: '/component/button',
         name: 'Button',
         meta: {
@@ -69,6 +78,21 @@ export default [
           title: 'Input 输入框'
         },
         component: () => import('../docs/zh_CN/input.md')
+      }
+    ]
+  },
+  {
+    code: 'tip',
+    name: '提示',
+    children: [
+      {
+        path: '/component/alert',
+        name: 'Alert',
+        meta: {
+          type: 'component',
+          title: 'Alert 警告'
+        },
+        component: () => import('../docs/zh_CN/alert.md')
       }
     ]
   }

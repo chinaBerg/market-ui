@@ -1,5 +1,5 @@
 <template>
-  <div class="mku-row mku-global-clear" :style="rowStyle">
+  <div :class="['mku-row', 'mku-global-clear', className]" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -11,6 +11,10 @@ export default {
     gutter: {
       type: Number,
       default: 0
+    },
+    className: {
+      type: String,
+      default: ''
     }
   },
   provide () {

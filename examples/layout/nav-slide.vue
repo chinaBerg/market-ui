@@ -4,7 +4,7 @@
       <li class="nav-slide-item"
         >
         <h3 class="">组件</h3>
-        <mku-menu>
+        <mku-menu :default-active="$route.name">
           <mku-menu-group
             :title="group.name"
             v-for="(group, groupIndex) in navConfig"
@@ -40,9 +40,6 @@ export default {
     handleRouteClick (item) {
       this.$router.push(item.path)
     }
-    // handleMenuClick () {
-    //   this.$router.push(item.path)
-    // }
   }
 }
 </script>

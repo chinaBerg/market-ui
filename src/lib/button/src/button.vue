@@ -14,15 +14,19 @@
       :disabled="disabled"
       @click="handleClick"
     >
-      <i v-if="icon || loading" :class="['iconfont', buttonIconfont]"></i>
+      <mku-icon v-if="icon || loading" :type="buttonIcon"></mku-icon>
       <slot name="default"></slot>
     </button>
   </div>
 </template>
 
 <script>
+import MkuIcon from '../../icon'
 export default {
   name: 'MkuButton',
+  components: {
+    MkuIcon
+  },
   props: {
     // 按钮类型
     type: {
@@ -88,9 +92,8 @@ export default {
       return obj
     },
     // 按钮的图标，加载状态只用loading icon
-    buttonIconfont () {
-      if (this.loading) return 'iconloading'
-      return this.icon ? `icon${this.icon}` : ''
+    buttonIcon () {
+      return this.loading ? 'loading' : this.icon
     }
   },
   methods: {
