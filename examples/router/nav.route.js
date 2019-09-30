@@ -93,6 +93,15 @@ export default [
           title: 'Alert 警告'
         },
         component: () => import('../docs/zh_CN/alert.md')
+      },
+      {
+        path: '/component/message',
+        name: 'Message',
+        meta: {
+          type: 'component',
+          title: 'Message 消息提示'
+        },
+        component: () => import('../docs/zh_CN/message.md')
       }
     ]
   }

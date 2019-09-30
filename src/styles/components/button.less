@@ -4,9 +4,11 @@
 .mku-button-wrapper {
   display: inline-block;
   .mku-button {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: @height-default-size;
+    line-height: @height-default-size - 2;
     padding: 0 13px;
     border-radius: @border-radius-default;
     border: 1px solid @border-color-base;
@@ -17,7 +19,7 @@
     transition-property: opacity, border-color, color;
     transition-duration: .3s;
     /* primary button */
-    > .iconfont {
+    > .mku-icon {
       display: inline-block;
     }
     &.mku-button--primary {
@@ -27,11 +29,17 @@
       &:hover {
         .button-opacity()
       }
+      > .mku-icon {
+        color: @color-white;
+      }
     }
     /* default button*/
     &.mku-button--default:hover {
       color: @color-primary;
       border: 1px solid @color-primary;
+      > .mku-icon {
+        color: @color-primary;
+      }
     }
     /* dashed button */
     &.mku-button--dashed {
@@ -49,6 +57,9 @@
       &:hover {
         .button-opacity()
       }
+      > .mku-icon {
+        color: @color-white;
+      }
     }
     /* link button */
     &.mku-button--link {
@@ -62,9 +73,11 @@
     /* 三种按钮尺寸 */
     &.mku-button--lg {
       height: @height-large-size;
+      line-height: @height-large-size - 2;
     }
     &.mku-button--sm {
       height: @height-small-size;
+      line-height: @height-small-size - 2;
     }
     &.mku-button--loading {
       .button-opacity();

@@ -1,33 +1,37 @@
-import MkuButton from './lib/button'
-import MkuIcon from './lib/icon'
-import MkuCollapseTransition from './lib/collapse-transition'
-import MkuRow from './lib/row'
-import MkuCol from './lib/col'
-import MkuMenu from './lib/menu'
-import MkuMenuGroup from './lib/menu-group'
-import MkuMenuItem from './lib/menu-item'
-import MkuSubmenu from './lib/submenu'
-import MkuInput from './lib/input'
-import MkuAlert from './lib/alert'
+import Button from './lib/button'
+import Icon from './lib/icon'
+import CollapseTransition from './lib/collapse-transition'
+import Row from './lib/row'
+import Col from './lib/col'
+import Menu from './lib/menu'
+import MenuGroup from './lib/menu-group'
+import MenuItem from './lib/menu-item'
+import Submenu from './lib/submenu'
+import Input from './lib/input'
+import Alert from './lib/alert'
+import Message from './lib/message'
 
 const components = [
-  MkuIcon,
-  MkuButton,
-  MkuCollapseTransition,
-  MkuRow,
-  MkuCol,
-  MkuMenu,
-  MkuMenuGroup,
-  MkuMenuItem,
-  MkuSubmenu,
-  MkuInput,
-  MkuAlert
+  Icon,
+  Button,
+  CollapseTransition,
+  Row,
+  Col,
+  Menu,
+  MenuGroup,
+  MenuItem,
+  Submenu,
+  Input,
+  Alert,
+  Message
 ]
 
 const install = function (Vue) {
   components.forEach(component => {
     Vue.component(component.name, component)
   })
+
+  Vue.prototype.$message = Message
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -37,14 +41,14 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   version: '0.1.0',
   install,
-  MkuIcon,
-  MkuButton,
-  MkuRow,
-  MkuCol,
-  MkuMenu,
-  MkuMenuGroup,
-  MkuMenuItem,
-  MkuSubmenu,
-  MkuInput,
-  MkuCollapseTransition
+  Icon,
+  Button,
+  Row,
+  Col,
+  Menu,
+  MenuGroup,
+  MenuItem,
+  Submenu,
+  Input,
+  CollapseTransition
 }

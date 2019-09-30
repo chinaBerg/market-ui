@@ -240,6 +240,11 @@ export default {
 | closed        | 菜单收起时触发       | 返回一个对象，eg：{name: 当前触发的submenu的name, state: 该submenu的状态, openedNames: 所有展开状态的submenu name数组, closedNames: 所有关闭状态的submenu, allNames: 所有submenu的name} |
 | opened-change | 菜单展开或收起时触发 | 返回一个对象，eg：{name: 当前触发的submenu的name, state: 该submenu的状态, openedNames: 所有展开状态的submenu name数组, closedNames: 所有关闭状态的submenu, allNames: 所有submenu的name} |
 
+### Menu Methods
+| 方法名 | 说明              | 参数                                            |
+| :----- | :---------------- | :---------------------------------------------- |
+| open   | 展开指定的submenu | 需要打开的submenu的name字符串或者name字符串数组 |
+| close  | 收起指定的submenu | 需要关闭的submenu的name字符串或者name字符串数组 |
 
 ### Menu-Submenu Attributes
 | 参数     | 说明                                                                                                      | 类型   | 可选值 | 默认值 | 必填 |

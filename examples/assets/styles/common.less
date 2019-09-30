@@ -6,16 +6,19 @@
 }
 
 html,
-body {
+body,
+#app {
+  height: 100%;
   margin: 0;
   padding: 0;
+  color: #515a6e;
+  font-size: 14px;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
 }
 
 a {
   text-decoration: none;
   color: #515a6e;
-  font-size: 14px;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
 }
 
 input,
@@ -39,8 +42,17 @@ li {
   visibility: hidden;
 }
 
-html,
-body,
-#app {
-  height: 100%;
+.market-doc-container {
+  .mku-doc__tip {
+  }
+  .mku-doc__warning {
+    padding: 10px 20px;
+    margin: 16px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #ffd6e7;
+    code {
+      font-weight: bold;
+    }
+  }
 }

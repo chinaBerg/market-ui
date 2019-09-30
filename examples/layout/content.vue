@@ -70,6 +70,9 @@ export default {
         font-size: 12px;
       }
     }
+    > p {
+      // color: #;
+    }
   }
 }
 </style>

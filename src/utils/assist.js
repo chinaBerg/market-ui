@@ -1,3 +1,5 @@
+import { ulid } from 'ulid'
+
 // 向上查找单个组件
 const findComponentUpward = (context, targetComponentName) => {
   let parent = context.$parent
@@ -57,6 +59,7 @@ const findSiblingsComponents = (context, targetComponentName, exceptSelf = true)
   })
 }
 
+// 类型检查的工厂函数
 const createTypeOf = (type) => {
   return function (val) {
     const valueType = Object.prototype.toString.call(val).slice(8, -1)
@@ -69,6 +72,7 @@ const isObject = createTypeOf('Object')
 const isNull = createTypeOf('Null')
 const isUndefined = createTypeOf('Undefined')
 const isFunction = createTypeOf('Function')
+const isBoolean = createTypeOf('Boolean')
 
 // 深拷贝
 const deepCopy = val => {
@@ -99,6 +103,19 @@ const trim = (str) => {
   return str.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
 }
 
+// 单例模式
+const singlePattern = (fn) => {
+  let instance
+  return function () {
+    return instance || (instance = fn.apply(this, arguments))
+  }
+}
+
+// 生成ULID
+const createULID = () => {
+  return ulid()
+}
+
 export {
   findComponentUpward,
   findComponentsUpward,
@@ -110,6 +127,9 @@ export {
   isNull,
   isUndefined,
   isFunction,
+  isBoolean,
   deepCopy,
-  trim
+  trim,
+  singlePattern,
+  createULID
 }

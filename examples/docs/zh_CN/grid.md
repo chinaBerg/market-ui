@@ -6,55 +6,57 @@
 
 :::demo
 ```html
-<mku-row>
-  <mku-col span="24">
-    <div class="grid__content grid__content--odd">col-24</div>
-  </mku-col>
-</mku-row>
-<mku-row>
-  <mku-col span="12">
-    <div class="grid__content grid__content--odd">col-12</div>
-  </mku-col>
-  <mku-col span="12">
-    <div class="grid__content grid__content--event">col-12</div>
-  </mku-col>
-</mku-row>
+<div class="doc-grid-container">
+  <mku-row>
+    <mku-col span="24">
+      <div class="grid__content grid__content--odd">col-24</div>
+    </mku-col>
+  </mku-row>
+  <mku-row>
+    <mku-col span="12">
+      <div class="grid__content grid__content--odd">col-12</div>
+    </mku-col>
+    <mku-col span="12">
+      <div class="grid__content grid__content--even">col-12</div>
+    </mku-col>
+  </mku-row>
 
-<mku-row>
-  <mku-col span="8">
-    <div class="grid__content grid__content--odd">col-8</div>
-  </mku-col>
-  <mku-col span="8">
-    <div class="grid__content grid__content--even">col-8</div>
-  </mku-col>
-  <mku-col span="8">
-    <div class="grid__content grid__content--odd">col-8</div>
-  </mku-col>
-</mku-row>
+  <mku-row>
+    <mku-col span="8">
+      <div class="grid__content grid__content--odd">col-8</div>
+    </mku-col>
+    <mku-col span="8">
+      <div class="grid__content grid__content--even">col-8</div>
+    </mku-col>
+    <mku-col span="8">
+      <div class="grid__content grid__content--odd">col-8</div>
+    </mku-col>
+  </mku-row>
 
-<mku-row>
-  <mku-col span="6">
-    <div class="grid__content grid__content--odd">col-6</div>
-  </mku-col>
-  <mku-col span="6">
-    <div class="grid__content grid__content--even">col-6</div>
-  </mku-col>
-  <mku-col span="6">
-    <div class="grid__content grid__content--odd">col-6</div>
-  </mku-col>
-  <mku-col span="6">
-    <div class="grid__content grid__content--even">col-6</div>
-  </mku-col>
-</mku-row>
+  <mku-row>
+    <mku-col span="6">
+      <div class="grid__content grid__content--odd">col-6</div>
+    </mku-col>
+    <mku-col span="6">
+      <div class="grid__content grid__content--even">col-6</div>
+    </mku-col>
+    <mku-col span="6">
+      <div class="grid__content grid__content--odd">col-6</div>
+    </mku-col>
+    <mku-col span="6">
+      <div class="grid__content grid__content--even">col-6</div>
+    </mku-col>
+  </mku-row>
 
-<mku-row>
-  <mku-col span="8">
-    <div class="grid__content grid__content--odd">col-8</div>
-  </mku-col>
-  <mku-col span="4">
-    <div class="grid__content grid__content--even">col-4</div>
-  </mku-col>
-</mku-row>
+  <mku-row>
+    <mku-col span="8">
+      <div class="grid__content grid__content--odd">col-8</div>
+    </mku-col>
+    <mku-col span="4">
+      <div class="grid__content grid__content--even">col-4</div>
+    </mku-col>
+  </mku-row>
+</div>
 ```
 :::
 
