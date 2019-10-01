@@ -70,8 +70,12 @@ export default {
         font-size: 12px;
       }
     }
-    > p {
-      // color: #;
+    code {
+      display: inline-block;
+      margin: 0 4px;
+      padding: 0 4px;
+      border-radius: 2px;
+      background: #EBEEF5;
     }
   }
 }

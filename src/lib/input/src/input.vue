@@ -1,14 +1,11 @@
 <template>
-  <div class="mku-input-wrapper">
-    <input
-      ref="input"
-      :class="['mku-input', {
-        'mku-input--large': size === 'large',
-        'mku-input--default': size === 'default',
-        'mku-input--small': size === 'small',
-      }]"
-      :style="{paddingRight: clearable ? '22px' : '8px'}"
-      :type="type"
+  <div class="mku-input-wrapper" >
+    <!-- 多行文本框 -->
+    <textarea
+      ref="textarea"
+      class="mku-textarea"
+      v-if="type === 'textarea'"
+      :rows="rows"
       :value="currentValue"
       :placeholder="placeholder"
       :disabled="disabled"
@@ -17,12 +14,35 @@
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <i class="iconfont mku-input__clear" v-if="isClearable" @click="handleClear">&#xe606;</i>
+
+    <!-- 单行文本框 -->
+    <template v-else>
+      <input
+        ref="input"
+        :class="['mku-input', {
+          'mku-input--large': size === 'large',
+          'mku-input--default': size === 'default',
+          'mku-input--small': size === 'small',
+        }]"
+        :style="{paddingRight: clearable ? '22px' : '8px'}"
+        :type="type"
+        :value="currentValue"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :readonly="readonly"
+        @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+      />
+      <i class="iconfont mku-input__clear" v-if="isClearable" @click="handleClear">&#xe606;</i>
+    </template>
   </div>
 </template>
 
 <script>
+import autosize from 'autosize'
 import Emitter from '../../../utils/emitter'
+
 export default {
   name: 'MkuInput',
   mixins: [Emitter],
@@ -65,6 +85,18 @@ export default {
     clearable: {
       type: Boolean,
       default: false
+    },
+    autosize: {
+      type: Boolean,
+      default: false
+    },
+    rows: {
+      type: Number,
+      default: 2
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -82,6 +114,25 @@ export default {
     isClearable () {
       if (!this.clearable || !this.currentValue.length) return false
       return true
+    },
+    inputClasss () {
+      const INPUT = 'mku-input'
+      return [ INPUT,
+        {
+          [`${INPUT}--large`]: size === 'large',
+          [`${INPUT}--default`]: size === 'default',
+          [`${INPUT}--small`]: size === 'small'
+        }
+      ]
+    }
+  },
+  mounted () {
+    if (this.type === 'textarea' && this.autosize) {
+      autosize(this.$refs.textarea)
+    }
+    if (this.autofocus) {
+      const input = this.$refs.input || this.$refs.textarea
+      input.focus()
     }
   },
   methods: {

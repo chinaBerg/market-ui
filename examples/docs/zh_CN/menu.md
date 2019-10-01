@@ -191,11 +191,7 @@
 export default {
   methods: {
     handleChange ({name, state, closedNames, openedNames}) {
-      alert(`当前触发opened-change事件：
-        触发的submenu为：${name}，当前状态为 ${state} ,
-        所有的关闭状态submenu数组为：${closedNames.join(',')},
-        所有的开启状态submenu数组为：${openedNames.join(',')},
-      `)
+      this.$message.info(`监听到opened-change事件:${state}`)
     },
     openMenu () {
       this.$refs.menu.open('submenu1')

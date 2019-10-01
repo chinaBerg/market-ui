@@ -40,7 +40,6 @@ export default {
   position: relative;
   margin-top: 10px;
   margin-bottom: 50px;
-  padding-bottom: 40px;
   background: #fff;
   border-radius: 4px;
   overflow: hidden;
@@ -68,10 +67,6 @@ export default {
     }
   }
   .mku-example__button {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     height: 40px;
     line-height: 40px;
     border-top: 1px solid @border-color-lighter;
