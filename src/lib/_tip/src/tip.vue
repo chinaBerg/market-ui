@@ -1,19 +1,31 @@
 <template>
-  <div class="mku-tips-wrapper">
-    <ul class="mku-tips__content mku-tips__message">
-      <transition-group name="mku-tips-transition">
-        <li
-          v-for="item in tips"
-          :key="item._ulid"
-          :class="tipItemClassName(item)">
-          <div class="mku-tips__item-warp">
+  <div :class="['mku-tips-wrapper', {'mku-tips-notice': isNotice}]">
+    <transition-group class="mku-tips__content" tag="ul" name="mku-tips-transition">
+      <li
+        v-for="item in tips"
+        :key="item._ulid"
+        :class="tipItemClassName(item)">
+        <div class="mku-tips__item-wrap">
+          <div class="mku-tips__item-content">
             <mku-icon
               class-name="mku-tips__icon-type"
               :type="item.icon"
               v-if="item.icon"
             />
-            <div class="mku-tips__title" v-if="item.render" v-html="item.render"></div>
-            <div class="mku-tips__title" v-else v-text="item.content"></div>
+            <div class="mku-tips__info">
+              <div :class="['mku-tips__title', {'mku--isBold': item.content || item.render}]" >
+                <template v-if="item.render && type === 'message'">
+                  <p v-html="item.render"></p>
+                </template>
+                <template v-else>{{item.title}}</template>
+              </div>
+              <div class="mku-tips__desc" v-if="type === 'notice' && (item.content || item.render)">
+                <template v-if="item.render">
+                  <p v-html="item.render"></p>
+                </template>
+                <template v-else>{{item.content}}</template>
+              </div>
+            </div>
             <mku-icon
               type="close"
               class-name="mku-tips__icon-close"
@@ -21,28 +33,43 @@
               @click="remove(item)"
             />
           </div>
-        </li>
-      </transition-group>
-    </ul>
+        </div>
+      </li>
+    </transition-group>
   </div>
 </template>
 
 <script>
 import MkuIcon from '../../icon'
 import { baseType2Icons } from '../../../utils/maps'
-import { createULID } from '../../../utils/assist'
+import { createULID, isFunction } from '../../../utils/assist'
 
 const TIPS = 'mku-tips'
 
 export default {
   name: 'MkuTip',
+  components: {
+    MkuIcon
+  },
+  props: {
+    // 标识tip的类型
+    type: {
+      type: String,
+      required: true,
+      validator: val => {
+        return ['message', 'notice'].includes(val)
+      }
+    }
+  },
   data () {
     return {
       tips: []
     }
   },
-  components: {
-    MkuIcon
+  computed: {
+    isNotice () {
+      return this.type === 'notice'
+    }
   },
   methods: {
     // 生成class name
@@ -65,7 +92,7 @@ export default {
 
       // 创建
       this.tips.push(config)
-      config.onShow()
+      isFunction(config.onShow) && config.onShow()
 
       // 关闭
       if (config.duration > 0) {
@@ -79,7 +106,7 @@ export default {
     // 移除一个tip
     remove (config) {
       this.tips = this.tips.filter(tip => tip._ulid !== config._ulid)
-      config.onClose()
+      isFunction(config.onClose) && config.onClose()
       this.$emit('closed')
     }
   }

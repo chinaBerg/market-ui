@@ -8,7 +8,6 @@ const init = (props = {}) => {
     }
   })
   document.body.appendChild(vueIns.$mount().$el)
-
   return vueIns.$children[0]
 }
 

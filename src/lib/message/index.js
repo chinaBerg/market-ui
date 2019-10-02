@@ -1,6 +1,10 @@
 import MkuTip from '../_tip'
 import { singlePattern } from '../../utils/assist'
-const message = singlePattern(MkuTip.init)()
+
+const messageSingle = singlePattern(MkuTip.init)
+const message = messageSingle({
+  type: 'message'
+})
 
 function createMessage (type, config) {
   const current = message.add(type, config)
@@ -18,12 +22,12 @@ export default {
   message (type, config) {
     if (typeof config === 'string') {
       config = {
-        content: config
+        title: config
       }
     }
     const defaultCb = function () {}
     const defaultConfig = {
-      content: '',
+      title: '',
       render: null,
       duration: 1500,
       closeable: false,

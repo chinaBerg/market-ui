@@ -102,6 +102,15 @@ export default [
           title: 'Message 消息提示'
         },
         component: () => import('../docs/zh_CN/message.md')
+      },
+      {
+        path: '/component/notice',
+        name: 'Notice',
+        meta: {
+          type: 'component',
+          title: 'Notice 通知'
+        },
+        component: () => import('../docs/zh_CN/notice.md')
       }
     ]
   }

@@ -43,13 +43,13 @@ export default {
     },
     message2 () {
       this.$message.success({
-        content: '这是一条3s后关闭的提示',
+        title: '这是一条3s后关闭的提示',
         duration: 3000
       })
     },
     message3 () {
       this.$message.success({
-        content: '这是一条不会自动关闭的提示',
+        title: '这是一条不会自动关闭的提示',
         duration: 0,
         closeable: true
       })
@@ -98,7 +98,7 @@ export default {
 
 | 参数      | 说明                                                          | 类型     | 可选值 | 默认值 | 必填 |
 | :-------- | :------------------------------------------------------------ | :------- | :----- | :----- | :--- |
-| content   | 提示的标题内容                                                | String   | -      | -      | 否   |
+| title   | 提示的标题内容                                                | String   | -      | -      | 否   |
 | render    | 以v-html方式渲染render的内容，设置该属性时自动忽略content内容 | String   | -      | -      | 否   |
 | duration  | 提示的时间                                                    | Number   | -      | 1500   | 否   |
 | closeable | 是否显示关闭按钮                                              | Boolean  | -      | false  | 否   |

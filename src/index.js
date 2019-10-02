@@ -10,6 +10,7 @@ import Submenu from './lib/submenu'
 import Input from './lib/input'
 import Alert from './lib/alert'
 import Message from './lib/message'
+import Notice from './lib/notice'
 
 const components = [
   Icon,
@@ -23,7 +24,8 @@ const components = [
   Submenu,
   Input,
   Alert,
-  Message
+  Message,
+  Notice
 ]
 
 const install = function (Vue) {
@@ -32,6 +34,7 @@ const install = function (Vue) {
   })
 
   Vue.prototype.$message = Message
+  Vue.prototype.$notice = Notice
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
