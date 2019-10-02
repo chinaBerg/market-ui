@@ -26,7 +26,10 @@ this.$notice.warning()
 export default {
   methods: {
     openNotice (type) {
-      this.$notice[type](`这是一条 ${type} 类型的通知`)
+      this.$notice[type]({
+        title: '提示',
+        content: `这是一条 ${type} 类型的通知`
+      })
     }
   }
 }
@@ -47,22 +50,14 @@ export default {
 ```html
 <template>
   <div>
-    <mku-button @click="openNotice1">标准的notice</mku-button>
-    <mku-button @click="openNotice2">render渲染的描述内容</mku-button>
+    <mku-button @click="openNotice">render渲染的描述内容</mku-button>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    openNotice1 () {
-      this.$notice.success({
-        title: `提示`,
-        content: '这是一个提示内容',
-        duration: 0
-      })
-    },
-    openNotice2 () {
+    openNotice () {
       const expirationDate = 3
       const couponNums = 2
       this.$notice.warning({

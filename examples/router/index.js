@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NavConfigs from './nav.route'
+import NavConfigs from './routes'
 import hljs from 'highlight.js'
 
 Vue.use(Router)
 
 const navConfigs = NavConfigs.map(item => item.children).flat(Infinity)
-console.log(navConfigs)
 
 const router = new Router({
   mode: 'hash',

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import navConfigs from '../router/nav.route'
+import navConfigs from '../router/routes'
 
 export default {
   name: 'DemoHeader',
