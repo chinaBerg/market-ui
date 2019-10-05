@@ -5,6 +5,24 @@ export default [
     name: '表单',
     children: [
       {
+        path: '/component/radio',
+        name: 'Radio',
+        meta: {
+          type: 'component',
+          title: 'Radio 单选框'
+        },
+        component: () => import('../../docs/zh_CN/radio.md')
+      },
+      {
+        path: '/component/checkbox',
+        name: 'Checkbox',
+        meta: {
+          type: 'component',
+          title: 'Checkbox 复选框'
+        },
+        component: () => import('../../docs/zh_CN/checkbox.md')
+      },
+      {
         path: '/component/input',
         name: 'Input',
         meta: {
@@ -12,6 +30,33 @@ export default [
           title: 'Input 输入框'
         },
         component: () => import('../../docs/zh_CN/input.md')
+      },
+      {
+        path: '/component/select',
+        name: 'Select',
+        meta: {
+          type: 'component',
+          title: 'Select 选择器'
+        },
+        component: () => import('../../docs/zh_CN/select.md')
+      },
+      {
+        path: '/component/switch',
+        name: 'Switch',
+        meta: {
+          type: 'component',
+          title: 'Switch 开关'
+        },
+        component: () => import('../../docs/zh_CN/switch.md')
+      },
+      {
+        path: '/component/form',
+        name: 'Form',
+        meta: {
+          type: 'component',
+          title: 'Form 选择器'
+        },
+        component: () => import('../../docs/zh_CN/form.md')
       }
     ]
   }

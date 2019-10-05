@@ -1,31 +1,35 @@
+import Alert from './lib/alert'
 import Button from './lib/button'
-import Icon from './lib/icon'
-import CollapseTransition from './lib/collapse-transition'
-import Row from './lib/row'
+import Checkbox from './lib/checkbox'
+import CheckboxGroup from './lib/checkbox-group'
 import Col from './lib/col'
+import CollapseTransition from './lib/collapse-transition'
+import Icon from './lib/icon'
+import Input from './lib/input'
 import Menu from './lib/menu'
 import MenuGroup from './lib/menu-group'
 import MenuItem from './lib/menu-item'
-import Submenu from './lib/submenu'
-import Input from './lib/input'
-import Alert from './lib/alert'
 import Message from './lib/message'
 import Notice from './lib/notice'
+import Row from './lib/row'
+import Submenu from './lib/submenu'
 
 const components = [
-  Icon,
+  Alert,
   Button,
-  CollapseTransition,
-  Row,
+  Checkbox,
+  CheckboxGroup,
   Col,
+  CollapseTransition,
+  Icon,
+  Input,
   Menu,
   MenuGroup,
   MenuItem,
-  Submenu,
-  Input,
-  Alert,
   Message,
-  Notice
+  Notice,
+  Row,
+  Submenu
 ]
 
 const install = function (Vue) {
@@ -44,14 +48,19 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   version: '0.1.0',
   install,
-  Icon,
+  Alert,
   Button,
-  Row,
+  Checkbox,
+  CheckboxGroup,
   Col,
+  CollapseTransition,
+  Icon,
+  Input,
   Menu,
   MenuGroup,
   MenuItem,
-  Submenu,
-  Input,
-  CollapseTransition
+  Message,
+  Notice,
+  Row,
+  Submenu
 }

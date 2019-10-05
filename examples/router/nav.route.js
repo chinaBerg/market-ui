@@ -6,7 +6,7 @@
 //     type: 'component',
 //     title: 'Tabs 标签页'
 //   },
-//   component: () => import('../docs/zh_CN/tabs.md')
+//   component: () => import('../../docs/zh_CN/tabs.md')
 // },
 // {
 //   path: '/component/dropdown',
@@ -15,7 +15,7 @@
 //     type: 'component',
 //     title: 'Dropdown 下拉菜单'
 //   },
-//   component: () => import('../docs/zh_CN/dropdown.md')
+//   component: () => import('../../docs/zh_CN/dropdown.md')
 // },
 // {
 //   path: '/component/page',
@@ -24,7 +24,7 @@
 //     type: 'component',
 //     title: 'Page 分页'
 //   },
-//   component: () => import('../docs/zh_CN/page.md')
+//   component: () => import('../../docs/zh_CN/page.md')
 // },
 // {
 //   path: '/component/crumb',
@@ -33,7 +33,7 @@
 //     type: 'component',
 //     title: 'Crumb 面包屑'
 //   },
-//   component: () => import('../docs/zh_CN/crumb.md')
+//   component: () => import('../../docs/zh_CN/crumb.md')
 // },
 // {
 //   path: '/component/badge',
@@ -42,7 +42,7 @@
 //     type: 'component',
 //     title: 'Badge 徽章'
 //   },
-//   component: () => import('../docs/zh_CN/badge.md')
+//   component: () => import('../../docs/zh_CN/badge.md')
 // },
 // {
 //   path: '/component/steps',
@@ -51,53 +51,9 @@
 //     type: 'component',
 //     title: 'Steps 步骤条'
 //   },
-//   component: () => import('../docs/zh_CN/steps.md')
+//   component: () => import('../../docs/zh_CN/steps.md')
 // },
-// {
-//   path: '/component/radio',
-//   name: 'Radio',
-//   meta: {
-//     type: 'component',
-//     title: 'Radio 单选框'
-//   },
-//   component: () => import('../docs/zh_CN/radio.md')
-// },
-// {
-//   path: '/component/checkbox',
-//   name: 'Checkbox',
-//   meta: {
-//     type: 'component',
-//     title: 'Checkbox 复选框'
-//   },
-//   component: () => import('../docs/zh_CN/checkbox.md')
-// },
-// {
-//   path: '/component/switch',
-//   name: 'Switch',
-//   meta: {
-//     type: 'component',
-//     title: 'Switch 开关'
-//   },
-//   component: () => import('../docs/zh_CN/switch.md')
-// },
-// {
-//   path: '/component/select',
-//   name: 'Select',
-//   meta: {
-//     type: 'component',
-//     title: 'Select 选择器'
-//   },
-//   component: () => import('../docs/zh_CN/select.md')
-// },
-// {
-//   path: '/component/form',
-//   name: 'Form',
-//   meta: {
-//     type: 'component',
-//     title: 'Form 选择器'
-//   },
-//   component: () => import('../docs/zh_CN/form.md')
-// },
+
 // {
 //   path: '/component/table',
 //   name: 'Table',
@@ -105,7 +61,7 @@
 //     type: 'component',
 //     title: 'Table 表格'
 //   },
-//   component: () => import('../docs/zh_CN/table.md')
+//   component: () => import('../../docs/zh_CN/table.md')
 // },
 // {
 //   path: '/component/date-picker',
@@ -114,7 +70,7 @@
 //     type: 'component',
 //     title: 'DatePicker 日期选择器'
 //   },
-//   component: () => import('../docs/zh_CN/date-picker.md')
+//   component: () => import('../../docs/zh_CN/date-picker.md')
 // },
 // {
 //   path: '/component/cascader',
@@ -123,7 +79,7 @@
 //     type: 'component',
 //     title: 'Cascader 级联选择器'
 //   },
-//   component: () => import('../docs/zh_CN/cascader.md')
+//   component: () => import('../../docs/zh_CN/cascader.md')
 // },
 // {
 //   path: '/component/alert',
@@ -132,25 +88,7 @@
 //     type: 'component',
 //     title: 'Alert 警告'
 //   },
-//   component: () => import('../docs/zh_CN/alert.md')
-// },
-// {
-//   path: '/component/message',
-//   name: 'Message',
-//   meta: {
-//     type: 'component',
-//     title: 'Message 提示'
-//   },
-//   component: () => import('../docs/zh_CN/message.md')
-// },
-// {
-//   path: '/component/notice',
-//   name: 'Notice',
-//   meta: {
-//     type: 'component',
-//     title: 'Notice 通知'
-//   },
-//   component: () => import('../docs/zh_CN/notice.md')
+//   component: () => import('../../docs/zh_CN/alert.md')
 // },
 // {
 //   path: '/component/dialog',
@@ -159,7 +97,7 @@
 //     type: 'component',
 //     title: 'Dialog 对话框'
 //   },
-//   component: () => import('../docs/zh_CN/dialog.md')
+//   component: () => import('../../docs/zh_CN/dialog.md')
 // },
 // {
 //   path: '/component/dialog',
@@ -168,7 +106,7 @@
 //     type: 'component',
 //     title: 'Tree 树形控件'
 //   },
-//   component: () => import('../docs/zh_CN/tree.md')
+//   component: () => import('../../docs/zh_CN/tree.md')
 // },
 // {
 //   path: '/component/tooltip',
@@ -177,7 +115,7 @@
 //     type: 'component',
 //     title: 'Tooltip 文字提示'
 //   },
-//   component: () => import('../docs/zh_CN/tooltip.md')
+//   component: () => import('../../docs/zh_CN/tooltip.md')
 // },
 // {
 //   path: '/component/popover',
@@ -186,7 +124,7 @@
 //     type: 'component',
 //     title: 'Popover 气泡提示'
 //   },
-//   component: () => import('../docs/zh_CN/popover.md')
+//   component: () => import('../../docs/zh_CN/popover.md')
 // },
 // {
 //   path: '/component/loading',
@@ -195,5 +133,5 @@
 //     type: 'component',
 //     title: 'Loading 加载中'
 //   },
-//   component: () => import('../docs/zh_CN/loading.md')
+//   component: () => import('../../docs/zh_CN/loading.md')
 // }
