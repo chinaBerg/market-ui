@@ -54,7 +54,7 @@ export default [
         name: 'Form',
         meta: {
           type: 'component',
-          title: 'Form 选择器'
+          title: 'Form 表单'
         },
         component: () => import('../../docs/zh_CN/form.md')
       }

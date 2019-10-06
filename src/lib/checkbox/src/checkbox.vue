@@ -76,7 +76,6 @@ export default {
     value: {
       handler (newValue) {
         const isPredict = [this.trueValue, this.falseValue].includes(newValue)
-        console.log('newValue', newValue)
         if (isPredict) {
           this.checkboxValue = newValue === this.trueValue
           return
@@ -129,7 +128,7 @@ export default {
         // 作为单个checkbox使用时
         // 由自身触发change事件、Form验证
         this.$emit('change', value)
-        this.dispatch('MkuForm', 'onFormItemChange', value)
+        this.dispatch('MkuFormItem', 'onFormItemChange', value)
       }
     }
   }

@@ -68,6 +68,7 @@ const createTypeOf = (type) => {
 }
 
 const isArray = createTypeOf('Array')
+const isString = createTypeOf('String')
 const isObject = createTypeOf('Object')
 const isNull = createTypeOf('Null')
 const isUndefined = createTypeOf('Undefined')
@@ -123,6 +124,7 @@ export {
   findComponentsDownward,
   findSiblingsComponents,
   isArray,
+  isString,
   isObject,
   isNull,
   isUndefined,

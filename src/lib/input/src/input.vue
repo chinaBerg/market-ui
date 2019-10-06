@@ -141,7 +141,7 @@ export default {
       const value = event.target.value
       this.currentValue = value
       this.$emit('input', value)
-      this.dispatch('MkuFormItem', 'on-form-change', value)
+      this.dispatch('MkuFormItem', 'onFormItemChange', value)
       this.$emit('change', value)
     },
     // 获取焦点的回调
@@ -150,14 +150,14 @@ export default {
     },
     // 失去焦点回调
     handleBlur () {
-      this.dispatch('MkuFormItem', 'on-form-blur', this.currentValue)
       this.$emit('blur', event)
+      this.dispatch('MkuFormItem', 'onFormItemBlur', this.currentValue)
     },
     // 点击清空按钮
     handleClear () {
       this.currentValue = ''
       this.$emit('input', this.currentValue)
-      this.dispatch('MkuFormItem', 'on-form-change', this.currentValue)
+      this.dispatch('MkuFormItem', 'onFormItemChange', this.currentValue)
       this.$emit('clear')
     },
     // 使组件获取焦点
@@ -167,6 +167,7 @@ export default {
     // 使组件失去焦点
     blur () {
       this.$refs.input.blur()
+      this.dispatch('MkuFormItem', 'onFormItemBlur', value)
     }
   }
 }
