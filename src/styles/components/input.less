@@ -17,10 +17,12 @@
   }
 }
 .__input-expend {
-  &:focus:not([readonly]),
-  &:hover:not(:disabled):not([readonly]) {
+  &:focus:not([readonly]) {
     border: 1px solid @color-primary;
     box-shadow: @shadow-primary;
+  }
+  &:hover:not(:disabled):not([readonly]) {
+    border: 1px solid @color-primary;
   }
 }
 

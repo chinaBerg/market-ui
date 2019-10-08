@@ -14,6 +14,7 @@ import MenuItem from './lib/menu-item'
 import Message from './lib/message'
 import Notice from './lib/notice'
 import Row from './lib/row'
+import Switch from './lib/switch'
 import Submenu from './lib/submenu'
 
 const components = [
@@ -33,6 +34,7 @@ const components = [
   Message,
   Notice,
   Row,
+  Switch,
   Submenu
 ]
 
@@ -68,5 +70,6 @@ export default {
   Message,
   Notice,
   Row,
+  Switch,
   Submenu
 }
