@@ -8,15 +8,17 @@
 <template>
   <div class="doc-form-container">
     <mku-form :label-width="100">
-      <mku-form-item label="用户名：">
-        <mku-input type="text" placeholder="请输入您的用户名" />
+      <mku-form-item label="Text：">
+        <mku-input type="text" placeholder="This is a text box." />
       </mku-form-item>
-      <mku-form-item label="密码：">
-        <mku-input type="password" placeholder="请输入您的密码"/>
+      <mku-form-item label="Password：">
+        <mku-input type="password" placeholder="This is a password box."/>
       </mku-form-item>
-      <mku-form-item prop="isAgree">
+      <mku-form-item label="Switch：">
+        <mku-switch />
+      </mku-form-item>
+      <mku-form-item label="Checkbox：">
         <mku-checkbox>同意</mku-checkbox>
-        <a href="" class="doc-form-agreement" target="_blank">《用户注册协议》</a>
       </mku-form-item>
       <mku-form-item>
         <mku-button type="primary" block>提交</mku-button>
@@ -175,6 +177,9 @@
           placeholder="请再次确认新的密码"
           v-model="formData.passwordNewAgain"
         />
+      </mku-form-item>
+      <mku-form-item prop="switch" label="确认新密码：">
+        <mku-switch v-model="formData.switch"/>
       </mku-form-item>
       <mku-form-item>
         <mku-button type="primary" block @click="handleSubmit">确认修改</mku-button>

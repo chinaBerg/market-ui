@@ -13,10 +13,13 @@
 </template>
 
 <script>
+import Emitter from '../../../utils/emitter'
+
 const SIZE_VALUE = ['large', 'default', 'small']
 
 export default {
   name: 'MkuSwitch',
+  mixins: [Emitter],
   props: {
     value: {
       type: [Boolean, String, Number],
@@ -104,6 +107,10 @@ export default {
     }
   },
   methods: {
+    /**
+     * @method handleValueChange
+     * @description 监听value值变化，给switchValue赋值
+     */
     handleValueChange (newVal) {
       const isPreicate = [this.trueValue, this.falseValue].includes(newVal)
       if (!isPreicate) {
@@ -119,6 +126,7 @@ export default {
       const value = this.switchValue ? this.trueValue : this.falseValue
       this.$emit('input', value)
       this.$emit('change', value)
+      this.dispatch('MkuFormItem', 'onFormItemChange', value)
     }
   }
 }
