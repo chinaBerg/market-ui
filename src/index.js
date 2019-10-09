@@ -13,6 +13,8 @@ import MenuGroup from './lib/menu-group'
 import MenuItem from './lib/menu-item'
 import Message from './lib/message'
 import Notice from './lib/notice'
+import Radio from './lib/radio'
+import RadioGroup from './lib/radio-group'
 import Row from './lib/row'
 import Switch from './lib/switch'
 import Submenu from './lib/submenu'
@@ -33,6 +35,8 @@ const components = [
   MenuItem,
   Message,
   Notice,
+  Radio,
+  RadioGroup,
   Row,
   Switch,
   Submenu
@@ -69,6 +73,8 @@ export default {
   MenuItem,
   Message,
   Notice,
+  Radio,
+  RadioGroup,
   Row,
   Switch,
   Submenu

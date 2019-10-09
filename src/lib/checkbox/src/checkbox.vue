@@ -7,7 +7,7 @@
         <!-- 参考：https://cn.vuejs.org/v2/guide/forms.html#%E5%A4%8D%E9%80%89%E6%A1%86 -->
         <input
           type="checkbox"
-          class="mku-checkbox-input a"
+          class="mku-checkbox-input"
           v-if="isGroup"
           v-model="checkboxSelectedArray"
           :value="label"
@@ -16,7 +16,7 @@
         />
         <input
           type="checkbox"
-          class="mku-checkbox-input b"
+          class="mku-checkbox-input"
           v-else
           :checked="checkboxValue"
           :disabled="disabled"

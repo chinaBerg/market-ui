@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
-    <div class="header__logo" @click="handleToHome">Market-Ui</div>
-    <div class="header__content"></div>
+    <!-- <div class="header__logo" @click="handleToHome">Market-Ui</div>
+    <div class="header__content"></div> -->
   </div>
 </template>
 

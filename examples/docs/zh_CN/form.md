@@ -20,6 +20,14 @@
       <mku-form-item label="Checkbox：">
         <mku-checkbox>同意</mku-checkbox>
       </mku-form-item>
+      <mku-form-item label="Radio：">
+        <mku-radio-group>
+          <mku-radio label="option1">选项1</mku-radio>
+          <mku-radio label="option2">选项2</mku-radio>
+          <mku-radio label="option3">选项3</mku-radio>
+          <mku-radio label="option4">选项4</mku-radio>
+        </mku-radio-group>
+      </mku-form-item>
       <mku-form-item>
         <mku-button type="primary" block>提交</mku-button>
       </mku-form-item>

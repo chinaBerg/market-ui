@@ -42,7 +42,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: '',
+      default: 'info',
       validator: val => {
         return ['info', 'success', 'error', 'warning'].includes(val)
       }
