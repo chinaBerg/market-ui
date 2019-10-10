@@ -73,26 +73,29 @@ export default {
     }
   },
   computed: {
+    // 拼接switch的className
     switchClasss () {
       return [
         'mku-switch', {
           'mku-switch--lg': this.size === 'large',
           'mku-switch--sm': this.size === 'small',
           'mku-switch--opened': this.switchValue,
-          'mku-switch--disabled': this.disabled,
+          'mku-switch--disabled': this.disabled
         }
       ]
     },
+    // 计算switch的背景色
     switchBgColor () {
       let bgColor = ''
       if (this.switchValue && this.activeColor) {
-        bgColor =  this.activeColor
+        bgColor = this.activeColor
       }
       if (!this.switchValue && this.inactiveColor) {
-        bgColor =  this.inactiveColor
+        bgColor = this.inactiveColor
       }
       return bgColor
     },
+    // 定义switch的样式
     switchStyle () {
       let obj = {}
       obj.width = `${this.width}px`
@@ -100,6 +103,7 @@ export default {
       if (this.switchBgColor) obj.backgroundColor = this.switchBgColor
       return obj
     },
+    // 定义switch的loading样式
     iconLoadingStyle () {
       let obj = {}
       if (this.switchBgColor) obj.borderColor = `transparent transparent transparent ${this.switchBgColor}`
@@ -114,11 +118,18 @@ export default {
     handleValueChange (newVal) {
       const isPreicate = [this.trueValue, this.falseValue].includes(newVal)
       if (!isPreicate) {
-        throw TypeError(`The switch value is invalid， expected to pass in \'${this.trueValue}\' and \'${this.falseValue}\'.`)
-        return
+        throw TypeError(`The switch value is invalid， expected to pass in '${this.trueValue}' and '${this.falseValue}'.`)
       }
       this.switchValue = newVal === this.trueValue
     },
+    /**
+     * @method handleValueChange
+     * @description switch点击事件
+     * - 更新switch值
+     * - 双向绑定更新value值
+     * - 对外暴露change事件
+     * - 支持Form表单的验证
+     */
     handleClick (e) {
       if (this.disabled || this.loading) return
 

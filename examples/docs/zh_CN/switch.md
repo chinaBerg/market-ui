@@ -148,3 +148,23 @@ export default {
 </script>
 ```
 :::
+
+
+### Switch Attributes
+
+| 参数           | 说明                                    | 类型                        | 可选值                    | 默认值        | 必填 |
+| :------------- | :-------------------------------------- | :-------------------------- | :------------------------ | :------------ | :--- |
+| value          | 绑定的值，使用`v-model`进行双向数据绑定 | `String | Number | Boolean` | -                         | -             | 否   |
+| width          | 自定义switch的宽度                      | `Number`                    | -                         | 50 （单位px） | 否   |
+| size           | switch尺寸                              | String                      | `large | default | small` | `default`     | 否   |
+| active-color   | open时的背景色                          | String                      | -                         | 主题蓝        | 否   |
+| inactive-color | close时的背景色                         | String                      | -                         | 主题灰        | 否   |
+| true-value     | 自定义true的值                          | `String | Number | Boolean` | -                         | `true`        | 否   |
+| false-value    | 自定义false的值                         | `String | Number | Boolean` | -                         | `false`       | 否   |
+| disabled       | 禁用switch                              | Boolean                     | -                         | `false`       | 否   |
+| loading        | 展示loading效果，此时点击不会更改状态   | Boolean                     | -                         | `false`       | 否   |
+
+### Switch Events
+| 事件名        | 说明                 | 回调函数参数                                                                                                                                                                            |
+| :------------ | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| change        | 在switch值变化时触发     | 返回switch值                                                                                                                                                                  |
