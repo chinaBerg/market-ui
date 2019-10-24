@@ -1,9 +1,20 @@
 <template>
   <div class="main-container">
-    <nav-slide />
-    <div class="main-content">
-      <router-view />
-      <!-- <main-footer /> -->
+    <div class="main__head">
+      <div class="main__head-logo">
+        <div class="main__head-image"></div>
+        <h3 class="main__head-title">Market-Ui</h3>
+        <p class="main__head-desc">灵活与艺术的组件库</p>
+      </div>
+      <div class="main__head-right"></div>
+    </div>
+    <div class="main__content-container">
+      <div class="main__nav-container">
+        <nav-slide />
+      </div>
+      <div class="main_content">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -23,9 +34,76 @@ export default {
 
 <style lang="less">
 .main-container {
-  background: #f0f2f5;
-  .main-content {
-    padding: 80px 40px 20px 240px;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+
+  /* 头部 */
+  .main__head {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    background: #478efa;
+    .main__head-logo {
+      width: 300px;
+      height: 100%;
+      padding: 0 30px;
+      .main__head-image {
+        height: 110px;
+      }
+      .main__head-title {
+        margin-bottom: 10px;
+        font-size: 20px;
+        color: #fff;
+      }
+      .main__head-desc {
+        color: #fff;
+      }
+    }
+    .main__head-right {
+      flex: 1;
+      height: 110px;
+    }
+  }
+
+  /* 主体 */
+  .main__content-container {
+    position: relative;
+    flex: 1;
+    background: #f8f9f9;
+    /* 左侧菜单 */
+    .main__nav-container {
+      position: absolute;
+      left: 30px;
+      top: 20px;
+      bottom: 20px;
+      width: 240px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 10px;
+    }
+    /* 右侧主体*/
+    .main_content {
+      position: absolute;
+      top: -90px;
+      left: 300px;
+      right: 30px;
+      bottom: 20px;
+      padding: 30px;
+      border-radius: 30px;
+      background: #fff;
+      box-shadow: 0 9px 7px #e8eef5;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
   }
   .market-doc-container {
     > h1, > h2, > h3, > h4, > h5, > h6 {

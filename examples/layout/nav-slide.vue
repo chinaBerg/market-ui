@@ -4,7 +4,7 @@
       <li class="nav-slide-item"
         >
         <h3 class="">组件</h3>
-        <mku-menu :default-active="$route.name">
+        <mku-menu :default-active="$route.name" width="240">
           <mku-menu-group
             :title="group.name"
             v-for="(group, groupIndex) in navConfig"
@@ -45,15 +45,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// @import '../../src/styles/color';
-
 .nav-slide-container {
-  position: fixed;
-  top: 64px;
-  left: 0;
-  bottom: 0;
-  z-index: 9;
-  width: 200px;
   background: #fff;
   overflow-x: hidden;
   overflow-y: auto;
@@ -66,6 +58,9 @@ export default {
     }
     .nav-item__name {
       text-indent: 1em;
+    }
+    .mku-menu {
+      border-right: 1px solid transparent;
     }
   }
 }

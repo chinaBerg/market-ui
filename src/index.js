@@ -13,11 +13,14 @@ import MenuGroup from './lib/menu-group'
 import MenuItem from './lib/menu-item'
 import Message from './lib/message'
 import Notice from './lib/notice'
+import Options from './lib/options'
+import OptionsGroup from './lib/options-group'
 import Radio from './lib/radio'
 import RadioGroup from './lib/radio-group'
 import Row from './lib/row'
-import Switch from './lib/switch'
+import Select from './lib/select'
 import Submenu from './lib/submenu'
+import Switch from './lib/switch'
 
 const components = [
   Alert,
@@ -35,11 +38,14 @@ const components = [
   MenuItem,
   Message,
   Notice,
+  Options,
+  OptionsGroup,
   Radio,
   RadioGroup,
   Row,
-  Switch,
-  Submenu
+  Select,
+  Submenu,
+  Switch
 ]
 
 const install = function (Vue) {
@@ -73,9 +79,12 @@ export default {
   MenuItem,
   Message,
   Notice,
+  Options,
+  OptionsGroup,
   Radio,
   RadioGroup,
   Row,
-  Switch,
-  Submenu
+  Select,
+  Submenu,
+  Switch
 }

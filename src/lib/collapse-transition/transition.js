@@ -7,7 +7,6 @@ const transition = config => {
   }
   const transition = {
     beforeEnter (el) {
-      console.log(el.dataset)
       el.dataset.paddingTop = el.style.paddingTop
       el.dataset.paddingBottom = el.style.paddingBottom
       inlineStyle(

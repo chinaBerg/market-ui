@@ -42,11 +42,7 @@ export default {
   margin-bottom: 50px;
   background: #fff;
   border-radius: 4px;
-  overflow: hidden;
-  transition: box-shadow .3s;
-  &:hover {
-    box-shadow: 0 0 6px #dcdee2;
-  }
+  box-shadow: 0 0 6px #dcdee2;
   .mku-example__component {
     padding: 20px;
   }
@@ -74,6 +70,7 @@ export default {
     text-align: center;
     font-size: 12px;
     cursor: pointer;
+    border-radius: 0 0 4px 4px;
     transition: all .3s;
     &:hover {
       opacity: .8;

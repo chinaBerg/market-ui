@@ -72,3 +72,9 @@ export function inlineStyle (dom, styles = {}) {
     }
   }
 }
+
+export function attrs (dom, ...props) {
+  if (!dom) return
+  if (props.length === 1) return dom.getAttribute(props[0])
+  if (props.length === 2) return dom.setAttribute(props[0], props[1])
+}
