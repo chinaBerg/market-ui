@@ -22,18 +22,12 @@ export default {
   inject: [
     'MkuSelect'
   ],
-  data () {
-    return {
-      // activeI
-    }
-  },
-  watch: {
-  },
   computed: {
     // 返回所有被选中的options
     optionsSelected () {
       return this.MkuSelect.optionsSelected
     },
+    // 拼接options的className
     optionsClasss () {
       const isActived = this.optionsSelected.some(item => item.value === this.value)
       return [
@@ -44,19 +38,25 @@ export default {
       ]
     }
   },
-  mounted () {
-    console.log('dis', this.disabled)
-  },
   methods: {
+    /**
+     * @method handleOptionsClick
+     * @description options的点击事件
+     * - 如果是disabled项，则阻止冒泡
+     * - 触发select组件的change函数
+     */
     handleOptionsClick (event) {
       if (this.disabled) {
         return event.stopPropagation()
       }
 
-      this.MkuSelect.change({
+      this.MkuSelect.change(this.formatEmitData())
+    },
+    formatEmitData () {
+      return {
         value: this.value,
         text: this.label || (this.$el && this.$el.textContent)
-      })
+      }
     }
   }
 }

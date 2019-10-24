@@ -6,7 +6,7 @@
       ref="mkuSelect"
       @mouseover="handleMouseHover(true)"
       @mouseout="handleMouseHover(false)"
-      @click.stop="handleSelectClick"
+      @click="handleSelectClick"
     >
       <!-- select text区域 -->
       <template v-if="optionsSelected.length">
@@ -30,11 +30,6 @@
       <span class="mku-select__icon" @click="handleClear">
         <i :class="['mku-icon', isShowClearIcon ? 'mku-icon-error-circle' : 'mku-icon-arrow-down']"></i>
       </span>
-
-      <!-- dropdown的arrow-icon -->
-      <!-- <span class="mku-select__icon">
-        <i class="mku-icon mku-icon-arrow-down"></i>
-      </span> -->
     </div>
 
     <!-- dropdown -->
@@ -42,6 +37,7 @@
       <ul class="mku-select__menu"
         ref="mkuSelectMenu"
         v-show="isOpened && !disabled"
+        :style="dropdownStyle"
         @click="handleDropdownClick"
       >
         <slot></slot>
@@ -52,11 +48,17 @@
 
 <script>
 import Popper from 'popper.js'
+import Emitter from '../../../utils/emitter'
 import { attrs } from '../../../utils/dom'
+import { findComponentsDownward } from '../../../utils/assist'
 
 export default {
   name: 'MkuSelect',
+  mixins: [Emitter],
   props: {
+    value: {
+      type: [String, Number, Array]
+    },
     multiple: {
       type: Boolean,
       default: false
@@ -83,7 +85,8 @@ export default {
       popper: null,
       isOpened: false,
       optionsSelected: [], // 所有被选中的options
-      isHover: false
+      isHover: false,
+      isClickAtComponent: true // 用于控制点击window时是否隐藏dropdown
     }
   },
   provide () {
@@ -92,8 +95,15 @@ export default {
     }
   },
   watch: {
+    value: {
+      handler (n, o) {
+        this.handleValueChange(n, o)
+      },
+      immediate: true
+    }
   },
   computed: {
+    // 拼接select的className
     selectClasss () {
       return [
         'mku-select', {
@@ -102,8 +112,21 @@ export default {
         }
       ]
     },
+    // 是否显示清除的icon
     isShowClearIcon () {
       return this.clearable && this.isHover && !this.multiple && !!this.optionsSelected.length
+    },
+    // dropdown的style
+    dropdownStyle () {
+      let res = {}
+      const one = str => this.placement.indexOf(str) > -1
+      const isTopOrBottom = one('bottom') || one('top')
+      if (isTopOrBottom) {
+        res.margin = '8px 0'
+      } else {
+        if (one('right')) res.marginLeft = '8px'
+      }
+      return res
     }
   },
   mounted () {
@@ -115,13 +138,41 @@ export default {
   },
   methods: {
     /**
+     * @method handleValueChange
+     * @description 监听value值的变化
+     */
+    handleValueChange (newVal) {
+      let selected = []
+      this.$nextTick(() => {
+        const options = findComponentsDownward(this, 'MkuOptions')
+        if (options) {
+          if (!this.multiple) {
+            for (let i = 0, option; option = options[i++];) {
+              if (option.value === newVal) {
+                selected.push(option.formatEmitData())
+                break
+              }
+            }
+          } else {
+            options.forEach(option => {
+              if (newVal.includes(option.value)) {
+                selected.push(option.formatEmitData())
+              }
+            })
+          }
+        }
+        this.optionsSelected = selected
+      })
+    },
+    /**
      * @method initPopper
      * @description 初始化popper插件
      * - reference: https://popper.js.org/
      */
     initPopper () {
+      const placement = this.placement
       this.popper = new Popper(this.$refs.mkuSelect, this.$refs.mkuSelectMenu, {
-        placement: this.placement,
+        placement,
         modifiers: {
           computeStyle: {
             gpuAcceleration: false
@@ -139,7 +190,10 @@ export default {
      * - 在beforeDestroy之前取消监听
      */
     winClickCallback () {
-      this.isOpened = false
+      if (!this.isClickAtComponent) {
+        this.isOpened = false
+      }
+      this.isClickAtComponent = false
     },
     /**
      * @method handleSelectClick
@@ -147,11 +201,14 @@ export default {
      */
     handleSelectClick () {
       if (this.disabled) return
+      this.isClickAtComponent = true
+
       const poper = this.$refs.mkuSelectMenu
       const popperPlacement = attrs(poper, 'x-placement')
-      poper.style.transformOrigin = popperPlacement.indexOf('top') > -1 ?
-        'bottom left' : 'top left'
+      poper.style.transformOrigin = popperPlacement.indexOf('top') > -1
+        ? 'bottom left' : 'top left'
       this.isOpened = !this.isOpened
+      this.$emit('drop-change', this.isOpened)
     },
     /**
      * @method handleMouseHover
@@ -169,7 +226,15 @@ export default {
         event.stopPropagation()
       }
     },
+    /**
+     * @method change
+     * @description options变化后的回调函数
+     * - 多选时：支持再次点击取消，绑定的值为一个选中项的数组
+     * - 单选，绑定值为一个单个值
+     * - 支持Form表单验证
+     */
     change (data) {
+      let validateValue
       if (this.multiple) {
         const index = this.optionsSelected.findIndex(item => item.value === data.value)
         if (index > -1) {
@@ -177,12 +242,17 @@ export default {
         } else {
           this.optionsSelected.push(data)
         }
-        this.$emit('input', this.optionsSelected.map(e => e.value))
-        this.popper.scheduleUpdate()
+        validateValue = this.optionsSelected.map(e => e.value)
       } else {
+        validateValue = data.value
         this.optionsSelected = [data]
-        this.$emit('input', data.value)
+        this.$emit('input', validateValue)
       }
+      this.$emit('input', validateValue)
+      this.$emit('change', validateValue)
+      this.popper.scheduleUpdate()
+      // 表单验证
+      this.dispatch('MkuFormItem', 'onFormItemChange', validateValue)
     },
     handleDelete (option) {
       this.optionsSelected = this.optionsSelected.filter(item => item.value !== option.value)

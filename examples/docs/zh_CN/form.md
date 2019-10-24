@@ -14,6 +14,13 @@
       <mku-form-item label="Password：">
         <mku-input type="password" placeholder="This is a password box."/>
       </mku-form-item>
+      <mku-form-item label="Select：">
+        <mku-select class="doc-select">
+          <mku-options value="1">选项1</mku-options>
+          <mku-options value="2">选项2</mku-options>
+          <mku-options value="3">选项3</mku-options>
+        </mku-select>
+      </mku-form-item>
       <mku-form-item label="Switch：">
         <mku-switch />
       </mku-form-item>

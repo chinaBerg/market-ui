@@ -19,11 +19,7 @@
     <template v-else>
       <input
         ref="input"
-        :class="['mku-input', {
-          'mku-input--large': size === 'large',
-          'mku-input--default': size === 'default',
-          'mku-input--small': size === 'small',
-        }]"
+        :class="inputClasss"
         :style="{paddingRight: clearable ? '22px' : '8px'}"
         :type="type"
         :value="currentValue"
@@ -34,7 +30,9 @@
         @focus="handleFocus"
         @blur="handleBlur"
       />
-      <i class="iconfont mku-input__clear" v-if="isClearable" @click="handleClear">&#xe606;</i>
+      <i class="mku-icon mku-input__clear" v-if="isClearable" @click="handleClear">
+        &#xe633;
+      </i>
     </template>
   </div>
 </template>
@@ -119,9 +117,9 @@ export default {
       const INPUT = 'mku-input'
       return [ INPUT,
         {
-          [`${INPUT}--large`]: size === 'large',
-          [`${INPUT}--default`]: size === 'default',
-          [`${INPUT}--small`]: size === 'small'
+          [`${INPUT}--large`]: this.size === 'large',
+          [`${INPUT}--default`]: this.size === 'default',
+          [`${INPUT}--small`]: this.size === 'small'
         }
       ]
     }
@@ -167,7 +165,7 @@ export default {
     // 使组件失去焦点
     blur () {
       this.$refs.input.blur()
-      this.dispatch('MkuFormItem', 'onFormItemBlur', value)
+      this.dispatch('MkuFormItem', 'onFormItemBlur', this.value)
     }
   }
 }

@@ -4,7 +4,7 @@
       <li class="nav-slide-item"
         >
         <h3 class="">组件</h3>
-        <mku-menu :default-active="$route.name" width="240">
+        <mku-menu :default-active="$route.name" :width="240">
           <mku-menu-group
             :title="group.name"
             v-for="(group, groupIndex) in navConfig"
