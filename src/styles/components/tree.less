@@ -1,0 +1,50 @@
+@import '../colors/color';
+@import '../sizes/size';
+
+@size-large: 28px;
+@size-default: 26px;
+@size-small: 24px;
+
+/* Tree Node */
+.mku-tree__parent {
+  .mku-tree__child {
+    padding-left: 17px;
+    .mku-tree__content {
+      display: flex;
+      align-items: center;
+      padding: 4px 0 4px 0;
+      cursor: pointer;
+      &:hover {
+        background: @background-hover-base;
+      }
+    }
+    /* Icon */
+    .mku-tree__icon-wrap {
+      width: 18px;
+      height: 18px;
+      margin-right: 4px;
+    }
+    .mku-tree__icon {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      user-select: none;
+      transition: all .2s linear;
+    }
+    .mku-tree__icon--opened {
+      transform: rotate(90deg)
+    }
+    /* checkbox */
+    .mku-tree__checkbox {
+      height: 16px;
+      margin-right: 4px;
+    }
+    .mku-tree__label {
+      flex: 1;
+    }
+  }
+}
+/* 第一层级的不需要左边距 */
+.mku-tree > .mku-tree__parent > .mku-tree__child {
+  padding-left: 0;
+}

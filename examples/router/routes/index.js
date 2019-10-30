@@ -2,6 +2,7 @@ import BasicRoutes from './basic'
 import NavigationRoutes from './navigation'
 import FormRoutes from './form'
 import TipRoutes from './tip'
+import ViewRoutes from './view'
 
 /**
  * nav的路由配置
@@ -27,5 +28,6 @@ export default [
   ...BasicRoutes,
   ...NavigationRoutes,
   ...FormRoutes,
+  ...ViewRoutes,
   ...TipRoutes
 ]

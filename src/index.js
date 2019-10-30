@@ -21,6 +21,7 @@ import Row from './lib/row'
 import Select from './lib/select'
 import Submenu from './lib/submenu'
 import Switch from './lib/switch'
+import Tree from './lib/tree'
 
 const components = [
   Alert,
@@ -45,7 +46,8 @@ const components = [
   Row,
   Select,
   Submenu,
-  Switch
+  Switch,
+  Tree
 ]
 
 const install = function (Vue) {
@@ -86,5 +88,6 @@ export default {
   Row,
   Select,
   Submenu,
-  Switch
+  Switch,
+  Tree
 }

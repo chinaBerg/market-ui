@@ -117,6 +117,20 @@ const createULID = () => {
   return ulid()
 }
 
+// 判断两个对象的每个属性值是否相等
+const isObjectEqual = (o1, o2) => {
+  if (!o1 || !o2) return false
+  if (!isObject(o1) || !isObject(o2)) return false
+  if (Object.keys(o1).length !== Object.keys(o2).length) return false
+  let isEqual = true
+  for (let prop in o1) {
+    if (o1[prop] !== o2[prop]) {
+      isEqual = false
+    }
+  }
+  return isEqual
+}
+
 export {
   findComponentUpward,
   findComponentsUpward,
@@ -133,5 +147,6 @@ export {
   deepCopy,
   trim,
   singlePattern,
-  createULID
+  createULID,
+  isObjectEqual
 }

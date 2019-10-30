@@ -9,15 +9,6 @@
 //   component: () => import('../../docs/zh_CN/tabs.md')
 // },
 // {
-//   path: '/component/dropdown',
-//   name: 'Dropdown',
-//   meta: {
-//     type: 'component',
-//     title: 'Dropdown 下拉菜单'
-//   },
-//   component: () => import('../../docs/zh_CN/dropdown.md')
-// },
-// {
 //   path: '/component/page',
 //   name: 'Page',
 //   meta: {
@@ -55,14 +46,7 @@
 // },
 
 // {
-//   path: '/component/table',
-//   name: 'Table',
-//   meta: {
-//     type: 'component',
-//     title: 'Table 表格'
-//   },
-//   component: () => import('../../docs/zh_CN/table.md')
-// },
+
 // {
 //   path: '/component/date-picker',
 //   name: 'DatePicker',
@@ -99,13 +83,6 @@
 //   },
 //   component: () => import('../../docs/zh_CN/dialog.md')
 // },
-// {
-//   path: '/component/dialog',
-//   name: 'Tree',
-//   meta: {
-//     type: 'component',
-//     title: 'Tree 树形控件'
-//   },
 //   component: () => import('../../docs/zh_CN/tree.md')
 // },
 // {

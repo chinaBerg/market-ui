@@ -6,7 +6,19 @@
         <h3 class="main__head-title">Market-Ui</h3>
         <p class="main__head-desc">灵活与艺术的组件库</p>
       </div>
-      <div class="main__head-right"></div>
+      <div class="main__head-right">
+        <ul class="main__head-nav">
+          <li class="main__head-nav-item">
+            <router-link to="">快速开始</router-link>
+          </li>
+          <li class="main__head-nav-item">
+            <router-link to="">组件</router-link>
+          </li>
+          <li class="main__head-nav-item">
+            <router-link to="">资源</router-link>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="main__content-container">
       <div class="main__nav-container">
@@ -49,14 +61,14 @@ export default {
   .main__head {
     display: flex;
     flex-direction: row;
-    height: 200px;
+    height: 120px;
     background: #478efa;
     .main__head-logo {
       width: 300px;
       height: 100%;
       padding: 0 30px;
       .main__head-image {
-        height: 110px;
+        height: 60px;
       }
       .main__head-title {
         margin-bottom: 10px;
@@ -69,7 +81,20 @@ export default {
     }
     .main__head-right {
       flex: 1;
-      height: 110px;
+      height: 70px;
+      .main__head-nav {
+        display: flex;
+        align-items: center;
+        height: 70px;
+        padding: 0 30px;
+        font-size: 16px;
+      }
+      .main__head-nav-item {
+        margin-right: 20px;
+        a {
+          color: #fff;
+        }
+      }
     }
   }
 
@@ -93,7 +118,7 @@ export default {
     /* 右侧主体*/
     .main_content {
       position: absolute;
-      top: -90px;
+      top: -50px;
       left: 300px;
       right: 30px;
       bottom: 20px;
