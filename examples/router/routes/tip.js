@@ -30,6 +30,15 @@ export default [
           title: 'Notice 通知'
         },
         component: () => import('../../docs/zh_CN/notice.md')
+      },
+      {
+        path: '/component/loading',
+        name: 'Loading',
+        meta: {
+          type: 'component',
+          title: 'Loading 加载中'
+        },
+        component: () => import('../../docs/zh_CN/loading.md')
       }
     ]
   }

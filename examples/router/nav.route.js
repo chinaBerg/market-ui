@@ -102,13 +102,4 @@
 //     title: 'Popover 气泡提示'
 //   },
 //   component: () => import('../../docs/zh_CN/popover.md')
-// },
-// {
-//   path: '/component/loading',
-//   name: 'Loading',
-//   meta: {
-//     type: 'component',
-//     title: 'Loading 加载中'
-//   },
-//   component: () => import('../../docs/zh_CN/loading.md')
 // }

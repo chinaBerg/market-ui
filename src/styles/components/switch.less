@@ -31,20 +31,22 @@
     overflow: hidden;
     background-color: #fff;
     transition: left .2s ease;
-    animation: mkuSwitchRotate 1s linear infinite;
   }
-  .mku-switch__icon--loading > i {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: transparent transparent transparent @background-disabled-dark;;
-    border-radius: 50%;
+  .mku-switch__icon--loading {
+    animation: mkuSwitchRotate 1s linear infinite;
+    > i {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent transparent transparent @background-disabled-dark;;
+      border-radius: 50%;
+    }
   }
   .mku-switch__inner-before {
     display: inline-flex;

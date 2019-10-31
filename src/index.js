@@ -8,6 +8,7 @@ import Form from './lib/form'
 import FormItem from './lib/form-item'
 import Icon from './lib/icon'
 import Input from './lib/input'
+import Loading from './lib/loading'
 import Menu from './lib/menu'
 import MenuGroup from './lib/menu-group'
 import MenuItem from './lib/menu-item'
@@ -50,13 +51,26 @@ const components = [
   Tree
 ]
 
+const useInits = [
+  Loading.directive
+]
+
+const protoInits = [
+  ['$message', Message],
+  ['$notice', Notice],
+  ['$loading', Loading.loading]
+]
+
 const install = function (Vue) {
   components.forEach(component => {
     Vue.component(component.name, component)
   })
-
-  Vue.prototype.$message = Message
-  Vue.prototype.$notice = Notice
+  useInits.forEach(ins => {
+    Vue.use(ins)
+  })
+  protoInits.forEach(proto => {
+    Vue.prototype[proto[0]] = proto[1]
+  })
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
