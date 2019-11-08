@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <template v-if="isComponent">
-      <!-- <main-header /> -->
       <main-content />
     </template>
 

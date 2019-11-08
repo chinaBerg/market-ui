@@ -74,6 +74,7 @@ const isNull = createTypeOf('Null')
 const isUndefined = createTypeOf('Undefined')
 const isFunction = createTypeOf('Function')
 const isBoolean = createTypeOf('Boolean')
+const isNumber = createTypeOf('Number')
 
 // 深拷贝
 const deepCopy = val => {
@@ -144,6 +145,7 @@ export {
   isUndefined,
   isFunction,
   isBoolean,
+  isNumber,
   deepCopy,
   trim,
   singlePattern,

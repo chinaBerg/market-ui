@@ -25,7 +25,9 @@
         <nav-slide />
       </div>
       <div class="main_content">
-        <router-view />
+        <transition name="doc-page-toogle">
+          <router-view />
+        </transition>
       </div>
     </div>
   </div>
@@ -122,8 +124,8 @@ export default {
       left: 300px;
       right: 30px;
       bottom: 20px;
-      padding: 30px;
-      border-radius: 30px;
+      padding: 10px 30px 20px;
+      border-radius: 6px;
       background: #fff;
       box-shadow: 0 9px 7px #e8eef5;
       overflow-x: hidden;
@@ -181,5 +183,16 @@ export default {
       background: #EBEEF5;
     }
   }
+}
+.doc-page-toogle-enter-active {
+  transition: all .4s linear;
+}
+.doc-page-toogle-leave-active {
+  transition: all .4s linear;
+}
+.doc-page-toogle-enter,
+.doc-page-toogle-leave-to {
+  transform: translateY(50px);
+  opacity: 0;
 }
 </style>

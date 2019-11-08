@@ -1,5 +1,13 @@
 import { inlineStyle } from '../../utils/dom'
 
+function getStyle (obj) {
+  if (obj.currentStyle) {
+    return obj.currentStyle
+  } else {
+    return obj.currentStyle || getComputedStyle(obj)
+  }
+}
+
 const transition = config => {
   let style = {
     transition: `all ${config.duration}s ${config.animate}`,
@@ -7,8 +15,8 @@ const transition = config => {
   }
   const transition = {
     beforeEnter (el) {
-      el.dataset.paddingTop = el.style.paddingTop
-      el.dataset.paddingBottom = el.style.paddingBottom
+      el.dataset.paddingTop = getStyle(el).paddingTop // el.style.paddingTop
+      el.dataset.paddingBottom = getStyle(el).paddingBottom // el.style.paddingBottom
       inlineStyle(
         el,
         Object.assign(style, { height: 0 })

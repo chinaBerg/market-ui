@@ -12,6 +12,15 @@ export default [
           title: 'Menu 菜单'
         },
         component: () => import('../../docs/zh_CN/menu.md')
+      },
+      {
+        path: '/component/pagination',
+        name: 'Page',
+        meta: {
+          type: 'component',
+          title: 'Pagination 分页'
+        },
+        component: () => import('../../docs/zh_CN/pagination.md')
       }
     ]
   }

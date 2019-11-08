@@ -16,6 +16,7 @@ import Message from './lib/message'
 import Notice from './lib/notice'
 import Options from './lib/options'
 import OptionsGroup from './lib/options-group'
+import Pagination from './lib/pagination'
 import Radio from './lib/radio'
 import RadioGroup from './lib/radio-group'
 import Row from './lib/row'
@@ -42,6 +43,7 @@ const components = [
   Notice,
   Options,
   OptionsGroup,
+  Pagination,
   Radio,
   RadioGroup,
   Row,
@@ -97,6 +99,7 @@ export default {
   Notice,
   Options,
   OptionsGroup,
+  Pagination,
   Radio,
   RadioGroup,
   Row,
