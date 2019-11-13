@@ -1,0 +1,46 @@
+@import '../colors/color';
+
+/* dropdown */
+.mku-dropdown {
+  position: relative;
+  display: inline-block;
+  .mku-dropdown__content {
+    min-width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: @shadow-border-base;
+    margin: 10px 0;
+    z-index: 20191112;
+  }
+}
+.mku-dropdown-enter,
+.mku-dropdown-leave-to {
+  opacity: 0;
+  transform: scaleY(.8);
+}
+.mku-dropdown-enter-active,
+.mku-dropdown-leave-active {
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: left top;
+}
+
+/* menu */
+
+/* menu-item */
+.mku-dropdown-item {
+  white-space: nowrap;
+  padding: 10px 12px;
+  cursor: pointer;
+  &:not(.mku-dropdown-item--disabled):hover {
+    color: @color-primary;
+    background: @background-hover-base;
+  }
+}
+.mku-dropdown-item--active {
+  color: @color-primary;
+  background: @background-hover-base;
+}
+.mku-dropdown-item--disabled {
+  color: @color-text-disabled;
+  cursor: not-allowed;
+}

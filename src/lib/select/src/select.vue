@@ -6,8 +6,7 @@
       ref="mkuSelect"
       @mouseover="handleMouseHover(true)"
       @mouseout="handleMouseHover(false)"
-      @click="handleSelectClick"
-    >
+      @click="handleSelectClick">
       <!-- select text区域 -->
       <template v-if="optionsSelected.length">
         <div class="mku-select__txt mku-global-ellipsis" v-if="!multiple">
@@ -38,8 +37,7 @@
         ref="mkuSelectMenu"
         v-show="isOpened && !disabled"
         :style="dropdownStyle"
-        @click="handleDropdownClick"
-      >
+        @click="handleDropdownClick">
         <slot></slot>
       </ul>
     </transition>
@@ -86,7 +84,7 @@ export default {
       isOpened: false,
       optionsSelected: [], // 所有被选中的options
       isHover: false,
-      isClickAtComponent: true // 用于控制点击window时是否隐藏dropdown
+      isClickAtComponent: false // 用于控制点击window时是否隐藏dropdown
     }
   },
   provide () {
@@ -96,9 +94,7 @@ export default {
   },
   watch: {
     value: {
-      handler (n, o) {
-        this.handleValueChange(n, o)
-      },
+      handler: 'handleValueChange',
       immediate: true
     }
   },
@@ -143,23 +139,16 @@ export default {
      */
     handleValueChange (newVal) {
       let selected = []
+      let arrs = this.multiple ? newVal : [newVal]
       this.$nextTick(() => {
         const options = findComponentsDownward(this, 'MkuOptions')
-        if (options) {
-          if (!this.multiple) {
-            for (let i = 0, option; option = options[i++];) {
-              if (option.value === newVal) {
-                selected.push(option.formatEmitData())
-                break
-              }
+        if (!options) return
+        for (let i = 0, len = arrs.length; i < len; i++) {
+          options.forEach(option => {
+            if (option.value === arrs[i]) {
+              selected.push(option.formatEmitData())
             }
-          } else {
-            options.forEach(option => {
-              if (newVal.includes(option.value)) {
-                selected.push(option.formatEmitData())
-              }
-            })
-          }
+          })
         }
         this.optionsSelected = selected
       })
@@ -180,8 +169,24 @@ export default {
           preventOverflow: {
             boundariesElement: 'window'
           }
+        },
+        onCreate: () => {
+          this.$nextTick(() => {
+            this.updateTransformOrigin()
+            this.popper && this.popper.scheduleUpdate()
+          })
+        },
+        onUpdate: () => {
+          this.updateTransformOrigin()
         }
       })
+    },
+    // 重新计算下拉菜单的动画原点
+    updateTransformOrigin (newVal) {
+      const poper = this.$refs.mkuSelectMenu
+      const popperPlacement = attrs(poper, 'x-placement')
+      poper.style.transformOrigin = popperPlacement.indexOf('top') > -1
+        ? 'bottom left' : 'top left'
     },
     /**
      * @method winClickCallback
@@ -203,11 +208,9 @@ export default {
       if (this.disabled) return
       this.isClickAtComponent = true
 
-      const poper = this.$refs.mkuSelectMenu
-      const popperPlacement = attrs(poper, 'x-placement')
-      poper.style.transformOrigin = popperPlacement.indexOf('top') > -1
-        ? 'bottom left' : 'top left'
       this.isOpened = !this.isOpened
+      this.popper.scheduleUpdate()
+
       this.$emit('drop-change', this.isOpened)
     },
     /**
@@ -246,7 +249,6 @@ export default {
       } else {
         validateValue = data.value
         this.optionsSelected = [data]
-        this.$emit('input', validateValue)
       }
       this.$emit('input', validateValue)
       this.$emit('change', validateValue)

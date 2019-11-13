@@ -14,6 +14,15 @@ export default [
         component: () => import('../../docs/zh_CN/menu.md')
       },
       {
+        path: '/component/dropdown',
+        name: 'Dropdown',
+        meta: {
+          type: 'component',
+          title: 'Dropdown 下拉菜单'
+        },
+        component: () => import('../../docs/zh_CN/dropdown.md')
+      },
+      {
         path: '/component/pagination',
         name: 'Page',
         meta: {
