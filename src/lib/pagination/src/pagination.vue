@@ -35,6 +35,24 @@
       </li>
     </ul>
 
+    <!-- 每页显示条数 -->
+    <div class="mku-pagination__pagesize" v-if="showPageSize">
+      <mku-dropdown @click="handlePagesizeClick" @visible-change="updatePageSizeState">
+        <div class="mku-pagination__pagesize-ref">
+          <span>{{currentPageSize}}条/页</span>
+          <i :class="['mku-icon mku-icon-arrow-down', {'mku-icon-arrow-down--opened': isPageSizeOpen}]"></i>
+        </div>
+        <mku-dropdown-menu slot="menu">
+          <mku-dropdown-item
+            v-for="(item, index) in pageSizes"
+            :key="index"
+            :name="item">
+            {{item}}条/页
+          </mku-dropdown-item>
+        </mku-dropdown-menu>
+      </mku-dropdown>
+    </div>
+
     <!-- 快速跳转 -->
     <div class="mku-pagination__jumper" v-if="showJumper">
       <span class="mku-pagination__jumper-tip">跳转至</span>
@@ -51,6 +69,9 @@
 
 <script>
 import { isNumber }from '../../../utils/assist'
+import MkuDropdown from '../../dropdown'
+import MkuDropdownMenu from '../../dropdown-menu/'
+import MkuDropdownItem from '../../dropdown-item'
 
 const createArrs = num => {
   let res = []
@@ -68,6 +89,7 @@ const createArrsRight = (end, n) => {
 }
 export default {
   name: 'MkuPagination',
+  components: { MkuDropdown, MkuDropdownMenu, MkuDropdownItem },
   props: {
     // 当前页数
     currentPage: {
@@ -110,17 +132,32 @@ export default {
     showJumper: {
       type: Boolean,
       default: false
+    },
+    // 显示页数切换
+    showPageSize: {
+      type: Boolean,
+      default: false
+    },
+    // 页数切换配置
+    pageSizes: {
+      type: Array,
+      default: () => {
+        return [10, 20, 50, 100]
+      }
     }
   },
   data () {
     return {
       current: this.currentPage,
-      jumper: null
+      jumper: null,
+      currentPageSize: this.pageSizes[0],
+      isPageSizeOpen: false
     }
   },
   watch: {
     currentPage: 'handleCurrentPageChange',
-    current: 'handleCurrenChange'
+    current: 'handleCurrenChange',
+    pageSizes: 'handlePageSizesChange'
   },
   computed: {
     // 拼接pagination的class name
@@ -242,6 +279,21 @@ export default {
       const step = isNumber(this.jumper) ? this.jumper : Math.max(+(this.jumper.replace(/[^\d]+/g, '')), 1)
       if (step === this.jumper) return
       this.updateStep(step - this.current)
+    },
+    // 切换页数
+    handlePagesizeClick (name) {
+      if (name !== this.currentPageSize) {
+        this.currentPageSize = name
+        this.updateStep(1, false)
+        this.$emit('page-size-change', name)
+      }
+    },
+    // 更新页数切换的展开收起状态
+    updatePageSizeState (state) {
+      this.isPageSizeOpen = state
+    },
+    handlePageSizesChange (newVal) {
+      this.currentPageSize = newVal && newVal[0]
     }
   }
 }

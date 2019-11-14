@@ -66,7 +66,7 @@
 
 
 ### 快捷控件
-支持快捷跳转、切换每页条。
+支持快捷跳转、切换每页展示条数控件。
 :::demo
 ```html
 <template>
@@ -77,6 +77,7 @@
       type="simple"
       show-total
       show-jumper
+      show-page-size
     />
     <br/>
     <mku-pagination
@@ -84,11 +85,12 @@
       :total="551"
       show-total
       show-jumper
+      show-page-size
+      :page-sizes="[25, 50, 75, 100]"
       @current-change="change"
       @prev-click="change"
       @next-mutiple-click="change"
     />
-    <button @click="current = 5">add</button>
   </div>
 </template>
 
@@ -114,15 +116,17 @@ export default {
 
 ### Pagination Attributes
 
-| 参数                 | 说明                                                         | 类型       | 可选值          | 默认值                       | 必选   |
-| :------------------- | :----------------------------------------------------------- | :--------- | :-------------- | :--------------------------- | :----- |
-| total                | 数据总量                                                     | `Number`   | -               | 0                            | 是     |
-| page-size            | 每页数据条数                                                 | `Number`   | -               | -                            | 否     |
-| current-page         | 当前页数，支持`.sync`语法双向绑定                            | `Number`   | -               | `1Í`                          | 否     |
-| type                 | 分页器的类型                                                 | `String`   | -               | `simple | default | conjoin` | 否     |
-| size                 | 分页器的尺寸                                                 | `String`   | -               | `small | default | large`    | 否     | Í |
-| show-total           | 显示总数                                                     | `Boolean`  | -               | `false`                      | 否     |
-| show-jumper          | 显示快捷跳转                                                 | `Boolean`  | -               | `false`                      | 否     |
+| 参数           | 说明                              | 类型      | 可选值 | 默认值                       | 必选 |
+| :------------- | :-------------------------------- | :-------- | :----- | :--------------------------- | :--- |
+| total          | 数据总量                          | `Number`  | -      | 0                            | 是   |
+| page-size      | 每页数据条数                      | `Number`  | -      | -                            | 否   |
+| current-page   | 当前页数，支持`.sync`语法双向绑定 | `Number`  | -      | `1Í`                         | 否   |
+| type           | 分页器的类型                      | `String`  | -      | `simple | default | conjoin` | 否   |
+| size           | 分页器的尺寸                      | `String`  | -      | `small | default | large`    | 否   | Í |
+| show-total     | 显示总数                          | `Boolean` | -      | `false`                      | 否   |
+| show-jumper    | 显示快捷跳转控件                  | `Boolean` | -      | `false`                      | 否   |
+| show-page-size | 显示每页展示条数控件              | `Boolean` | -      | `false`                      | 否   |
+| page-sizes     | 每页展示条数控件的配置            | `Array`   | -      | `[10, 20, 50, 100]`          | 否   |
 
 ### Pagination Events
 
@@ -133,12 +137,7 @@ export default {
  | next-click         | 点击下一页按钮时触发       | 当前current  |
  | prev-mutiple-click | 点击上一多页跳转按钮时触发 | 当前current  |
  | next-mutiple-click | 点击下一多页页跳按钮时触发 | 当前current  |
-
-
-### Pagination Methods
-| 方法名 | 说明                            | 参数 |
-| :----- | :------------------------------ | :--- |
-|        | 返回所有选中节点的key组成的数组 | -    |
+ | page-size-change   | 切换每页展示条数时触发     | 当前current  |
 
 ### Pagination Slots
 

@@ -75,6 +75,27 @@
     }
   }
 
+  /* 每页条数 */
+  .mku-pagination__pagesize {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    .mku-pagination__pagesize-ref {
+      height: @height-default-size;
+      line-height: @height-default-size - 2;
+      padding: 0 6px 0 14px;
+      border: 1px solid @border-color-base;
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+      .mku-icon-arrow-down {
+        transition: transform .3s;
+      }
+      .mku-icon-arrow-down--opened {
+        transform: rotate(180deg);
+      }
+    }
+  }
   /* jumper */
   .mku-pagination__jumper {
     display: inline-flex;
@@ -110,6 +131,12 @@
   .mku-pagination__jumper {
     height: @height-large-size;
   }
+  .mku-pagination__pagesize {
+    .mku-pagination__pagesize-ref {
+      height: @height-large-size;
+      line-height: @height-large-size - 2;
+    }
+  }
 }
 /* 小尺寸 */
 .mku-pagination--small {
@@ -120,6 +147,12 @@
   }
   .mku-pagination__jumper {
     height: @height-small-size;
+  }
+  .mku-pagination__pagesize {
+    .mku-pagination__pagesize-ref {
+      height: @height-small-size;
+      line-height: @height-small-size - 2;
+    }
   }
 }
 
