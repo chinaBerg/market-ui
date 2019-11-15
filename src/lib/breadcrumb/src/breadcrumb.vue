@@ -20,19 +20,6 @@ export default {
     return {
       MkuBreadcrumb: this
     }
-  },
-  data () {
-    return {
-    }
-  },
-  watch: {
-  },
-  computed: {
-  },
-  methods: {
   }
 }
 </script>
-
-<style lang="less">
-</style>

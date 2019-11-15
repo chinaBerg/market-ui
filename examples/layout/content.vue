@@ -48,16 +48,11 @@ export default {
 
 <style lang="less">
 .main-container {
-  position: fixed;
-  left: 10px;
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #fff;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
 
   /* 头部 */
   .main__head {
@@ -104,7 +99,7 @@ export default {
   .main__content-container {
     position: relative;
     flex: 1;
-    background: #f8f9f9;
+    background: #f2f2f2;
     /* 左侧菜单 */
     .main__nav-container {
       position: absolute;
@@ -116,6 +111,7 @@ export default {
       overflow-y: auto;
       background: #fff;
       border-radius: 10px;
+      box-shadow: 0 0 0 1px #e8e8e8;
     }
     /* 右侧主体*/
     .main_content {
@@ -157,6 +153,7 @@ export default {
     }
     > table {
       width: 100%;
+      margin-bottom: 30px;
       border: 1px solid #EBEEF5;
       border-collapse: collapse;
       border-spacing: 0;
@@ -178,9 +175,11 @@ export default {
     code {
       display: inline-block;
       margin: 0 4px;
-      padding: 0 4px;
+      padding: 2px 4px;
+      font-family: miscrosoft yahei;
       border-radius: 2px;
-      background: #EBEEF5;
+      background: #ececec;
+      font-weight: bold;
     }
   }
 }
