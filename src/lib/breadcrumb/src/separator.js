@@ -1,11 +1,10 @@
 export default {
   functional: true,
-  props: {
-    separator: String,
-    separatorRender: Function
-  },
-  render (h, { props }) {
-    const { separatorRender, separator } = props
-    return separatorRender ? separatorRender(h) : separator
+  inject: [
+    'MkuBreadcrumb'
+  ],
+  render (h, { injections }) {
+    const { separatorRender, separator } = injections.MkuBreadcrumb
+    return separatorRender ? separatorRender(h) : h('i', separator)
   }
 }

@@ -13,10 +13,7 @@
     </span>
 
     <span class="mku-breadcrumb-item__separator">
-      <separator
-        :separator="MkuBreadcrumb.separator"
-        :separator-render="MkuBreadcrumb.separatorRender"
-      />
+      <separator />
     </span>
   </li>
 </template>
@@ -41,9 +38,6 @@ export default {
       type: String
     }
   },
-  inject: [
-    'MkuBreadcrumb'
-  ],
   methods: {
     handleClick (event) {
       if (!this.to) return
