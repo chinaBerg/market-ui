@@ -22,9 +22,8 @@ const router = new Router({
     ...navConfigs
   ],
   scrollBehavior () {
-    console.log('123')
-    document.querySelector('.main_content').scrollTop = 0
-    return { x: 0, y: 0 }
+    const main = document.querySelector('.main_content')
+    main && (main.scrollTop = 0)
   }
 })
 

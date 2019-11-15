@@ -14,6 +14,15 @@ export default [
         component: () => import('../../docs/zh_CN/menu.md')
       },
       {
+        path: '/component/breadcrumb',
+        name: 'Breadcrumb',
+        meta: {
+          type: 'component',
+          title: 'Breadcrumb 面包屑'
+        },
+        component: () => import('../../docs/zh_CN/breadcrumb.md')
+      },
+      {
         path: '/component/dropdown',
         name: 'Dropdown',
         meta: {

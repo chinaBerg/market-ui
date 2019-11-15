@@ -1,4 +1,6 @@
 import Alert from './lib/alert'
+import Breadcrumb from './lib/breadcrumb'
+import BreadcrumbItem from './lib/breadcrumb-item'
 import Button from './lib/button'
 import Checkbox from './lib/checkbox'
 import CheckboxGroup from './lib/checkbox-group'
@@ -30,6 +32,8 @@ import Tree from './lib/tree'
 
 const components = [
   Alert,
+  Breadcrumb,
+  BreadcrumbItem,
   Button,
   Checkbox,
   CheckboxGroup,
@@ -89,6 +93,8 @@ export default {
   version: '0.1.0',
   install,
   Alert,
+  Breadcrumb,
+  BreadcrumbItem,
   Button,
   Checkbox,
   CheckboxGroup,

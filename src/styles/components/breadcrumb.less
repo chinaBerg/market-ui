@@ -1,0 +1,35 @@
+@import '../colors/color.less';
+@import '../sizes/size.less';
+@import '../mixins/index';
+
+/* breadcrumb */
+.mku-breadcrumb {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* breadcrumb-item */
+.mku-breadcrumb-item {
+  display: flex;
+  align-items: center;
+  &:last-child .mku-breadcrumb-item__separator {
+    display: none;
+  }
+}
+.mku-breadcrumb-item__link {
+  white-space: nowrap;
+  cursor: pointer;
+  color: @color-text-primary;
+  transition: color .3s;
+  &:hover {
+    color: @color-primary;
+  }
+}
+.mku-breadcrumb-item__span {
+  color: @color-text-regular;
+}
+.mku-breadcrumb-item__separator {
+  margin: 0 10px;
+  color: @border-color-base;
+}
