@@ -26,6 +26,8 @@ import Radio from './lib/radio'
 import RadioGroup from './lib/radio-group'
 import Row from './lib/row'
 import Select from './lib/select'
+import Steps from './lib/steps'
+import Step from './lib/step'
 import Submenu from './lib/submenu'
 import Switch from './lib/switch'
 import Tree from './lib/tree'
@@ -58,6 +60,8 @@ const components = [
   RadioGroup,
   Row,
   Select,
+  Steps,
+  Step,
   Submenu,
   Switch,
   Tree
@@ -119,6 +123,8 @@ export default {
   RadioGroup,
   Row,
   Select,
+  Steps,
+  Step,
   Submenu,
   Switch,
   Tree

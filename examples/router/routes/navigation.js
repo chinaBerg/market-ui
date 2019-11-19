@@ -39,6 +39,15 @@ export default [
           title: 'Pagination 分页'
         },
         component: () => import('../../docs/zh_CN/pagination.md')
+      },
+      {
+        path: '/component/steps',
+        name: 'Steps',
+        meta: {
+          type: 'component',
+          title: 'Steps 步骤条'
+        },
+        component: () => import('../../docs/zh_CN/steps.md')
       }
     ]
   }
