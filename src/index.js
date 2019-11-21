@@ -30,6 +30,8 @@ import Steps from './lib/steps'
 import Step from './lib/step'
 import Submenu from './lib/submenu'
 import Switch from './lib/switch'
+import TabPane from './lib/tab-pane'
+import Tabs from './lib/tabs'
 import Tree from './lib/tree'
 
 const components = [
@@ -64,6 +66,8 @@ const components = [
   Step,
   Submenu,
   Switch,
+  TabPane,
+  Tabs,
   Tree
 ]
 
@@ -127,5 +131,7 @@ export default {
   Step,
   Submenu,
   Switch,
+  TabPane,
+  Tabs,
   Tree
 }

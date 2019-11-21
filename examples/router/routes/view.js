@@ -21,6 +21,15 @@ export default [
           title: 'Tree 树'
         },
         component: () => import('../../docs/zh_CN/tree.md')
+      },
+      {
+        path: '/component/tabs',
+        name: 'Tabs',
+        meta: {
+          type: 'component',
+          title: 'Tabs 选项卡'
+        },
+        component: () => import('../../docs/zh_CN/tabs.md')
       }
     ]
   }

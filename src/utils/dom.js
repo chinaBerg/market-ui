@@ -73,8 +73,25 @@ export function inlineStyle (dom, styles = {}) {
   }
 }
 
+/**
+ * @method attrs
+ * @description 获取/设置html属性
+ * @param { Node } dom 元素节点
+ * @param { String } ...props 传入一个参数时，获取属性，2个参数设置属性
+ */
 export function attrs (dom, ...props) {
   if (!dom) return
   if (props.length === 1) return dom.getAttribute(props[0])
   if (props.length === 2) return dom.setAttribute(props[0], props[1])
+}
+
+/**
+ * @method getStyle
+ * @description 获取计算后的css属性
+ * @param { Node } obj 元素节点
+ * @return { Object } 返回一个样式对象
+ */
+export function getStyle (obj) {
+  if (obj.currentStyle) return obj.currentStyle
+  return obj.currentStyle || getComputedStyle(obj)
 }

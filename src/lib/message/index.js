@@ -1,5 +1,5 @@
 import MkuTip from '../_tip'
-import { singlePattern } from '../../utils/assist'
+import { singlePattern, isObject } from '../../utils/assist'
 
 const messageSingle = singlePattern(MkuTip.init)
 const message = messageSingle({
@@ -20,7 +20,7 @@ export default {
   name: 'MkuMessage',
 
   message (type, config) {
-    if (typeof config === 'string') {
+    if (!isObject(config)) {
       config = {
         title: config
       }
