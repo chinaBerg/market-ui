@@ -5,15 +5,6 @@ export default [
     name: '基础',
     children: [
       {
-        path: '/component/icon',
-        name: 'Icon',
-        meta: {
-          type: 'component',
-          title: 'Icon 图标'
-        },
-        component: () => import('../../docs/zh_CN/icon.md')
-      },
-      {
         path: '/component/button',
         name: 'Button',
         meta: {
@@ -23,6 +14,15 @@ export default [
         component: () => import('../../docs/zh_CN/button.md')
       },
       {
+        path: '/component/badge',
+        name: 'Badge',
+        meta: {
+          type: 'component',
+          title: 'Badge 徽章'
+        },
+        component: () => import('../../docs/zh_CN/badge.md')
+      },
+      {
         path: '/component/grid',
         name: 'Grid',
         meta: {
@@ -30,6 +30,15 @@ export default [
           title: 'Grid 栅格'
         },
         component: () => import('../../docs/zh_CN/grid.md')
+      },
+      {
+        path: '/component/icon',
+        name: 'Icon',
+        meta: {
+          type: 'component',
+          title: 'Icon 图标'
+        },
+        component: () => import('../../docs/zh_CN/icon.md')
       }
     ]
   }
