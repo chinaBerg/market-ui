@@ -2,14 +2,6 @@
 
 ### 基本使用
 
-```html
-基本notice类型：
-this.$notice.open()
-this.$notice.info()
-this.$notice.success()
-this.$notice.error()
-this.$notice.warning()
-```
 :::demo
 ```html
 <template>
@@ -142,15 +134,15 @@ export default {
 
 ### Notice Attributes
 
-| 参数      | 说明                                                          | 类型     | 可选值 | 默认值 | 必填 |
-| :-------- | :------------------------------------------------------------ | :------- | :----- | :----- | :--- |
-| title   | 提示的标题内容                                                | String   | -      | -      | 否   |
-| content   | 提示的描述部分                                                | String   | -      | -      | 否   |
-| render    | 以v-html方式渲染`render`的内容，设置该属性时自动忽略content内容 | String   | -      | -      | 否   |
-| duration  | 提示的时间,单位：`ms`                                                    | Number   | -      | 2500   | 否   |
-| closeable | 是否显示关闭按钮                                              | Boolean  | -      | true  | 否   |
-| onShow    | 显示的回调函数                                                | Function | -      | -      | 否   |
-| onClose   | 关闭的回调函数                                                | Function | -      | -      | 否   |
+| 参数      | 说明                                                            |   类型   | 可选值 | 默认值 | 必填  |
+| :-------- | :-------------------------------------------------------------- | :------: | :----: | :----: | :---: |
+| title     | 提示的标题内容                                                  |  String  |   -    |   -    |  否   |
+| content   | 提示的描述部分                                                  |  String  |   -    |   -    |  否   |
+| render    | 以v-html方式渲染`render`的内容，设置该属性时自动忽略content内容 |  String  |   -    |   -    |  否   |
+| duration  | 提示的时间,单位：`ms`                                           |  Number  |   -    |  2500  |  否   |
+| closeable | 是否显示关闭按钮                                                | Boolean  |   -    |  true  |  否   |
+| onShow    | 显示的回调函数                                                  | Function |   -    |   -    |  否   |
+| onClose   | 关闭的回调函数                                                  | Function |   -    |   -    |  否   |
 
 ### Notice 实例方法
 | 方法名 | 说明                | 参数 |

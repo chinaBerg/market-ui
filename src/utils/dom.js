@@ -95,3 +95,21 @@ export function getStyle (obj) {
   if (obj.currentStyle) return obj.currentStyle
   return obj.currentStyle || getComputedStyle(obj)
 }
+
+/**
+ * @method getWindowWidth
+ * @description 计算窗口的宽高
+ * @return { Object } 返回一个保护宽高的对象，无单位
+ */
+export function getWindowWidth () {
+  if (document.body.clientWidth) {
+    return {
+      clientWidth: document.body.clientWidth,
+      clientHeight: document.body.clientHeight
+    }
+  }
+  return {
+    clientWidth: document.documentElement.clientWidth,
+    clientHeight: document.documentElement.clientHeight
+  }
+}

@@ -7,6 +7,7 @@ import Checkbox from './lib/checkbox'
 import CheckboxGroup from './lib/checkbox-group'
 import Col from './lib/col'
 import CollapseTransition from './lib/collapse-transition'
+import Drawer from './lib/drawer'
 import Dropdown from './lib/dropdown'
 import DropdownMenu from './lib/dropdown-menu'
 import DropdownItem from './lib/dropdown-item'
@@ -45,6 +46,7 @@ const components = [
   CheckboxGroup,
   Col,
   CollapseTransition,
+  Drawer,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -111,6 +113,7 @@ export default {
   CheckboxGroup,
   Col,
   CollapseTransition,
+  Drawer,
   Dropdown,
   DropdownItem,
   DropdownMenu,

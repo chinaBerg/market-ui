@@ -1,3 +1,5 @@
+import { isNumber } from './assist'
+
 // 浅合并参数
 export const merge = (target, ...args) => {
   args.forEach(arg => {
@@ -10,4 +12,9 @@ export const merge = (target, ...args) => {
     }
   })
   return target
+}
+
+// 检测单位，如果是数字则自动加上px
+export const formatSize = val => {
+  return isNumber(val) ? val + 'px' : val
 }

@@ -184,6 +184,7 @@ export default {
     // 重新计算下拉菜单的动画原点
     updateTransformOrigin (newVal) {
       const poper = this.$refs.mkuSelectMenu
+      if (!poper) return
       const popperPlacement = attrs(poper, 'x-placement')
       poper.style.transformOrigin = popperPlacement.indexOf('top') > -1
         ? 'bottom left' : 'top left'
