@@ -31,6 +31,8 @@ import Select from './lib/select'
 import Steps from './lib/steps'
 import Step from './lib/step'
 import Submenu from './lib/submenu'
+import Swiper from './lib/swiper'
+import SwiperItem from './lib/swiper-item'
 import Switch from './lib/switch'
 import TabPane from './lib/tab-pane'
 import Tabs from './lib/tabs'
@@ -69,6 +71,8 @@ const components = [
   Steps,
   Step,
   Submenu,
+  Swiper,
+  SwiperItem,
   Switch,
   TabPane,
   Tabs,
@@ -136,6 +140,8 @@ export default {
   Steps,
   Step,
   Submenu,
+  Swiper,
+  SwiperItem,
   Switch,
   TabPane,
   Tabs,

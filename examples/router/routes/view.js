@@ -39,6 +39,15 @@ export default [
           title: 'Tree 树'
         },
         component: () => import('../../docs/zh_CN/tree.md')
+      },
+      {
+        path: '/component/swiper',
+        name: 'Swiper',
+        meta: {
+          type: 'component',
+          title: 'Swiper 轮播'
+        },
+        component: () => import('../../docs/zh_CN/swiper.md')
       }
     ]
   }
