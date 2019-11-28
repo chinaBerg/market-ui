@@ -18,3 +18,9 @@ export const merge = (target, ...args) => {
 export const formatSize = val => {
   return isNumber(val) ? val + 'px' : val
 }
+
+// TODO：简单使用，需要优化
+export const isEqual = (a, b) => {
+  if (typeof a !== typeof b) return false
+  return a === b
+}

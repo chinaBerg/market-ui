@@ -1,6 +1,6 @@
 @import '../colors/color';
 
-@index: 20191123;
+@mku-drawer-index: 20191123;
 
 .mku-drawer {
   /* 蒙层 */
@@ -11,7 +11,7 @@
     width: 100%;
     height: 100%;
     background: @background-color-mask;
-    z-index: @index;
+    z-index: @mku-drawer-index;
   }
   /* 主体 */
   .mku-drawer__main {
@@ -19,7 +19,7 @@
     flex-direction: column;
     position: fixed;
     background: #fff;
-    z-index: @index;
+    z-index: @mku-drawer-index;
     box-shadow:  0 0 6px #cecece;
   }
   /* 页头 */

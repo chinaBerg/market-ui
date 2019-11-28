@@ -48,6 +48,15 @@ export default [
           title: 'Swiper 轮播'
         },
         component: () => import('../../docs/zh_CN/swiper.md')
+      },
+      {
+        path: '/component/progress',
+        name: 'Progress',
+        meta: {
+          type: 'component',
+          title: 'Progress 进度条'
+        },
+        component: () => import('../../docs/zh_CN/progress.md')
       }
     ]
   }

@@ -24,6 +24,7 @@ import Notice from './lib/notice'
 import Options from './lib/options'
 import OptionsGroup from './lib/options-group'
 import Pagination from './lib/pagination'
+import Progress from './lib/progress'
 import Radio from './lib/radio'
 import RadioGroup from './lib/radio-group'
 import Row from './lib/row'
@@ -64,6 +65,7 @@ const components = [
   Options,
   OptionsGroup,
   Pagination,
+  Progress,
   Radio,
   RadioGroup,
   Row,
@@ -133,6 +135,7 @@ export default {
   Options,
   OptionsGroup,
   Pagination,
+  Progress,
   Radio,
   RadioGroup,
   Row,
