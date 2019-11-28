@@ -1,5 +1,6 @@
 import Alert from './lib/alert'
 import Badge from './lib/badge'
+import Backtop from './lib/backtop'
 import Breadcrumb from './lib/breadcrumb'
 import BreadcrumbItem from './lib/breadcrumb-item'
 import Button from './lib/button'
@@ -42,6 +43,7 @@ import Tree from './lib/tree'
 const components = [
   Alert,
   Badge,
+  Backtop,
   Breadcrumb,
   BreadcrumbItem,
   Button,
@@ -112,6 +114,7 @@ export default {
   install,
   Alert,
   Badge,
+  Backtop,
   Breadcrumb,
   BreadcrumbItem,
   Button,

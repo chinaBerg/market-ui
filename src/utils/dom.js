@@ -2,6 +2,27 @@
 import { trim } from './assist'
 
 /**
+ * @method onEvent
+ * @description 事件监听，vue项目不做ie8到profill
+ * @param { NodeObject } dom dom对象
+ * @param { String } event 事件名称
+ * @param { Function } cb 回调函数
+ */
+export function onEvent (dom, event, cb) {
+  if (!dom) return
+  dom.addEventListener(event, cb, false)
+}
+
+/**
+ * @method offEvent
+ * @description 取消事件监听
+ */
+export function offEvent (dom, event, cb) {
+  if (!dom) return
+  dom.removeEventListener(event, cb, false)
+}
+
+/**
  * @method hasClass
  * @description 判断dom是否包含某个class
  * @param { NodeObject } dom 待检测的单个DOM对象

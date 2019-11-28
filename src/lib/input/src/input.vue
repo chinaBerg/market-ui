@@ -1,5 +1,5 @@
 <template>
-  <div class="mku-input-wrapper" >
+  <div :class="wrapClasss" >
     <!-- 多行文本框 -->
     <textarea
       ref="textarea"
@@ -10,6 +10,7 @@
       :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
+      :style="inputStyle"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -20,7 +21,7 @@
       <input
         ref="input"
         :class="inputClasss"
-        :style="{paddingRight: clearable ? '22px' : '8px'}"
+        :style="inputStyle"
         :type="type"
         :value="currentValue"
         :placeholder="placeholder"
@@ -95,6 +96,10 @@ export default {
     autofocus: {
       type: Boolean,
       default: false
+    },
+    block: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -113,15 +118,27 @@ export default {
       if (!this.clearable || !this.currentValue.length) return false
       return true
     },
+    wrapClasss () {
+      return ['mku-input__wrap', {
+        'mku-input__wrap--block': this.block
+      }]
+    },
     inputClasss () {
-      const INPUT = 'mku-input'
-      return [ INPUT,
+      const prefix = 'mku-input'
+      return [prefix,
         {
-          [`${INPUT}--large`]: this.size === 'large',
-          [`${INPUT}--default`]: this.size === 'default',
-          [`${INPUT}--small`]: this.size === 'small'
+          [`${prefix}--large`]: this.size === 'large',
+          [`${prefix}--default`]: this.size === 'default',
+          [`${prefix}--small`]: this.size === 'small'
         }
       ]
+    },
+    inputStyle () {
+      let res = {}
+      if (this.type !== 'textarea') {
+        res.paddingRight = this.clearable ? '22px' : '8px'
+      }
+      return res
     }
   },
   mounted () {

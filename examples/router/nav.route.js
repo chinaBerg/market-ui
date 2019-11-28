@@ -8,44 +8,6 @@
 //   },
 //   component: () => import('../../docs/zh_CN/tabs.md')
 // },
-// {
-//   path: '/component/page',
-//   name: 'Page',
-//   meta: {
-//     type: 'component',
-//     title: 'Page 分页'
-//   },
-//   component: () => import('../../docs/zh_CN/page.md')
-// },
-// {
-//   path: '/component/crumb',
-//   name: 'Crumb',
-//   meta: {
-//     type: 'component',
-//     title: 'Crumb 面包屑'
-//   },
-//   component: () => import('../../docs/zh_CN/crumb.md')
-// },
-// {
-//   path: '/component/badge',
-//   name: 'badge',
-//   meta: {
-//     type: 'component',
-//     title: 'Badge 徽章'
-//   },
-//   component: () => import('../../docs/zh_CN/badge.md')
-// },
-// {
-//   path: '/component/steps',
-//   name: 'Steps',
-//   meta: {
-//     type: 'component',
-//     title: 'Steps 步骤条'
-//   },
-//   component: () => import('../../docs/zh_CN/steps.md')
-// },
-
-// {
 
 // {
 //   path: '/component/date-picker',
@@ -64,15 +26,6 @@
 //     title: 'Cascader 级联选择器'
 //   },
 //   component: () => import('../../docs/zh_CN/cascader.md')
-// },
-// {
-//   path: '/component/alert',
-//   name: 'Alert',
-//   meta: {
-//     type: 'component',
-//     title: 'Alert 警告'
-//   },
-//   component: () => import('../../docs/zh_CN/alert.md')
 // },
 // {
 //   path: '/component/dialog',

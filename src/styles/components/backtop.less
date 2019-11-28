@@ -1,0 +1,28 @@
+@import '../colors/color.less';
+@import '../sizes/size.less';
+
+/* 输入框 */
+.mku-backtop {
+  .mku-backtop__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid @border-color-base;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .3s;
+    .mku-backtop__icon {
+      font-size: 20px;
+      color: inherit
+    }
+    &:hover {
+      border: 1px solid @border-color-primary;
+      color: @color-primary;
+      background: rgba(71, 165, 200, .08);
+
+    }
+  }
+}
