@@ -21,6 +21,9 @@
           <mku-options value="3">选项3</mku-options>
         </mku-select>
       </mku-form-item>
+      <mku-form-item label="Select：">
+        <mku-slider :value="30" />
+      </mku-form-item>
       <mku-form-item label="Switch：">
         <mku-switch />
       </mku-form-item>
@@ -96,8 +99,7 @@
       ref="form"
       :model="formData"
       :rules="rules"
-      :label-width="100"
-    >
+      :label-width="100">
       <mku-form-item prop="userName" label="用户名：">
         <mku-input
           type="text"
@@ -128,7 +130,8 @@
       return {
         formData: {
           userName: '',
-          password: ''
+          password: '',
+          slider: [10, 20]
         },
         rules: {
           userName: [

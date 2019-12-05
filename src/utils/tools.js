@@ -24,3 +24,22 @@ export const isEqual = (a, b) => {
   if (typeof a !== typeof b) return false
   return a === b
 }
+
+export const fillZero = num => {
+  if (!num) return '00'
+  if (num < 10) return `0${num}`
+  return num
+}
+
+export const getRect = dom => {
+  if (!dom) return
+  return dom.getBoundingClientRect()
+}
+
+export const withinNum = (origin, min, max) => {
+  return Math.min(Math.max(origin, min), max)
+}
+
+export const floor = (num) => {
+  return Math.floor(num)
+}

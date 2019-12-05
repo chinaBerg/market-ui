@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mku-drop"
+    :class="['mku-drop', className]"
     @mouseenter="$emit('mouseenter')"
     @mouseleave="$emit('mouseleave')">
     <slot></slot>
@@ -22,6 +22,10 @@ export default {
     reference: {
       type: [String],
       required: true
+    },
+    className: {
+      type: String,
+      default: ''
     }
   },
   data () {

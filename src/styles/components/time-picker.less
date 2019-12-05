@@ -1,0 +1,106 @@
+@import '../colors/color';
+
+.mku-tpicker {
+  position: relative;
+  display: inline-block;
+  .mku-tpicker__row-wrap {
+    min-width: 100%;
+    margin: 5px 0;
+    background: #fff;
+    border: 1px solid @border-color-base;
+    border-radius: 4px;
+    z-index: 20191128;
+    box-shadow: @shadow-border-base;
+  }
+  /* 主体内容 */
+  .mku-tpicker__content {
+    position: relative;
+    /* 上下切换按钮 */
+    .mku-tpicker__slides {
+      display: flex;
+      height: 22px;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        text-align: center;
+      }
+    }
+    /* 刻度线 */
+    .mku-tpicker__mark {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 28px;
+      margin-top: -14px;
+      border-top: 1px solid @border-color-base;
+      border-bottom: 1px solid @border-color-base;
+    }
+  }
+  .mku-tpicker__row {
+    display: flex;
+    min-width: 100%;
+    border-top: 1px solid @border-color-base;
+    border-bottom: 1px solid @border-color-base;
+  }
+  .mku-tpicker__col {
+    flex: 1;
+    height: 140px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+  .mku-tpicker__list {
+    &.mku-tpicker__list--short {
+      height: 840px;
+    }
+    &.mku-tpicker__list--long {
+      height: 1848px;
+    }
+  }
+  .mku-tpicker__col-item {
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    &:hover {
+      background: @background-hover-base;
+    }
+  }
+  .mku-tpicker__col-item--active {
+    background: @background-hover-base;
+  }
+
+  /* 底部内容 */
+  .mku-tpicker__foot {
+    display: flex;
+    padding: 6px 10px;
+    border-top: 1px solid @border-color-base;
+    .mku-tpicker__foot-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .mku-tpicker__foot-clear {
+    margin-right: 10px;
+  }
+}
+
+/* 下拉面板的transition */
+.mku-tpicker-enter,
+.mku-tpicker-leave-to {
+  opacity: 0;
+  transform: scaleY(.8);
+}
+.mku-tpicker-enter-active,
+.mku-tpicker-leave-active {
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: left top;
+}

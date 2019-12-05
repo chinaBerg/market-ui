@@ -30,6 +30,7 @@ import Radio from './lib/radio'
 import RadioGroup from './lib/radio-group'
 import Row from './lib/row'
 import Select from './lib/select'
+import Slider from './lib/slider'
 import Steps from './lib/steps'
 import Step from './lib/step'
 import Submenu from './lib/submenu'
@@ -38,6 +39,7 @@ import SwiperItem from './lib/swiper-item'
 import Switch from './lib/switch'
 import TabPane from './lib/tab-pane'
 import Tabs from './lib/tabs'
+import TimePicker from './lib/time-picker'
 import Tree from './lib/tree'
 
 const components = [
@@ -72,6 +74,7 @@ const components = [
   RadioGroup,
   Row,
   Select,
+  Slider,
   Steps,
   Step,
   Submenu,
@@ -80,6 +83,7 @@ const components = [
   Switch,
   TabPane,
   Tabs,
+  TimePicker,
   Tree
 ]
 
@@ -143,6 +147,7 @@ export default {
   RadioGroup,
   Row,
   Select,
+  Slider,
   Steps,
   Step,
   Submenu,
@@ -151,5 +156,6 @@ export default {
   Switch,
   TabPane,
   Tabs,
+  TimePicker,
   Tree
 }

@@ -50,6 +50,24 @@ export default [
         component: () => import('../../docs/zh_CN/switch.md')
       },
       {
+        path: '/component/slider',
+        name: 'Slider',
+        meta: {
+          type: 'component',
+          title: 'Slider 滑块'
+        },
+        component: () => import('../../docs/zh_CN/slider.md')
+      },
+      {
+        path: '/component/time-picker',
+        name: 'TimePicker',
+        meta: {
+          type: 'component',
+          title: 'TimePicker 时间选择器'
+        },
+        component: () => import('../../docs/zh_CN/time-picker.md')
+      },
+      {
         path: '/component/form',
         name: 'Form',
         meta: {
