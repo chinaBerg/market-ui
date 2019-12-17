@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { getRect, withinNum, floor } from '../../../utils/tools'
-import { onEvent, offEvent } from '../../../utils/dom'
+import { withinNum, floor } from '../../../utils/tools'
+import { onEvent, offEvent, getRect } from '../../../utils/dom'
 import { isArray } from '../../../utils/assist'
 
 export default {

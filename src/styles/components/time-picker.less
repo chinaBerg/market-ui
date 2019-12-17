@@ -1,66 +1,73 @@
 @import '../colors/color';
+@import '../sizes/size';
 
 .mku-tpicker {
   position: relative;
   display: inline-block;
   .mku-tpicker__row-wrap {
-    min-width: 100%;
     margin: 5px 0;
+    padding: 0 8px;
     background: #fff;
     border: 1px solid @border-color-base;
     border-radius: 4px;
     z-index: 20191128;
     box-shadow: @shadow-border-base;
+    overflow: hidden;
   }
-  /* 主体内容 */
-  .mku-tpicker__content {
-    position: relative;
-    /* 上下切换按钮 */
-    .mku-tpicker__slides {
-      display: flex;
-      height: 22px;
-      span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-        text-align: center;
+  /* 覆盖只读时输入框的样式 */
+  .mku-input__wrap .mku-input {
+    &[readonly] {
+      background: #fff;
+    }
+  }
+  /* picker面板的title提示 */
+  .mku-tpicker__row-title {
+    display: flex;
+    margin-top: 12px;
+    span {
+      flex: 1;
+      text-align: center;
+      &:nth-child(2) {
+        margin-left: 8px;
       }
     }
-    /* 刻度线 */
-    .mku-tpicker__mark {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 28px;
-      margin-top: -14px;
-      border-top: 1px solid @border-color-base;
-      border-bottom: 1px solid @border-color-base;
-    }
   }
+  .mku-tpicker__row-content {
+    display: flex;
+    flex-direction: row;
+    padding: 12px 0;
+  }
+  /* 选择器面板 */
   .mku-tpicker__row {
     display: flex;
-    min-width: 100%;
-    border-top: 1px solid @border-color-base;
-    border-bottom: 1px solid @border-color-base;
+    width: @width-default-size - 16 - 2;
+    border: 1px solid @border-color-base;
+    border-radius: @border-radius-default;
+    overflow: hidden;
+    &:nth-child(2) {
+      margin-left: 8px;
+    }
   }
   .mku-tpicker__col {
     flex: 1;
-    height: 140px;
+    height: 168px;
     overflow-x: hidden;
     overflow-y: auto;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
     }
+    &:nth-child(2) {
+      border-left: 1px solid @border-color-base;
+      border-right: 1px solid @border-color-base;
+    }
   }
   .mku-tpicker__list {
     &.mku-tpicker__list--short {
-      height: 840px;
+      height: 812px;
     }
     &.mku-tpicker__list--long {
-      height: 1848px;
+      height: 1820px;
     }
   }
   .mku-tpicker__col-item {
@@ -69,23 +76,31 @@
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
+    user-select: none;
     &:hover {
       background: @background-hover-base;
     }
   }
   .mku-tpicker__col-item--active {
+    color: @color-primary;
     background: @background-hover-base;
   }
 
   /* 底部内容 */
   .mku-tpicker__foot {
     display: flex;
-    padding: 6px 10px;
-    border-top: 1px solid @border-color-base;
+    padding-bottom: 12px;
     .mku-tpicker__foot-left {
       flex: 1;
       display: flex;
       align-items: center;
+    }
+  }
+  .mku-tpicker__foot-now {
+    transition: color .3s;
+    margin-left: 2px;
+    &:hover {
+      color: @color-primary;
     }
   }
   .mku-tpicker__foot-clear {

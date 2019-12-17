@@ -25,21 +25,34 @@ export const isEqual = (a, b) => {
   return a === b
 }
 
+// 数字小于10时自动前面补0
 export const fillZero = num => {
-  if (!num) return '00'
+  if (!num && num !== 0) return ''
   if (num < 10) return `0${num}`
   return num
 }
 
-export const getRect = dom => {
-  if (!dom) return
-  return dom.getBoundingClientRect()
-}
-
+// 大于max时取max，小于min时取min，否则取自身
 export const withinNum = (origin, min, max) => {
   return Math.min(Math.max(origin, min), max)
 }
 
+// 向下取整
 export const floor = (num) => {
   return Math.floor(num)
+}
+
+/**
+ * @method pickNumberInString
+ * @description 提取字符串中的数字
+ * @param { String } str 待提取的字符串
+ * @returns 提取后的数组
+ */
+export const pickNumberInString = str => {
+  const timeString = str.replace(/[^\d]+/g, v => ',')
+  return timeString.split(',')
+    .filter(e => e !== '')
+    // 去掉开头的0, 且值控制在合法区域内
+    .map((e, i) => parseInt(e))
+    // .map((e, i) => withinNum(parseInt(e), 0, i === 0 ? 23 : 59))
 }

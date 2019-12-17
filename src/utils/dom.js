@@ -134,3 +134,9 @@ export function getWindowWidth () {
     clientHeight: document.documentElement.clientHeight
   }
 }
+
+// 计算dom样式：宽、高、距离视口的上下左右值
+export const getRect = dom => {
+  if (!dom) return
+  return dom.getBoundingClientRect()
+}

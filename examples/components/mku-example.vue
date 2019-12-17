@@ -41,7 +41,7 @@ export default {
 @border-color-lighter: #EBEEF5;
 .mku-example {
   position: relative;
-  padding: 20px 20px 0;
+  padding: 20px 20px 0 !important;
   margin-top: 10px;
   margin-bottom: 50px;
   background: #fff;

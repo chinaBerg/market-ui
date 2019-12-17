@@ -2,7 +2,8 @@
   <div
     :class="['mku-drop', className]"
     @mouseenter="$emit('mouseenter')"
-    @mouseleave="$emit('mouseleave')">
+    @mouseleave="$emit('mouseleave')"
+    @click="$emit('click', $event)">
     <slot></slot>
   </div>
 </template>

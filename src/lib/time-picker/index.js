@@ -1,4 +1,4 @@
-import MkuTimePicker from './src/time-picker'
+import MkuTimePicker from './src/main'
 
 MkuTimePicker.install = function (Vue) {
   Vue.component(MkuTimePicker.name, MkuTimePicker)

@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapClasss" >
+  <div :class="wrapClasss">
     <!-- 多行文本框 -->
     <textarea
       ref="textarea"
@@ -14,6 +14,7 @@
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
+      @keydown.enter="handleEnter"
     />
 
     <!-- 单行文本框 -->
@@ -30,6 +31,7 @@
         @input="handleInput"
         @focus="handleFocus"
         @blur="handleBlur"
+        @keydown.enter="handleEnter"
       />
       <i class="mku-icon mku-input__clear" v-if="isClearable" @click="handleClear">
         &#xe633;
@@ -183,6 +185,9 @@ export default {
     blur () {
       this.$refs.input.blur()
       this.dispatch('MkuFormItem', 'onFormItemBlur', this.value)
+    },
+    handleEnter (event) {
+      this.$emit('enter', event, this.currentValue)
     }
   }
 }

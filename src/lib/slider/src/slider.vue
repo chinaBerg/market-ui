@@ -36,8 +36,8 @@ import MkuSliderDrag from './drag'
 import MkuSliderMark from './mark'
 
 import Emitter from '../../../utils/emitter'
-import { getRect, withinNum, floor } from '../../../utils/tools'
-import { onEvent, offEvent } from '../../../utils/dom'
+import { withinNum, floor } from '../../../utils/tools'
+import { onEvent, offEvent, getRect } from '../../../utils/dom'
 import { isArray, isNumber } from '../../../utils/assist'
 
 export default {

@@ -7,18 +7,6 @@
 <script>
 
 export default {
-  name: 'MkuDropdownMenu',
-  props: {
-  },
-  data () {
-    return {
-    }
-  },
-  watch: {
-  },
-  computed: {
-  },
-  methods: {
-  }
+  name: 'MkuDropdownMenu'
 }
 </script>
