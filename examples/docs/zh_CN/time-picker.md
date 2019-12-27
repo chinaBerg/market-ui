@@ -166,12 +166,4 @@ export default {
 | change    | 手动选择时间时触发                             | format-vale格式化后的当前选择的时间 |
 | confirm   | 点击确认按钮时触发                             | format-vale格式化后的当前选择的时间 |
 | click-now | 点击此刻按钮时触发                             | format-vale格式化后的当前时间       |
-| clear     | 通过输入框的清除按钮或底部的清除按钮清空时触发 | 当前的大小尺寸，单位px              |
-
-
-### Time-Picker Slots
-| name      | 说明               |
-| :-------- | :----------------- |
-| default   | 主体内容           |
-| title     | 自定义title        |
-| draggable | 自定义拖拽区的内容 |
+| clear     | 通过输入框的清除按钮或底部的清除按钮清空时触发 | -                                   |

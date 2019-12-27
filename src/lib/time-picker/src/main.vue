@@ -13,28 +13,23 @@
     <transition name="mku-tpicker">
       <mku-drop
         reference="tpicker"
-        class-name="mku-tpicker__row-wrap"
-        v-if="isVisible"
+        class-name="mku-tpicker__drop"
+        v-if="visible"
         :placement="placement"
         @click.stop>
-
-        <div class="mku-tpicker__row-title" v-if="isRange">
-          <span>开始时间</span>
-          <span>结束时间</span>
-        </div>
         <!-- 主体内容 -->
         <div class="mku-tpicker__row-content">
           <mku-picker
             ref="startPicker"
+            :title="isRange ? '开始时间' : null"
             :value="startValue"
-            :is-visible="isVisible"
             @click="handlePickerClick('start', arguments)"
           />
           <mku-picker
             ref="endPicker"
             v-if="isRange"
+            :title="isRange ? '结束时间' : null"
             :value="endValue"
-            :is-visible="isVisible"
             @click="handlePickerClick('end', arguments)"
           />
         </div>
@@ -75,18 +70,14 @@ import MkuButton from '../../button'
 import MkuDrop from '../../_drop'
 import MkuPicker from './picker'
 import { isArray, isDate, isString, deepCopy } from '../../../utils/assist'
-import { fillZero, withinNum } from '../../../utils/tools'
+import { fillZero, withinNum, compareArrJoined } from '../../../utils/tools'
 import { onEvent, offEvent, hasClass } from '../../../utils/dom'
 import { parseDate } from '../../../utils/date'
-
-const compareNum = (arr1, arr2) => {
-  const startNum = parseInt(arr1.join('')) || 0
-  const endNum = parseInt(arr2.join('')) || 0
-  return startNum > endNum
-}
+import Emitter from '../../../utils/emitter'
 
 export default {
   name: 'MkuTimePicker',
+  mixins: [Emitter],
   components: { MkuInput, MkuDrop, MkuButton, MkuPicker },
   props: {
     // 绑定的值
@@ -149,7 +140,7 @@ export default {
   },
   data () {
     return {
-      isVisible: false,
+      visible: false,
       startValue: [],
       endValue: [],
       inputText: ''
@@ -171,6 +162,10 @@ export default {
       handler: 'calcInputText',
       immediate: true
     },
+    visible: {
+      handler: 'watchVisibleChange',
+      immediate: true
+    }
   },
   computed: {
     // 范围选择
@@ -187,7 +182,7 @@ export default {
      * @description 初始化事件监听
      */
     initWindowEvent () {
-      const onWinClick = () => this.isVisible = false
+      const onWinClick = () => this.visible = false
       onEvent(document, 'click', onWinClick)
       this.$once('hook:beforeDestroy', () => offEvent(document, 'click', onWinClick))
     },
@@ -219,9 +214,7 @@ export default {
 
       // 监测值发生变化，触发表单的验证
       if (this.checkIsChange(newVal, oldVal)) {
-        console.log('update')
-        // TODO，待日期选择器完成后，补上表单验证
-        // 作为日期选择器的子组件使用时无需触发，而单独使用时则需要触发
+        this.dispatch('MkuFormItem', 'onFormItemChange', this.getEmitValue())
       }
     },
     checkIsChange (newVal, oldVal) {
@@ -295,12 +288,12 @@ export default {
       const endVal = nums.slice(3, 6)
       this.startValue = startVal
       if (!this.isRange) {
-        this.$nextTick(() => this.$refs.startPicker.reScrollTo(startVal))
+        this.$nextTick(() => this.$refs.startPicker.resetScroll(startVal))
       } else {
         this.endValue = endVal
         this.$nextTick(() => {
-          this.$refs.startPicker.reScrollTo(startVal)
-          this.$refs.endPicker.reScrollTo(endVal)
+          this.$refs.startPicker.resetScroll(startVal)
+          this.$refs.endPicker.resetScroll(endVal)
         })
       }
       this.calcInputText()
@@ -329,11 +322,11 @@ export default {
         start[RowColIdx] = arg[1]
         const startVal = getValue(start)
         if (this.isRange) {
-          if (compareNum(start, this.endValue)) {
+          if (compareArrJoined(start, this.endValue)) {
             // 当切换开始值大于结束值时，结束值自动取开始值，且滚动到对应位置
             const endVal = deepCopy(startVal)
             emitVal = [startVal, endVal]
-            this.$nextTick(() => this.$refs.endPicker.reScrollTo(start))
+            this.$nextTick(() => this.$refs.endPicker.resetScroll(start))
           } else {
             emitVal = [startVal, getValue(this.endValue)]
           }
@@ -345,7 +338,7 @@ export default {
         const start = fill(deepCopy(this.startValue))
         let end = fill(deepCopy(this.endValue))
         end[RowColIdx] = arg[1]
-        if (compareNum(start, end)) return
+        if (compareArrJoined(start, end)) return
 
         emitVal = [getValue(start), getValue(end)]
       }
@@ -384,7 +377,7 @@ export default {
      * @description 显示隐藏时间组件
      */
     handleToggleTpicker (bool) {
-      this.isVisible = bool
+      this.visible = bool
     },
     /**
      * @method getEmitValue
@@ -437,10 +430,18 @@ export default {
      * - 若点击的clear按钮则隐藏下拉面板
      */
     handleInputClick (event) {
-      if (this.disabled || this.readonly) return
+      if (this.disabled) return
       const isClearBtn = hasClass(event.target, 'mku-input__clear')
       isClearBtn ? this.handleClear() : this.handleToggleTpicker(true)
       event.stopPropagation()
+    },
+    watchVisibleChange (newVal) {
+      if (newVal) {
+        this.$nextTick(() => {
+          this.$refs.startPicker.resetScroll(null, 10)
+          if (this.isRange) this.$refs.endPicker.resetScroll(null, 10)
+        })
+      }
     }
   }
 }

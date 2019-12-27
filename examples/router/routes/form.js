@@ -68,6 +68,15 @@ export default [
         component: () => import('../../docs/zh_CN/time-picker.md')
       },
       {
+        path: '/component/date-picker',
+        name: 'DatePicker',
+        meta: {
+          type: 'component',
+          title: 'DatePicker 日期选择器'
+        },
+        component: () => import('../../docs/zh_CN/date-picker.md')
+      },
+      {
         path: '/component/form',
         name: 'Form',
         meta: {

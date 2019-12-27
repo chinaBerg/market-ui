@@ -210,7 +210,6 @@ export default {
         const data = parent.data
         const children = data[parent.children]
         if (children && children.length) {
-          // const isChecked = children.every(child => child.isChecked)
           let checked
           let indeterminate
           const checkedNodes = children.filter(child => child.isChecked)

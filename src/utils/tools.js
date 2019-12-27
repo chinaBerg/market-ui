@@ -56,3 +56,22 @@ export const pickNumberInString = str => {
     .map((e, i) => parseInt(e))
     // .map((e, i) => withinNum(parseInt(e), 0, i === 0 ? 23 : 59))
 }
+
+/**
+ * @method compareArrJoined
+ * @description 将2个数组分别join后，对比数值大小，eg：[1, 2, 3] => 123，[4,5,6] => 456, 123 < 456
+ * @returns arr1 > arr2的结果
+ */
+export const compareArrJoined = (arr1, arr2) => {
+  const reg = /[^\d]+/g
+  const remove = str => str.replace(reg, e => '')
+  const startNum = parseInt(remove(arr1.join(''))) || 0
+  const endNum = parseInt(remove(arr2.join(''))) || 0
+  return startNum > endNum
+}
+
+export const fullArray = (arr, len, val) => {
+  let res = []
+  for (let i = 0; i < len; i++) res[i] = arr[i] !== undefined ? arr[i] : val
+  return res
+}

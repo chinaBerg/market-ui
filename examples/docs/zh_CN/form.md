@@ -196,9 +196,6 @@
           v-model="formData.passwordNewAgain"
         />
       </mku-form-item>
-      <mku-form-item prop="switch" label="确认新密码：">
-        <mku-switch v-model="formData.switch"/>
-      </mku-form-item>
       <mku-form-item>
         <mku-button type="primary" block @click="handleSubmit">确认修改</mku-button>
       </mku-form-item>

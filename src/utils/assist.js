@@ -77,20 +77,19 @@ const isBoolean = createTypeOf('Boolean')
 const isNumber = createTypeOf('Number')
 const isDate = createTypeOf('Date')
 
-// 深拷贝
+/**
+ * 简易深拷贝
+ * TODO：暂未处理日期、正则、环
+ */
 const deepCopy = val => {
-  let res
   if (isArray(val)) {
-    res = []
-    let i = 0
-    let current
-    for (; current = val[i++];) {
-      res.push(deepCopy(current))
-    }
+    let res = []
+    const len = val.length
+    for (let i = 0; i < len; i++) res.push(deepCopy(val[i]))
     return res
   }
   if (isObject(val)) {
-    res = {}
+    let res = {}
     for (let prop in val) {
       res[prop] = deepCopy(val[prop])
     }

@@ -4,7 +4,7 @@
 .mku-tpicker {
   position: relative;
   display: inline-block;
-  .mku-tpicker__row-wrap {
+  .mku-tpicker__drop {
     margin: 5px 0;
     padding: 0 8px;
     background: #fff;
@@ -17,36 +17,59 @@
   /* 覆盖只读时输入框的样式 */
   .mku-input__wrap .mku-input {
     &[readonly] {
+      cursor: unset;
       background: #fff;
     }
   }
-  /* picker面板的title提示 */
-  .mku-tpicker__row-title {
-    display: flex;
-    margin-top: 12px;
-    span {
-      flex: 1;
-      text-align: center;
-      &:nth-child(2) {
-        margin-left: 8px;
-      }
-    }
-  }
+  /* 内容 */
   .mku-tpicker__row-content {
     display: flex;
     flex-direction: row;
     padding: 12px 0;
+    .mku-tpicker__row-wrap {
+      &:nth-child(2) {
+        .mku-tpicker__row {
+          margin-left: 8px;
+        }
+      }
+    }
   }
-  /* 选择器面板 */
+
+  /* 底部内容 */
+  .mku-tpicker__foot {
+    display: flex;
+    padding-bottom: 12px;
+    .mku-tpicker__foot-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .mku-tpicker__foot-now {
+    transition: color .3s;
+    margin-left: 2px;
+    &:hover {
+      color: @color-primary;
+    }
+  }
+  .mku-tpicker__foot-clear {
+    margin-right: 10px;
+  }
+}
+
+/* 选择器面板 */
+.mku-tpicker__row-wrap {
+  /* picker面板的title提示 */
+  .mku-tpicker__row-title {
+    margin-bottom: 6px;
+    text-align: center;
+  }
   .mku-tpicker__row {
     display: flex;
     width: @width-default-size - 16 - 2;
     border: 1px solid @border-color-base;
     border-radius: @border-radius-default;
     overflow: hidden;
-    &:nth-child(2) {
-      margin-left: 8px;
-    }
   }
   .mku-tpicker__col {
     flex: 1;
@@ -84,27 +107,6 @@
   .mku-tpicker__col-item--active {
     color: @color-primary;
     background: @background-hover-base;
-  }
-
-  /* 底部内容 */
-  .mku-tpicker__foot {
-    display: flex;
-    padding-bottom: 12px;
-    .mku-tpicker__foot-left {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-  }
-  .mku-tpicker__foot-now {
-    transition: color .3s;
-    margin-left: 2px;
-    &:hover {
-      color: @color-primary;
-    }
-  }
-  .mku-tpicker__foot-clear {
-    margin-right: 10px;
   }
 }
 
