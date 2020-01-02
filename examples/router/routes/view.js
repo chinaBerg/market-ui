@@ -13,15 +13,15 @@ export default [
         },
         component: () => import('../../docs/zh_CN/drawer.md')
       },
-      {
-        path: '/component/table',
-        name: 'Table',
-        meta: {
-          type: 'component',
-          title: 'Table 表格'
-        },
-        component: () => import('../../docs/zh_CN/table.md')
-      },
+      // {
+      //   path: '/component/table',
+      //   name: 'Table',
+      //   meta: {
+      //     type: 'component',
+      //     title: 'Table 表格'
+      //   },
+      //   component: () => import('../../docs/zh_CN/table.md')
+      // },
       {
         path: '/component/tabs',
         name: 'Tabs',

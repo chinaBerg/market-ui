@@ -39,6 +39,8 @@ import Swiper from './lib/swiper'
 import SwiperItem from './lib/swiper-item'
 import Switch from './lib/switch'
 import TabPane from './lib/tab-pane'
+import Table from './lib/table'
+import TableItem from './lib/table-item'
 import Tabs from './lib/tabs'
 import TimePicker from './lib/time-picker'
 import Tree from './lib/tree'
@@ -84,6 +86,8 @@ const components = [
   SwiperItem,
   Switch,
   TabPane,
+  Table,
+  TableItem,
   Tabs,
   TimePicker,
   Tree
@@ -158,6 +162,8 @@ export default {
   SwiperItem,
   Switch,
   TabPane,
+  Table,
+  TableItem,
   Tabs,
   TimePicker,
   Tree

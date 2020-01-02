@@ -3,9 +3,6 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const options = require('./vue-md-parse/index.js')
-
-console.log(options)
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
