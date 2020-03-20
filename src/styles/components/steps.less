@@ -1,0 +1,165 @@
+@import '../sizes/size';
+@import '../colors/color';
+@import '../mixins/index';
+
+.mku-steps {
+  display: flex;
+  padding: 10px;
+}
+
+/* step */
+.mku-step {
+  flex: 1;
+  .mku-step__head {
+    position: relative;
+  }
+  /* 图标 */
+  .mku-step__icon {
+    .flex-c();
+    position: relative;
+    z-index: 1;
+    width: @height-default-size;
+    height: @height-default-size;
+    border: 2px solid @border-color-base;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 6px #fff;
+    transition: border .3s;
+  }
+  /* 横线 */
+  .mku-step__line {
+    position: absolute;
+    background-color: @border-color-base;
+    transition: background-color .3s;
+    &.mku-step__line--success {
+      background-color: @color-primary;
+    }
+    &.mku-step__line--error {
+      background: @color-danger;
+    }
+  }
+  /* 标题 */
+  .mku-step__title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  /* 描述 */
+  .mku-step__desc {
+    margin-top: 6px;
+    font-size: 12px;
+    color: @color-text-secondary;
+  }
+}
+
+/* current-step process状态 */
+.mku-step--process {
+  .mku-step__icon {
+    border: 2px solid @border-color-primary;
+    color: @color-primary;
+    .mku-icon {
+      font-weight: bold;
+      color: @color-primary;
+    }
+  }
+}
+
+/* current-step error状态 */
+.mku-step--error {
+  .mku-step__icon {
+    border: 2px solid @color-danger;
+    color: @color-danger;
+    .mku-icon {
+      font-weight: bold;
+      color: @color-danger;
+    }
+  }
+}
+
+/* 水平布局 */
+.mku-steps--horizontal {
+  flex-direction: row;
+  .mku-step {
+    /* 横线 */
+    .mku-step__line {
+      top: 50%;
+      height: 2px;
+      margin-top: -1px;
+    }
+    /* 最后一个横线隐藏 */
+    &:last-child .mku-step__line {
+      display: none !important;
+    }
+    /* 内容 */
+    .mku-step__content {
+      margin-top: 10px;
+    }
+  }
+  /* 左对齐的样式 */
+  .mku-step--start {
+    .mku-step__line {
+      left: 0;
+      right: 0;
+    }
+    .mku-step__line-after {
+      left: -100%;
+      right: 100%;
+    }
+    .mku-step__content {
+      padding-right: 10px;
+    }
+  }
+  /* 居中对齐的样式 */
+  .mku-step--center {
+    .mku-step__icon {
+      margin: 0 auto;
+    }
+    .mku-step__line {
+      left: 50%;
+      right: -50%;
+    }
+    .mku-step__line-after {
+      left: -50%;
+      right: 50%;
+    }
+    .mku-step__content {
+      padding: 0 10px;
+    }
+    .mku-step__title {
+      text-align: center;
+    }
+    .mku-step__desc {
+      text-align: center;
+    }
+  }
+}
+
+/* 垂直布局 */
+.mku-steps--vertical {
+  flex-direction: column;
+  .mku-step {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    &:not(:last-child) {
+      min-height: 100px;
+    }
+    /* 头部 */
+    .mku-step__head {
+      width: @height-default-size;
+    }
+    .mku-step__line {
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      margin-left: -1px;
+    }
+    /* 最后一个横线隐藏 */
+    &:last-child .mku-step__line {
+      display: none !important;
+    }
+    .mku-step__content {
+      padding: 0 10px;
+    }
+  }
+}

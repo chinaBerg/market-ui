@@ -1,0 +1,99 @@
+@import '../../styles/colors/color';
+
+.mku-tips-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  z-index: 999;
+  pointer-events: none;
+  .mku-tips__content {
+    display: inline-block;
+  }
+}
+/* message的样式 */
+.mku-tips__content {
+  padding-top: 50px;
+  .mku-tips__item {
+    margin-bottom: 12px;
+    pointer-events: all;
+    text-align: center
+  }
+  .mku-tips__item-wrap {
+    display: inline-block;
+  }
+  .mku-tips__item-content {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 14px;
+    border-radius: 4px;
+    background: @background-color-base;
+    box-shadow: 0 0 14px #d8d8d8;
+    .mku-tips__icon-type {
+      margin-right: 4px;
+    }
+  }
+  .mku-tips__info {
+    flex: 1;
+  }
+  .mku-tips__icon-close {
+    margin-left: 10px;
+    margin-top: -1px;
+    cursor: pointer;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+  .mku-tips__icon-type {
+    margin-top: -1px;
+  }
+  .mku-tips--info {
+    .mku-tips__icon-type {
+      color: @color-primary;
+    }
+  }
+  .mku-tips--success {
+    .mku-tips__icon-type {
+      color: @color-success;
+    }
+  }
+  .mku-tips--error {
+    .mku-tips__icon-type {
+      color: @color-danger;
+    }
+  }
+  .mku-tips--warning {
+    .mku-tips__icon-type {
+      color: @color-warning;
+    }
+  }
+}
+
+/* notice特殊的样式 */
+.mku-tips-notice {
+  text-align: right;
+  .mku-tips__item-wrap {
+    width: 300px;
+  }
+  .mku--isBold {
+    font-weight: bold;
+  }
+  .mku-tips__desc {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}
+
+/* 动画 */
+.mku-tips-transition-enter-active,
+.mku-tips-transition-leave-active {
+  transition: opacity .38s, transform .38s;
+}
+.mku-tips-transition-enter,
+.mku-tips-transition-leave-to,
+.mku-tips-transition-leave-active {
+  opacity: 0;
+  transform: translateY(-50px);
+}

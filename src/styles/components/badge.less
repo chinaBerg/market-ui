@@ -1,0 +1,54 @@
+@import '../colors/color';
+
+.position () {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 20191121;
+  transform: translate(-50%, -50%);
+}
+.mku-badge {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  /* 圆点类型的徽章 */
+  .mku-badge__dot {
+    .position();
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  /* 展示类型的徽章 */
+  .mku-badge__value {
+    .position();
+    height: 16px;
+    line-height: 16px;
+    padding: 0 6px;
+    border-radius: 8px;
+    background: @color-danger;
+    font-size: 12px;
+    color: #fff;
+    white-space: nowrap;
+  }
+}
+.mku-badge--danger {
+  .mku-badge__dot {
+    background: @color-danger;
+  }
+}
+.mku-badge--success {
+  .mku-badge__dot {
+    background: @color-success;
+  }
+}
+.mku-badge--info {
+  .mku-badge__dot {
+    background: @color-info;
+  }
+}
+.mku-badge--warning {
+  .mku-badge__dot {
+    background: @color-warning;
+  }
+}

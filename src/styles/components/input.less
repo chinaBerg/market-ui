@@ -1,0 +1,88 @@
+@import '../colors/color.less';
+@import '../sizes/size.less';
+
+/* 内部样式，输入框基本样式 */
+.__input-base () {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid @border-color-base;
+  background: @background-color-base;
+  transition: border .4s, box-shadow .4s;
+  &:disabled,
+  &[readonly] {
+    background: @background-color-disabled;
+    cursor: not-allowed;
+  }
+}
+.__input-expend {
+  &:focus:not([readonly]) {
+    border: 1px solid @color-primary;
+    box-shadow: @shadow-primary;
+  }
+  &:hover:not(:disabled):not([readonly]) {
+    border: 1px solid @color-primary;
+  }
+}
+
+/* 输入框 */
+.mku-input__wrap {
+  display: inline-block;
+  position: relative;
+  /* textarea 多行文本框 */
+  .mku-textarea {
+    .__input-base();
+    .__input-expend();
+  }
+  /* input 单行文本框 */
+  .mku-input {
+    height: 32px;
+    .__input-base();
+    .__input-expend();
+  }
+  .mku-input--large {
+    width: 240px;
+    height: @height-large-size;
+  }
+  .mku-input--default {
+    width: 200px;
+    height: @height-default-size;
+  }
+  .mku-input--small {
+    width: 160px;
+    height: @height-small-size;
+  }
+  /* 删除按钮 */
+  .mku-input__clear {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    color: @color-text-regular;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    display: none;
+    &:hover {
+      color: @color-primary;
+    }
+  }
+  &:hover .mku-input__clear {
+    display: block;
+  }
+}
+.mku-input__wrap--block {
+  display: block;
+  .mku-input {
+    &.mku-input--large,
+    &.mku-input--default,
+    &.mku-input--small {
+      width: 100%;
+    }
+  }
+  .mku-textarea {
+    width: 100%;
+  }
+}

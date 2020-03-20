@@ -1,0 +1,144 @@
+@import '../colors/color';
+
+@mku-progress: .mku-progress;
+
+@{mku-progress} {
+  display: flex;
+  align-items: center;
+  /* bar容器 */
+  @{mku-progress}__outer {
+    flex: 1;
+    background: @bg-base;
+  }
+  /* bar进度主体 */
+  @{mku-progress}__inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    border-radius: 3px;
+    transition: width .3s;
+    background: @color-info;
+  }
+  /* line、zebra等动画容器 */
+  @{mku-progress}__shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    /* 白色进度动画 */
+    &@{mku-progress}__shadow--line {
+      background: rgba(255, 255, 255, .4);
+      animation: mku-progress-shadow-line 2s ease-in-out infinite;
+    }
+    /* 斑马纹动画 */
+    &@{mku-progress}__shadow--zebra {
+      width: 100%;
+      background-image: linear-gradient(-45deg,rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+      background-size: 12px 12px;
+      animation: mku-progress-shadow-zebra 1s linear infinite;
+    }
+  }
+  /* 文字提示部分 */
+  @{mku-progress}__side {
+    font-size: 12px;
+    @{mku-progress}__icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  @{mku-progress}__side--start {
+    margin-right: 10px;
+  }
+  @{mku-progress}__side--end {
+    margin-left: 10px;
+  }
+  @{mku-progress}__side--start-inside {
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+  }
+  @{mku-progress}__side--end-inside {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+  }
+  @{mku-progress}__side--top-follow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 6px;
+    line-height: 16px;
+    background: #fff;
+    filter: drop-shadow(1px 2px 2px #a9a8a8);
+    border-radius: 2px;
+    transform: translate(50%, calc(~'-100% - 8px'));
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #fff;
+      transform: translate(-50%, 100%);
+    }
+  }
+}
+
+/* success status */
+@{mku-progress}--success {
+  @{mku-progress}__inner {
+    background: @color-success;
+  }
+  @{mku-progress}__icon.mku-icon-success {
+    color: @color-success;
+  }
+}
+/* warning status */
+@{mku-progress}--warning {
+  @{mku-progress}__inner {
+    background: @color-warning;
+  }
+  @{mku-progress}__icon.mku-icon-warning {
+    color: @color-warning;
+  }
+}
+/* error status */
+@{mku-progress}--error {
+  @{mku-progress}__inner {
+    background: @color-danger;
+  }
+  @{mku-progress}__icon.mku-icon-error-circle {
+    color: @color-danger;
+  }
+}
+
+@keyframes mku-progress-shadow-line {
+  from {
+    width: 0;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes mku-progress-shadow-zebra {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 12px 0;
+  }
+}

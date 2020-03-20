@@ -1,0 +1,46 @@
+/* 规范所有sku-开头的class的盒模型 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*[class^=mku] {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 14px;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  color: #515a6e;
+}
+input[class^=mku],
+textarea[class^=mku] {
+  outline: none;
+}
+
+a[class^=mku] {
+  text-decoration: none;
+}
+ul[class^=mku],
+li[class^=mku] {
+  list-style: none;
+}
+/* 去除浮动 */
+.mku-global-clear {
+  zoom: 1;
+}
+.mku-global-clear:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+/* 一行显示，溢出隐藏 */
+.mku-global-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

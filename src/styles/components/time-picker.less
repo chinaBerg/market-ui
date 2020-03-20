@@ -1,0 +1,123 @@
+@import '../colors/color';
+@import '../sizes/size';
+
+.mku-tpicker {
+  position: relative;
+  display: inline-block;
+  .mku-tpicker__drop {
+    margin: 5px 0;
+    padding: 0 8px;
+    background: #fff;
+    border: 1px solid @border-color-base;
+    border-radius: 4px;
+    z-index: 20191128;
+    box-shadow: @shadow-border-base;
+    overflow: hidden;
+  }
+  /* 覆盖只读时输入框的样式 */
+  .mku-input__wrap .mku-input {
+    &[readonly] {
+      cursor: unset;
+      background: #fff;
+    }
+  }
+  /* 内容 */
+  .mku-tpicker__row-content {
+    display: flex;
+    flex-direction: row;
+    padding: 12px 0;
+    .mku-tpicker__row-wrap {
+      &:nth-child(2) {
+        .mku-tpicker__row {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  /* 底部内容 */
+  .mku-tpicker__foot {
+    display: flex;
+    padding-bottom: 12px;
+    .mku-tpicker__foot-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .mku-tpicker__foot-now {
+    transition: color .3s;
+    margin-left: 2px;
+    &:hover {
+      color: @color-primary;
+    }
+  }
+  .mku-tpicker__foot-clear {
+    margin-right: 10px;
+  }
+}
+
+/* 选择器面板 */
+.mku-tpicker__row-wrap {
+  /* picker面板的title提示 */
+  .mku-tpicker__row-title {
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .mku-tpicker__row {
+    display: flex;
+    width: @width-default-size - 16 - 2;
+    border: 1px solid @border-color-base;
+    border-radius: @border-radius-default;
+    overflow: hidden;
+  }
+  .mku-tpicker__col {
+    flex: 1;
+    height: 168px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    &:nth-child(2) {
+      border-left: 1px solid @border-color-base;
+      border-right: 1px solid @border-color-base;
+    }
+  }
+  .mku-tpicker__list {
+    &.mku-tpicker__list--short {
+      height: 812px;
+    }
+    &.mku-tpicker__list--long {
+      height: 1820px;
+    }
+  }
+  .mku-tpicker__col-item {
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      background: @background-hover-base;
+    }
+  }
+  .mku-tpicker__col-item--active {
+    color: @color-primary;
+    background: @background-hover-base;
+  }
+}
+
+/* 下拉面板的transition */
+.mku-tpicker-enter,
+.mku-tpicker-leave-to {
+  opacity: 0;
+  transform: scaleY(.8);
+}
+.mku-tpicker-enter-active,
+.mku-tpicker-leave-active {
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: left top;
+}

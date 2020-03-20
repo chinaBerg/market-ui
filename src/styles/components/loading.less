@@ -1,0 +1,26 @@
+@import '../colors/color.less';
+
+/* loading */
+.mku-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  .mku-loading__icon {
+    text-align: center;
+  }
+  .mku-loading__tip {
+    margin-top: 6px;
+  }
+}
+.mku-loading-aniamte-enter-active,
+.mku-loading-aniamte-leave-active {
+  transition: opacity .5s ease;
+}
+.mku-loading-aniamte-enter,
+.mku-loading-aniamte-leave-to {
+  opacity: 0;
+}

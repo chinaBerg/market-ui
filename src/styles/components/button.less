@@ -1,0 +1,90 @@
+@import '../colors/color.less';
+@import '../sizes/size.less';
+
+.mku-button-wrapper {
+  display: inline-block;
+  .mku-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: @height-default-size;
+    line-height: @height-default-size - 2;
+    padding: 0 13px;
+    border-radius: @border-radius-default;
+    border: 1px solid @border-color-base;
+    background: @background-color-base;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    transition-property: opacity, border-color, color;
+    transition-duration: .3s;
+    /* primary button */
+    > .mku-icon {
+      display: inline-block;
+    }
+    &.mku-button--primary {
+      border: 1px solid @color-primary;
+      color: @color-white;
+      background-color: @color-primary;
+      &:hover {
+        .button-opacity()
+      }
+      > .mku-icon {
+        color: @color-white;
+      }
+    }
+    /* default button*/
+    &.mku-button--default:hover {
+      color: @color-primary;
+      border: 1px solid @color-primary;
+      > .mku-icon {
+        color: @color-primary;
+      }
+    }
+    /* dashed button */
+    &.mku-button--dashed {
+      border: 1px dashed @border-color-base;
+      &:hover {
+        color: @color-primary;
+        border-color: @color-primary;
+      }
+    }
+    /* danger button */
+    &.mku-button--danger {
+      border: 1px solid @color-danger;
+      color: @color-white;
+      background-color: @color-danger;
+      &:hover {
+        .button-opacity()
+      }
+      > .mku-icon {
+        color: @color-white;
+      }
+    }
+    /* link button */
+    &.mku-button--link {
+      border: 0;
+      color: @color-primary;
+      background-color: @background-color-base;
+      &:hover {
+        .button-opacity()
+      }
+    }
+    /* 三种按钮尺寸 */
+    &.mku-button--lg {
+      height: @height-large-size;
+      line-height: @height-large-size - 2;
+    }
+    &.mku-button--sm {
+      height: @height-small-size;
+      line-height: @height-small-size - 2;
+    }
+    &.mku-button--loading {
+      .button-opacity();
+    }
+  }
+}
+.button-opacity {
+  opacity: .8;
+}

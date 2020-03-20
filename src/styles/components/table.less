@@ -1,0 +1,52 @@
+@import '../sizes/size';
+@import '../colors/color';
+@import '../mixins/index';
+
+/* tabs */
+.mku-table {
+  width: 100%;
+  .mku-table__tb {
+    width: 100%;
+    table-layout: fixed;
+  }
+  /* 头部 */
+  .mku-table__head {
+    .mku-table__th {
+      padding: 12px;
+      white-space: nowrap;
+      font-weight: 500;
+      border-bottom: 1px solid @border-color-base;
+      background: #f3f3f3;
+    }
+  }
+  /* 主体 */
+  .mku-table__body {
+    .mku-table__tr {
+      .mku-table__td {
+        padding: 12px;
+        border-bottom: 1px solid @border-color-base;
+        background: #fff;
+      }
+      &:hover .mku-table__td{
+        background: #e6f7ff;
+      }
+    }
+    .mku-table__tr--even .mku-table__td{
+      background: #f5f7fa;
+    }
+  }
+}
+.mku-table--border {
+  border-left: 1px solid @border-color-base;
+  border-top: 1px solid @border-color-base;
+  .mku-table__head {
+    .mku-table__th {
+      border-right: 1px solid @border-color-base;
+    }
+  }
+  .mku-table__body {
+    .mku-table__td {
+      border-right: 1px solid @border-color-base;
+    }
+  }
+}

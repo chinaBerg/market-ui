@@ -1,0 +1,97 @@
+@import '../sizes/size';
+@import '../colors/color';
+@import '../mixins/index';
+
+/* tabs */
+.mku-tabs {
+  .mku-tabs__head {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid @border-color-base;
+  }
+  .mku-tabs__head-nav {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  .mku-tabs__nav-item {
+    .mku-tab__label {
+      color: inherit;
+    }
+    .mku-tabs__nav-icon {
+      width: 18px;
+      width: 18px;
+      margin-right: 3px;
+      color: inherit;
+    }
+    .mku-icon-error {
+      width: 14px;
+      height: 14px;
+      margin-left: 8px;
+      font-size: 14px;
+      transition: transform .3s;
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  /* 下划线 */
+  .mku-tabs__underline {
+    position: absolute;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 1px;
+    background: @background-color-primary;
+    transition: left .3s, width .3s;
+  }
+}
+
+/* the line tabs */
+.mku-tabs--line {
+  .mku-tabs__nav-item {
+    display: flex;
+    align-items: center;
+    height: @height-large-size;
+    line-height: @height-large-size;
+    padding: 0 14px;
+    cursor: pointer;
+    &:hover:not(.mku-tabs__nav-item--disabled),
+    &.mku-tabs__nav-item--acitve:not(.mku-tabs__nav-item--disabled) {
+      color: @color-primary;
+    }
+  }
+  .mku-tabs__nav-item--disabled {
+    cursor: not-allowed;
+    color: @color-text-disabled;
+    & * {
+      color: inherit;
+    }
+  }
+}
+
+/* the card tabs */
+.mku-tabs--card {
+  .mku-tabs__nav-item {
+    display: flex;
+    align-items: center;
+    height: @height-large-size;
+    line-height: @height-large-size;
+    padding: 0 14px;
+    margin-bottom: -1px;
+    border: 1px solid @border-color-base;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 6px;
+    }
+    &:hover:not(.mku-tabs__nav-item--disabled) {
+      color: @color-primary;
+    }
+    &.mku-tabs__nav-item--acitve:not(.mku-tabs__nav-item--disabled) {
+      color: @color-primary;
+      border-bottom: 1px solid #fff;
+      background: #fff;
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@import '../colors/color';
+@import '../sizes/size';
+
+.mku-select {
+  position: relative;
+  /* select Txt 容器 */
+  .mku-select__inner {
+    max-width: 100%;
+    min-height: @height-default-size;
+    padding-right: 30px;
+    border: 1px solid @border-color-base;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border .3s;
+    &:not(.mku-select__inner):hover {
+      border: 1px solid @border-color-primary;
+    }
+    .mku-select__placeholder {
+      height: @height-default-size - 2;
+      padding-left: 10px;
+      line-height: @height-default-size - 2;
+      color: @color-text-secondary;
+    }
+    /* 单选时用输入框展示 */
+    .mku-select__txt {
+      width: 100%;
+      height: @height-default-size - 2;
+      line-height: @height-default-size - 2;
+      border: 0;
+      text-indent: 10px;
+      outline: none;
+      cursor: pointer;
+    }
+    /* 多选时用列表展示 */
+    .mku-select__labels {
+      height: 100%;
+      padding-top: 5px;
+      padding-left: 10px;
+    }
+    .mku-select__labels-item {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      height: 20px;
+      padding-left: 4px;
+      padding-right: 22px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      line-height: 18px;
+      border: 1px solid @border-color-light;
+      border-radius: 2px;
+      background: #f4f4f5;
+      cursor: text;
+      .mku-global-ellipsis {
+        display: block;
+      }
+      .mku-icon-error-circle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+    }
+    /* up/down arrow */
+    .mku-select__icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .mku-icon {
+        transition: transform .3s;
+      }
+    }
+    .mku-icon-error-circle {
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+  /* 下拉菜单 */
+  .mku-select__menu {
+    min-width: 100%;
+    border-radius: 4px;
+    box-shadow: @shadow-border-base;
+    background: #fff;
+    z-index: 1;
+  }
+}
+
+/* opened时的状态 */
+.mku-select--opened {
+  .mku-select__icon .mku-icon-arrow-down {
+    transform: rotate(180deg);
+  }
+}
+
+/* select禁用时的状态 */
+.mku-select--disabled {
+  .mku-select__inner {
+    background: @background-color-disabled;
+    cursor: not-allowed;
+    .mku-select__icon .mku-icon {
+      color: @color-text-disabled;
+    }
+  }
+}
+
+/* drop transition */
+.mku-select-dropdown-enter,
+.mku-select-dropdown-leave-to {
+  opacity: 0;
+  transform: scaleY(.8);
+}
+.mku-select-dropdown-enter-active,
+.mku-select-dropdown-leave-active {
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: left top;
+}
+
+/* select options */
+.mku-options {
+  padding: 0 10px;
+  line-height: 30px;
+  user-select: none;
+  cursor: pointer;
+  &:not(.mku-options--disabled):hover {
+    background: @background-hover-base;
+  }
+  &.mku-options--actived {
+    background: @background-hover-base;
+    color: @background-color-primary;
+  }
+}
+.mku-options--disabled {
+  color: @color-text-disabled;
+  cursor: not-allowed;
+}
+
+/* select options group */
+.mku-options-group {
+  .mku-options-group__title {
+    padding: 0 10px;
+    line-height: 30px;
+    color: #999;
+  }
+  .mku-options {
+    padding: 0 20px;
+  }
+}

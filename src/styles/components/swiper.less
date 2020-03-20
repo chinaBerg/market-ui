@@ -1,0 +1,74 @@
+@import '../colors/color.less';
+@import '../sizes/size.less';
+
+/* 内部样式，输入框基本样式 */
+.mku-swiper {
+  position: relative;
+  overflow: hidden;
+  .mku-swiper__wrap {
+    height: 100%;
+    transform: translate(0);
+  }
+  .mku-swiper__item {
+    float: left;
+  }
+  /* 切换按钮 */
+  .mku-swiper__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, .3);
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s;
+    .mku-icon {
+      font-size: 20px;
+      color: #fff;
+      font-weight: 500;
+    }
+    &:hover {
+      background: rgba(0, 0, 0, .4);
+    }
+  }
+  .mku-swiper__btn--left {
+    left: 10px;
+  }
+  .mku-swiper__btn--right {
+    right: 10px;
+  }
+
+  /* 分页器 */
+  .mku-swiper__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    font-size: 0;
+    transform: translateX(-50%);
+    .mku-swiper__dot {
+      display: inline-block;
+      width: 18px;
+      height: 5px;
+      margin: 0 4px;
+      background: rgba(255, 255, 255, .4);
+      cursor: pointer;
+    }
+    .mku-swiper__dot:hover,
+    .mku-swiper__dot--active {
+      background: rgba(255, 255, 255, 1);
+    }
+  }
+}
+.mku-swiper-animation-btn-enter-active,
+.mku-swiper-animation-btn-leave-active {
+  transition: all .2s;
+}
+.mku-swiper-animation-btn-enter,
+.mku-swiper-animation-btn-leave-to {
+  opacity: 0;
+}

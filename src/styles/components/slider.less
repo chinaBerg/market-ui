@@ -1,0 +1,105 @@
+@import '../colors/color';
+
+.mku-slider {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  /* bar的容器 */
+  .mku-slider__outer {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: @bg-base;
+    overflow: hidden;
+    cursor: pointer;
+    .mku-slider__inner {
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      height: 100%;
+      border-radius: 3px;
+      background: @color-primary;
+    }
+  }
+  /* 栅格 */
+  .mku-slider__stops {
+    .mku-slider__stops-item {
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      transform: translate(-50%, -50%);
+    }
+  }
+  /* 滑动按钮 */
+  .mku-slider__button {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -8px;
+    border: 2px solid @border-color-primary;
+    background: #fff;
+    border-radius: 50%;
+    cursor: grab;
+    transition: transform .2s;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 35%;
+      height: 35%;
+      border-radius: 50%;
+      background: @border-color-primary;
+      transform: translate(-50%, -50%);
+    }
+    &:hover,
+    &.mku-slider__button--active {
+      transform: scale(1.3);
+      z-index: 6;
+    }
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  /* 标记 */
+  .mku-slider__marks {
+    position: relative;
+    .mku-slider__marks-item {
+      position: absolute;
+      top: 4px;
+      color: @color-text-secondary;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* 禁用状态 */
+.mku-slider--disabled {
+  .mku-slider__outer {
+    cursor: unset;
+    .mku-slider__inner {
+      background: #a09f9f;
+    }
+  }
+  .mku-slider__button {
+    border: 2px solid #a09f9f;
+    cursor: no-drop;
+    &:after {
+      background: #a09f9f;
+    }
+    &:hover {
+      transform: scale(1);
+    }
+    &:active {
+      cursor: no-drop;
+    }
+  }
+}
