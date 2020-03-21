@@ -184,7 +184,7 @@ export default {
       try {
         this.$router[routeType](item.route, onComplete, onAbord);
       } catch (error) {
-        throw new Error(error)
+        throw new Error(error);
       }
     },
     /**
