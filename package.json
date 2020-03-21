@@ -10,15 +10,15 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint",
-    "eslint": "eslint ./src --ext .js --fix",
+    "build:docs": "vue-cli-service build",
     "build:file": "webpack --config ./build/webpack.prod.js",
     "build:sperate": "webpack --config ./build/webpack.sperate.js",
     "build:style": "gulp --gulpfile ./build/bin/generate-css.js",
-    "deploy": "npm run build:file && npm run build:sperate && npm run build:style"
+    "deploy": "npm run build:file && npm run build:sperate && npm run build:style",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint",
+    "eslint": "eslint ./src --ext .js --fix"
   },
   "dependencies": {
     "async-validator": "^3.2.3",
