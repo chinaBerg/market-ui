@@ -35,13 +35,11 @@
 
 <script>
 import NavSlide from './nav-slide';
-import MainFooter from './footer';
 
 export default {
   name: 'DemoContent',
   components: {
     NavSlide,
-    MainFooter,
   },
 };
 </script>

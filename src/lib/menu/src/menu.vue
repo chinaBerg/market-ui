@@ -184,7 +184,7 @@ export default {
       try {
         this.$router[routeType](item.route, onComplete, onAbord);
       } catch (error) {
-        console.error(error);
+        throw new Error(error)
       }
     },
     /**
@@ -201,7 +201,7 @@ export default {
       if (item.route) {
         this.routeTo(item, () => {}, (err) => {
           this.activeItemName = currentActiveName;
-          if (err) console.error(err);
+          if (err) throw new Error(err);
         });
       }
     },

@@ -36,7 +36,6 @@ export default {
   methods: {
     init() {
       const parent = findComponentUpward(this, 'MkuTable');
-      console.log(parent);
       if (parent) {
         parent.initTableItems(this);
       }
