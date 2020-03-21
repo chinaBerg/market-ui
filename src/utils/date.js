@@ -28,10 +28,10 @@ export function parseDate(time) {
  * @retrun { Array } 提取后的数字数组
  */
 export function pickNumInStr(str, iterate) {
-  const timeString = str.replace(/[^\d]+/g, (v) => ',');
+  const timeString = str.replace(/[^\d]+/g, () => ',');
   const nums = timeString.split(',')
     .filter((e) => e !== '')
-    .map((e) => parseInt(e));
+    .map((e) => parseInt(e, 10));
   return isFunction(iterate) ? nums.map(iterate) : nums;
 }
 

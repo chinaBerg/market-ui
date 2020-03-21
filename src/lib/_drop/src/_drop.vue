@@ -9,35 +9,34 @@
 </template>
 
 <script>
-import Popper from 'popper.js'
-import { attrs } from '../../../utils/dom'
-import { isString } from '../../../utils/assist'
+import Popper from 'popper.js';
+import { attrs } from '../../../utils/dom';
 
 export default {
   name: 'MkuDrop',
   props: {
     placement: {
       type: String,
-      default: 'bottom-start'
+      default: 'bottom-start',
     },
     reference: {
       type: [String],
-      required: true
+      required: true,
     },
     className: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  data () {
+  data() {
     return {
-      popperIns: null
-    }
+      popperIns: null,
+    };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
-      this.initPopper()
-    })
+      this.initPopper();
+    });
   },
   methods: {
     /**
@@ -45,42 +44,42 @@ export default {
      * @description 初始化popper插件
      * - reference: https://popper.js.org/
      */
-    initPopper () {
-      const ref = this.$parent.$refs[this.reference]
+    initPopper() {
+      const ref = this.$parent.$refs[this.reference];
       this.popperIns = new Popper(ref, this.$el, {
         placement: this.placement,
         modifiers: {
           computeStyle: {
-            gpuAcceleration: false
+            gpuAcceleration: false,
           },
           preventOverflow: {
-            boundariesElement: 'window'
-          }
+            boundariesElement: 'window',
+          },
         },
         onCreate: () => {
           this.$nextTick(() => {
-            this.rerender()
-          })
+            this.rerender();
+          });
         },
         onUpdate: () => {
-          this.rerender()
-        }
-      })
+          this.rerender();
+        },
+      });
     },
     // 重新计算下拉菜单的动画原点
-    updateTransformOrigin () {
-      const popperPlacement = attrs(this.$el, 'x-placement')
+    updateTransformOrigin() {
+      const popperPlacement = attrs(this.$el, 'x-placement');
       this.$el.style.transformOrigin = popperPlacement.indexOf('top') > -1
-        ? 'bottom left' : 'top left'
+        ? 'bottom left' : 'top left';
     },
     /**
      * @method rerender
      * @description 对外暴露接口，重新计算drop位置等样式
      */
-    rerender () {
-      this.updateTransformOrigin()
-      this.popperIns && this.popperIns.scheduleUpdate()
-    }
-  }
-}
+    rerender() {
+      this.updateTransformOrigin();
+      this.popperIns && this.popperIns.scheduleUpdate();
+    },
+  },
+};
 </script>

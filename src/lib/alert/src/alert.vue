@@ -29,87 +29,86 @@
 </template>
 
 <script>
-import MkuCollapseTransition from '../../collapse-transition'
-import MkuIcon from '../../icon'
-const ALERT = 'mku-alert'
+import MkuCollapseTransition from '../../collapse-transition';
+import MkuIcon from '../../icon';
+
+const ALERT = 'mku-alert';
 
 export default {
   name: 'MkuAlert',
   components: {
     MkuCollapseTransition,
-    MkuIcon
+    MkuIcon,
   },
   props: {
     type: {
       type: String,
       default: 'info',
-      validator: val => {
-        return ['info', 'success', 'error', 'warning'].includes(val)
-      }
+      validator: (val) => ['info', 'success', 'error', 'warning'].includes(val),
     },
     title: {
       type: String,
-      required: true
+      required: true,
     },
     content: {
       type: String,
-      default: ''
+      default: '',
     },
     contentLine: {
       type: Number,
-      default: 0
+      default: 0,
     },
     showIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     closeable: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      isShow: true
-    }
+      isShow: true,
+    };
   },
   computed: {
-    alertClassNames () {
+    alertClassNames() {
       return [
         ALERT,
         {
           [`${ALERT}--info`]: this.type === 'info',
           [`${ALERT}--success`]: this.type === 'success',
           [`${ALERT}--error`]: this.type === 'error',
-          [`${ALERT}--warning`]: this.type === 'warning'
-        }
-      ]
+          [`${ALERT}--warning`]: this.type === 'warning',
+        },
+      ];
     },
-    iconName () {
+    iconName() {
       const iconMaps = {
         info: 'tip',
         success: 'success-circle',
         error: 'error-circle',
-        warning: 'warning'
-      }
-      return iconMaps[this.type]
+        warning: 'warning',
+      };
+      return iconMaps[this.type];
     },
-    contentStyle () {
-      if (!this.contentLine) return {}
+    contentStyle() {
+      if (!this.contentLine) return {};
       return {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         display: '-webkit-box',
         '-webkit-line-clamp': this.contentLine,
-        '-webkit-box-orient': 'vertical'
-      }
-    }
+        '-webkit-box-orient': 'vertical',
+      };
+    },
   },
   methods: {
-    handleClose () {
-      this.isShow = false
-      this.$emit('close')
-    }
-  }
-}
+    handleClose() {
+      this.isShow = false;
+      this.$emit('close');
+    },
+  },
+};
 </script>

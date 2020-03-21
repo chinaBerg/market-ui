@@ -12,8 +12,8 @@ export default {
   name: 'MkuOptionsGroup',
   props: {
     label: {
-      type: String
-    }
-  }
-}
+      type: String,
+    },
+  },
+};
 </script>

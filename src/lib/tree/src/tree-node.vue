@@ -57,15 +57,15 @@
 </template>
 
 <script>
-import MkuIcon from '../../icon'
-import MkuCheckbox from '../../checkbox'
-import MkuCollspseTransition from '../../collapse-transition'
-import nodeContent from './tree-node-content'
+import MkuIcon from '../../icon';
+import MkuCheckbox from '../../checkbox';
+import MkuCollspseTransition from '../../collapse-transition';
+import nodeContent from './tree-node-content';
 import {
   findComponentUpward,
   findSiblingsComponents,
-  deepCopy
-} from '../../../utils/assist'
+  deepCopy,
+} from '../../../utils/assist';
 
 export default {
   name: 'MkuTreeNode',
@@ -73,16 +73,16 @@ export default {
     MkuIcon,
     MkuCheckbox,
     MkuCollspseTransition,
-    nodeContent
+    nodeContent,
   },
   props: {
     data: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     parentData: {
       type: Array,
-      default: () => ([])
+      default: () => ([]),
     },
     label: String,
     children: String,
@@ -94,55 +94,56 @@ export default {
     defaultCheckedKeys: Array,
     defaultExpandAll: Boolean,
     accordion: Boolean,
-    renderContent: Function
+    renderContent: Function,
   },
-  data () {
+  data() {
     return {
       dataOrigin: {},
       parentTreeNode: null,
       root: null,
-      key: null
-    }
+      key: null,
+    };
   },
   computed: {
-    childrenData () {
-      if (!this.data) return []
-      return this.data[this.children]
-    }
+    childrenData() {
+      if (!this.data) return [];
+      return this.data[this.children];
+    },
   },
-  created () {
-    this.root = findComponentUpward(this, 'MkuTree')
-    this.parentTreeNode = findComponentUpward(this, 'MkuTreeNode')
-    this._initDefault()
+  created() {
+    this.root = findComponentUpward(this, 'MkuTree');
+    this.parentTreeNode = findComponentUpward(this, 'MkuTreeNode');
+    this._initDefault();
   },
   methods: {
     /**
      * @method _initDefault
      * @description 初始化默认的展开项和选中项
      */
-    _initDefault () {
-      const nodeKeyValue = this.data[this.nodeKey]
-      const isExpand = this.defaultExpandAll || this.defaultExpandedKeys.includes(nodeKeyValue)
-      const isChecked = this.$parent.data.isChecked || this.defaultCheckedKeys.includes(nodeKeyValue)
-      const _origin = deepCopy(this.data)
-      delete _origin[this.children]
+    _initDefault() {
+      const nodeKeyValue = this.data[this.nodeKey];
+      const isExpand = this.defaultExpandAll || this.defaultExpandedKeys.includes(nodeKeyValue);
+      const isChecked = this.$parent.data.isChecked
+        || this.defaultCheckedKeys.includes(nodeKeyValue);
+      const _origin = deepCopy(this.data);
+      delete _origin[this.children];
 
-      this.dataOrigin = _origin
-      this.$set(this.data, 'isExpand', isExpand)
-      this.$set(this.data, 'isChecked', isChecked)
-      this.$set(this.data, 'indeterminate', false)
+      this.dataOrigin = _origin;
+      this.$set(this.data, 'isExpand', isExpand);
+      this.$set(this.data, 'isChecked', isChecked);
+      this.$set(this.data, 'indeterminate', false);
 
       if (this.nodeKey) {
-        this.key = nodeKeyValue
+        this.key = nodeKeyValue;
       }
 
       this.$nextTick(() => {
         // 设置默认节点，需要默认勾选对应的字所有子节点
         if (isChecked) {
-          this.updateChildrenChecked(this.data, isChecked)
-          this.updateParentChecked()
+          this.updateChildrenChecked(this.data, isChecked);
+          this.updateParentChecked();
         }
-      })
+      });
     },
     /**
      * @method expandNode
@@ -150,20 +151,20 @@ export default {
      * - 如果是手风琴模式，则收起所有兄弟节点
      * - 更新所有父TreeNode组件的toggle-change事件
      */
-    expandNode () {
-      this.$set(this.data, 'isExpand', !this.data.isExpand)
+    expandNode() {
+      this.$set(this.data, 'isExpand', !this.data.isExpand);
 
       if (this.accordion) {
-        const sibNodes = findSiblingsComponents(this, 'MkuTreeNode')
+        const sibNodes = findSiblingsComponents(this, 'MkuTreeNode');
         if (sibNodes && sibNodes.length) {
-          sibNodes.forEach(node => {
-            this.$set(node.data, 'isExpand', false)
-          })
+          sibNodes.forEach((node) => {
+            this.$set(node.data, 'isExpand', false);
+          });
         }
       }
 
       if (this.root) {
-        this.root.emitEvent('toggle-change', this.data, this)
+        this.root.emitEvent('toggle-change', this.data, this);
       }
     },
     /**
@@ -172,15 +173,15 @@ export default {
      * - 是否可以展开收起
      * - 是否可以选中/取消，仅show-checkbox开启时有效
      */
-    handleNodeClick () {
-      if (!this.root) return
+    handleNodeClick() {
+      if (!this.root) return;
 
       if (this.root.expandOnClickNode) {
-        this.expandNode()
+        this.expandNode();
       }
 
       if (this.root.checkOnClickNode && this.root.showCheckbox) {
-        this.handleCheckboxChange(!this.data.isChecked)
+        this.handleCheckboxChange(!this.data.isChecked);
       }
     },
     /**
@@ -190,12 +191,12 @@ export default {
      * - 触发Tree的checked-change emit
      * - 更新所有父TreeNode组件的状态
      */
-    handleCheckboxChange (state) {
-      this.updateChildrenChecked(this.data, state)
-      this.updateParentChecked()
+    handleCheckboxChange(state) {
+      this.updateChildrenChecked(this.data, state);
+      this.updateParentChecked();
 
       if (this.root) {
-        this.root.checkedChange(this.data)
+        this.root.checkedChange(this.data);
       }
     },
     /**
@@ -204,48 +205,48 @@ export default {
      * - 遍历所有父TreeNode组件
      * - 根据父TreeNode组件的所有子组件选中状态进行更新
      */
-    updateParentChecked () {
-      let parent = this.parentTreeNode
+    updateParentChecked() {
+      let parent = this.parentTreeNode;
       while (parent) {
-        const data = parent.data
-        const children = data[parent.children]
+        const { data } = parent;
+        const children = data[parent.children];
         if (children && children.length) {
-          let checked
-          let indeterminate
-          const checkedNodes = children.filter(child => child.isChecked)
+          let checked;
+          let indeterminate;
+          const checkedNodes = children.filter((child) => child.isChecked);
           if (checkedNodes.length === 0) {
-            checked = false
-            indeterminate = false
+            checked = false;
+            indeterminate = false;
           } else if (checkedNodes.length === children.length) {
-            checked = true
-            indeterminate = false
+            checked = true;
+            indeterminate = false;
           } else {
-            checked = false
-            indeterminate = true
+            checked = false;
+            indeterminate = true;
           }
-          this.$set(data, 'isChecked', checked)
-          this.$set(data, 'indeterminate', indeterminate)
+          this.$set(data, 'isChecked', checked);
+          this.$set(data, 'indeterminate', indeterminate);
         }
 
-        parent = parent.parentTreeNode
+        parent = parent.parentTreeNode;
       }
     },
     /**
      * @method updateChildrenChecked
      * @description 迭代children，更新其checkbox状态
      */
-    updateChildrenChecked (data, state) {
-      let nodes = [data]
+    updateChildrenChecked(data, state) {
+      const nodes = [data];
       while (nodes && nodes.length) {
-        const currentNode = nodes.shift()
-        const children = currentNode[this.children]
-        this.$set(currentNode, 'isChecked', state)
+        const currentNode = nodes.shift();
+        const children = currentNode[this.children];
+        this.$set(currentNode, 'isChecked', state);
 
         if (children && children.length) {
-          nodes.push(...children)
+          nodes.push(...children);
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

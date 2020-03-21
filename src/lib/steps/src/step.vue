@@ -27,69 +27,71 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     content: {
-      type: String
-    }
+      type: String,
+    },
   },
-  inject: [ 'MkuSteps' ],
-  data () {
+  inject: ['MkuSteps'],
+  data() {
     return {
-      index: -1
-    }
+      index: -1,
+    };
   },
   computed: {
-    stepClasss () {
-      const prefix = 'mku-step'
-      const isCur = this.isCurrent
-      const status = this.MkuSteps.currentStatus
-      const isHor = this.MkuSteps.direction === 'horizontal'
+    stepClasss() {
+      const prefix = 'mku-step';
+      const isCur = this.isCurrent;
+      const status = this.MkuSteps.currentStatus;
+      const isHor = this.MkuSteps.direction === 'horizontal';
       return [prefix, {
         [`${prefix}--center`]: this.MkuSteps.center && isHor,
         [`${prefix}--start`]: !this.MkuSteps.center && isHor,
         [`${prefix}--wait`]: isCur && status === 'wait',
         [`${prefix}--process`]: (isCur && (status === 'process' || status === 'finish')) || this.index < this.current,
-        [`${prefix}--error`]: isCur && status === 'error'
-      }]
+        [`${prefix}--error`]: isCur && status === 'error',
+      }];
     },
-    iconClasss () {
-      const status = this.MkuSteps.currentStatus
-      const isError = this.isCurrent && status === 'error'
+    iconClasss() {
+      const status = this.MkuSteps.currentStatus;
+      const isError = this.isCurrent && status === 'error';
       return ['mku-icon', {
         'mku-icon-yes': !isError,
-        'mku-icon-error': isError
-      }]
+        'mku-icon-error': isError,
+      }];
     },
-    lineClasss () {
-      const status = this.MkuSteps.currentStatus
-      let isShow
+    lineClasss() {
+      const status = this.MkuSteps.currentStatus;
+      let isShow;
       if (status === 'process' || status === 'finish') {
-        isShow = this.index < this.current
+        isShow = this.index < this.current;
       } else {
-        isShow = this.index < this.current - 1
+        isShow = this.index < this.current - 1;
       }
       return ['mku-step__line', {
         'mku-step__line--success': isShow,
-        'mku-step__line--error': this.current - 1 === this.index && status === 'error'
-      }]
+        'mku-step__line--error': this.current - 1 === this.index && status === 'error',
+      }];
     },
-    current () {
-      return (this.MkuSteps && this.MkuSteps.current) || 0
+    current() {
+      return (this.MkuSteps && this.MkuSteps.current) || 0;
     },
-    isCurrent () {
-      return this.current === this.index
+    isCurrent() {
+      return this.current === this.index;
     },
-    isShowIcon () {
-      if (this.index < this.current && this.MkuSteps.showIcon) return true
-      const status = this.MkuSteps.currentStatus
-      if (this.isCurrent && (status === 'finish' || status === 'error')) return true
-      return false
-    }
+    isShowIcon() {
+      if (this.index < this.current && this.MkuSteps.showIcon) return true;
+      const status = this.MkuSteps.currentStatus;
+      if (this.isCurrent && (status === 'finish' || status === 'error')) return true;
+      return false;
+    },
   },
-  created () {
-    this.MkuSteps && this.MkuSteps.steps.push(this)
-    this.index = this.MkuSteps.steps.indexOf(this)
-  }
-}
+  created() {
+    if (this.MkuSteps) {
+      this.MkuSteps.steps.push(this);
+    }
+    this.index = this.MkuSteps.steps.indexOf(this);
+  },
+};
 </script>

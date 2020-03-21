@@ -19,39 +19,38 @@
 </template>
 
 <script>
-import Separator from './separator'
+import Separator from './separator';
+
 export default {
   name: 'MkuBreadcrumbItem',
   components: { Separator },
   props: {
     to: {
-      type: [String, Object]
+      type: [String, Object],
     },
     routerType: {
       type: String,
       default: 'push',
-      validator: val => {
-        return ['push', 'replace'].includes(val)
-      }
+      validator: (val) => ['push', 'replace'].includes(val),
     },
     target: {
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
-    handleClick (event) {
-      if (!this.to) return
-      if (this.target) return
+    handleClick(event) {
+      if (!this.to) return;
+      if (this.target) return;
 
-      const router = this.$router
+      const router = this.$router;
 
       if (router) {
-        event.preventDefault()
-        this.$router[this.routerType](this.to)
+        event.preventDefault();
+        this.$router[this.routerType](this.to);
       } else {
-        window.location.href = this.to
+        window.location.href = this.to;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

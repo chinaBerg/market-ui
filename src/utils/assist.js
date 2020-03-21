@@ -6,7 +6,9 @@ const findComponentUpward = (context, targetComponentName) => {
   let { name } = parent.$options;
   while (parent && (!name || targetComponentName !== name)) {
     parent = parent.$parent;
-    parent && (name = parent.$options.name);
+    if (parent) {
+      name = parent.$options.name;
+    }
   }
   return parent;
 };
@@ -16,7 +18,9 @@ const findComponentsUpward = (context, targetComponentName) => {
   let parent = context.$parent;
   const targets = [];
   while (parent) {
-    parent.$options.name === targetComponentName && targets.push(parent);
+    if (parent.$options.name === targetComponentName) {
+      targets.push(parent);
+    }
     parent = parent.$parent;
   }
   return targets;
@@ -31,8 +35,8 @@ const findComponentDownward = (context, targetComponentName) => {
     if (current.$options.name === targetComponentName) {
       targetComponent = current;
       children = [];
-    } else {
-      current.$children.length && children.push(...current.$children);
+    } else if (current.$children.length) {
+      children.push(...current.$children);
     }
   }
   return targetComponent;
@@ -44,8 +48,12 @@ const findComponentsDownward = (context, targetComponentName) => {
   const targetComponents = [];
   while (children.length) {
     const current = children.shift();
-    current.$options.name === targetComponentName && targetComponents.push(current);
-    current.$children.length && children.push(...current.$children);
+    if (current.$options.name === targetComponentName) {
+      targetComponents.push(current);
+    }
+    if (current.$children.length) {
+      children.push(...current.$children);
+    }
   }
   return targetComponents;
 };
@@ -104,8 +112,9 @@ const trim = (str) => {
 // 单例模式
 const singlePattern = (fn) => {
   let instance;
-  return function () {
-    return instance || (instance = fn.apply(this, arguments));
+  return function (...arg) {
+    if (instance) return instance;
+    return (instance || (instance = fn.apply(this, arg)));
   };
 };
 

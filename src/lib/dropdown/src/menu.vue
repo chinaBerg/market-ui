@@ -7,6 +7,6 @@
 <script>
 
 export default {
-  name: 'MkuDropdownMenu'
-}
+  name: 'MkuDropdownMenu',
+};
 </script>

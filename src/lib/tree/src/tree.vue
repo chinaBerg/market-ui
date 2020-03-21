@@ -18,167 +18,165 @@
 </template>
 
 <script>
-import MkuTreeNode from './tree-node'
+import MkuTreeNode from './tree-node';
 import {
   deepCopy,
   isObjectEqual,
-  findComponentsDownward
-} from '../../../utils/assist'
+  findComponentsDownward,
+} from '../../../utils/assist';
 
 export default {
   name: 'MkuTree',
   components: {
-    MkuTreeNode
+    MkuTreeNode,
   },
   props: {
     data: {
       type: Array,
-      default: () => ([])
+      default: () => ([]),
     },
     label: {
       type: String,
-      default: 'label'
+      default: 'label',
     },
     children: {
       type: String,
-      default: 'children'
+      default: 'children',
     },
     showCheckbox: {
       type: Boolean,
-      default: false
+      default: false,
     },
     nodeKey: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     // 默认展开项
     defaultExpandedKeys: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     // 默认选中项
     defaultCheckedKeys: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     // 默认展开所有
     defaultExpandAll: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 手风琴，只允许同时展开一个节点
     accordion: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 自定义渲染函数
     renderContent: {
-      type: Function
+      type: Function,
     },
     // 点击node时可以展开收起
     expandOnClickNode: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 点击node时可以选中、取消
     checkOnClickNode: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      dataCopyed: []
-    }
+      dataCopyed: [],
+    };
   },
   watch: {
     data: {
       handler: 'handleDataChange',
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
-    handleDataChange (newVal, oldVal) {
+    handleDataChange(newVal) {
       if (!newVal) {
-        this.dataCopyed = []
-        return
+        this.dataCopyed = [];
+        return;
       }
-      this.dataCopyed = deepCopy(newVal)
+      this.dataCopyed = deepCopy(newVal);
     },
     // 供子组件调用的emit
-    emitEvent (event, ...data) {
-      this.$emit(event, ...data)
+    emitEvent(event, ...data) {
+      this.$emit(event, ...data);
     },
     // 节点选中状态变化时触发，暴露checked-change事件
-    checkedChange (data) {
-      let checkedNodes = this.getCheckedNodes()
-      this.$emit('checked-change', checkedNodes, data)
+    checkedChange(data) {
+      const checkedNodes = this.getCheckedNodes();
+      this.$emit('checked-change', checkedNodes, data);
     },
     /**
      * @method _iterateNodes
      * @description 迭代所有后代TreeNode节点
      */
-    _iterateNodes (cb) {
-      const nodes = findComponentsDownward(this, 'MkuTreeNode')
+    _iterateNodes(cb) {
+      const nodes = findComponentsDownward(this, 'MkuTreeNode');
       if (nodes && nodes.length) {
-        nodes.forEach(node => {
-          cb(node)
-        })
+        nodes.forEach((node) => {
+          cb(node);
+        });
       }
     },
     /**
      * @method setCheckedKeys
      * @description 对外暴露接口，通过传入keys数组设置选中
      */
-    setCheckedKeys (keys) {
-      if (!this.showCheckbox) return
+    setCheckedKeys(keys) {
+      if (!this.showCheckbox) return;
 
-      this._iterateNodes(node => {
-        const checked = node.key && keys.includes(node.key)
-        node.handleCheckboxChange(checked)
-      })
+      this._iterateNodes((node) => {
+        const checked = node.key && keys.includes(node.key);
+        node.handleCheckboxChange(checked);
+      });
     },
     /**
      * @method setCheckedKeys
      * @description 对外暴露接口，通过传dataOrigin入节点数据设置选中
      */
-    setCheckedNodes (data) {
-      if (!this.showCheckbox) return
+    setCheckedNodes(data) {
+      if (!this.showCheckbox) return;
 
-      const isEqual = node => {
-        return data.every(value => isObjectEqual(value, node.dataOrigin))
-      }
-      const checkedFunc = node => node.handleCheckboxChange(isEqual(node))
-      this._iterateNodes(checkedFunc)
+      const isEqual = (node) => data.every((value) => isObjectEqual(value, node.dataOrigin));
+      const checkedFunc = (node) => node.handleCheckboxChange(isEqual(node));
+      this._iterateNodes(checkedFunc);
     },
     /**
      * @method getCheckedKeys
      * @description 对外暴露接口，获取选中项的keys数组
      * @returns { Array } 选中项的keys数组
      */
-    getCheckedKeys () {
-      let res = []
-      this._iterateNodes(node => {
+    getCheckedKeys() {
+      const res = [];
+      this._iterateNodes((node) => {
         if (node.data.isChecked) {
-          res.push(node.data[node.nodeKey])
+          res.push(node.data[node.nodeKey]);
         }
-      })
-      return res
+      });
+      return res;
     },
     /**
      * @method getCheckedNodes
      * @description 对外暴露接口，通过传dataOrigin入节点数据设置选中
      * @returns { Array } 选中项的数据
      */
-    getCheckedNodes () {
-      let res = []
-      this._iterateNodes(node => {
+    getCheckedNodes() {
+      const res = [];
+      this._iterateNodes((node) => {
         if (node.data.isChecked) {
-          res.push(node.data)
+          res.push(node.data);
         }
-      })
-      return res
-    }
-  }
-}
+      });
+      return res;
+    },
+  },
+};
 </script>

@@ -12,7 +12,7 @@ const transition = (config) => {
     transition: `all ${config.duration}s ${config.animate}`,
     overflow: 'hidden',
   };
-  const transition = {
+  return {
     beforeEnter(el) {
       el.dataset.paddingTop = getStyle(el).paddingTop; // el.style.paddingTop
       el.dataset.paddingBottom = getStyle(el).paddingBottom; // el.style.paddingBottom
@@ -48,7 +48,6 @@ const transition = (config) => {
       inlineStyle(el, { height: 0, overflow: 'hidden' });
     },
   };
-  return transition;
 };
 
 export default {

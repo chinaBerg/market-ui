@@ -11,17 +11,17 @@ export default {
     // 分割符字符串
     separator: {
       type: String,
-      default: '/'
+      default: '/',
     },
     // 分隔符render函数
     separatorRender: {
-      type: Function
-    }
+      type: Function,
+    },
   },
-  provide () {
+  provide() {
     return {
-      MkuBreadcrumb: this
-    }
-  }
-}
+      MkuBreadcrumb: this,
+    };
+  },
+};
 </script>

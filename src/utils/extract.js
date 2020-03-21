@@ -1,18 +1,20 @@
-const _extract = (source, type) => {
+const extract = (source, type) => {
   const regExp = new RegExp(`<${type}[^>]*>`);
-  let startTag = source.match(regExp);
-  if (!startTag) return '';
-  startTag = startTag[0];
+
+  const startTagMatched = source.match(regExp);
+  if (!startTagMatched) return '';
+  const [startTag] = startTagMatched;
+
   const startTagIndex = source.indexOf(startTag) + startTag.length;
   const endTagIndex = source.lastIndexOf(`</${type}>`);
   return source.slice(startTagIndex, endTagIndex);
 };
 
-const extractVueHtml = (source) => _extract(source, 'template');
+const extractVueHtml = (source) => extract(source, 'template');
 
-const extractVueStyle = (source) => _extract(source, 'style');
+const extractVueStyle = (source) => extract(source, 'style');
 
-const extractVueScript = (source) => _extract(source, 'script').replace(/export default/, 'return ');
+const extractVueScript = (source) => extract(source, 'script').replace(/export default/, 'return ');
 
 export {
   extractVueHtml,

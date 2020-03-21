@@ -9,47 +9,46 @@
 </template>
 
 <script>
-import { withinNum, floor } from '../../../utils/tools'
-import { onEvent, offEvent, getRect } from '../../../utils/dom'
-import { isArray } from '../../../utils/assist'
+import { withinNum } from '../../../utils/tools';
+import { onEvent, offEvent } from '../../../utils/dom';
 
 export default {
   name: 'MkuSlider',
   props: {
     // 绑定的值
     value: {
-      type: Number
-    }
+      type: Number,
+    },
   },
-  data () {
+  data() {
     return {
       isDrop: false, // 是否正在拖拽
-      currentX: 0 // 当前值
-    }
+      currentX: 0, // 当前值
+    };
   },
   computed: {
-    step () {
-      return this.$parent.step
+    step() {
+      return this.$parent.step;
     },
-    min () {
-      return this.$parent.min
+    min() {
+      return this.$parent.min;
     },
-    max () {
-      return this.$parent.max
+    max() {
+      return this.$parent.max;
     },
-    disabled () {
-      return this.$parent.disabled
+    disabled() {
+      return this.$parent.disabled;
     },
     // range范围
-    rangeDiff () {
-      return this.max - this.min
+    rangeDiff() {
+      return this.max - this.min;
     },
     // 拼接按钮样式
-    buttonStyle () {
+    buttonStyle() {
       return {
-        left: (this.value - this.$parent.min) / this.rangeDiff * 100 + '%'
-      }
-    }
+        left: `${((this.value - this.$parent.min) / this.rangeDiff) * 100}%`,
+      };
+    },
   },
   methods: {
     /**
@@ -59,17 +58,17 @@ export default {
      * - 缓存slider的value值
      * - 监听move和end事件
      */
-    handleDragStart (event) {
-      if (this.disabled) return
-      event.preventDefault() // 避免触发浏览器自带的拖拽行为
-      this.startX = event.clientX
-      this.$parent.calcSliderSize()
+    handleDragStart(event) {
+      if (this.disabled) return;
+      event.preventDefault(); // 避免触发浏览器自带的拖拽行为
+      this.startX = event.clientX;
+      this.$parent.calcSliderSize();
 
-      this.isDrop = true
-      this.$parent.cacheCurrentValue()
+      this.isDrop = true;
+      this.$parent.cacheCurrentValue();
 
-      onEvent(window, 'mousemove', this.handleDraging)
-      onEvent(window, 'mouseup', this.handleDragEnd)
+      onEvent(window, 'mousemove', this.handleDraging);
+      onEvent(window, 'mouseup', this.handleDragEnd);
     },
     /**
      * @method handleDraging
@@ -77,13 +76,13 @@ export default {
      * - 计算当前指针距离slider左侧的偏移距离
      * - 更新更新当前value
      */
-    handleDraging (event) {
-      if (this.disabled) return
-      if (!this.isDrop) return
+    handleDraging(event) {
+      if (this.disabled) return;
+      if (!this.isDrop) return;
 
-      this.currentX = event.clientX
-      const offsetWidth = this.currentX - this.$parent.startX // 偏移距离
-      this.updateValue(offsetWidth)
+      this.currentX = event.clientX;
+      const offsetWidth = this.currentX - this.$parent.startX; // 偏移距离
+      this.updateValue(offsetWidth);
     },
     /**
      * @method updateValue
@@ -91,12 +90,12 @@ export default {
      * - 计算当前指针距离slider左侧的偏移距离
      * - 同步更新value
      */
-    updateValue (offsetWidth) {
-      const stepWidth = this.step / this.rangeDiff * this.$parent.sliderWidth // 每个step所占宽度
-      const stepsCount = Math.round(offsetWidth / stepWidth) // step数，round解决了什么时候触发的问题
-      let value = stepsCount * this.step + this.min // 步数 * 每步占值 + min初始值
-      value = withinNum(value, this.min, this.max) // 不能超出min、max范围
-      this.$emit('input', value)
+    updateValue(offsetWidth) {
+      const stepWidth = (this.step / this.rangeDiff) * this.$parent.sliderWidth; // 每个step所占宽度
+      const stepsCount = Math.round(offsetWidth / stepWidth); // step数，round解决了什么时候触发的问题
+      let value = stepsCount * this.step + this.min; // 步数 * 每步占值 + min初始值
+      value = withinNum(value, this.min, this.max); // 不能超出min、max范围
+      this.$emit('input', value);
     },
     /**
      * @method handleDragEnd
@@ -104,17 +103,17 @@ export default {
      * - 取消move和end的事件监听
      * - 如果值发生了变化，触发drag-change事件
      */
-    handleDragEnd () {
-      if (this.disabled) return
-      this.isDrop = false
+    handleDragEnd() {
+      if (this.disabled) return;
+      this.isDrop = false;
 
       if (this.$parent.checkValueChange()) {
-        this.$parent.emitEvent('drag-change', this.$parent.getEmitValue())
+        this.$parent.emitEvent('drag-change', this.$parent.getEmitValue());
       }
 
-      offEvent(window, 'mousemove', this.handleDraging)
-      offEvent(window, 'mouseup', this.handleDragEnd)
-    }
-  }
-}
+      offEvent(window, 'mousemove', this.handleDraging);
+      offEvent(window, 'mouseup', this.handleDragEnd);
+    },
+  },
+};
 </script>

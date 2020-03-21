@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { findComponentUpward } from '../../../utils/assist'
-import Emitter from '../../../utils/emitter'
+import { findComponentUpward } from '../../../utils/assist';
+import Emitter from '../../../utils/emitter';
 
 export default {
   name: 'MkuRadio',
@@ -23,50 +23,50 @@ export default {
   props: {
     // 单独使用时绑定的值
     value: {
-      type: [String, Number]
+      type: [String, Number],
     },
     // 作为group使用时，radio项指定的value值
     // 参考单选按钮的绑定：https://cn.vuejs.org/v2/guide/forms.html
     label: {
-      type: [String, Number]
+      type: [String, Number],
     },
     // 是否禁用当前radio项
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
       parent: null,
-      radioValue: this.value
-    }
+      radioValue: this.value,
+    };
   },
   computed: {
     // 拼接radio的chassName
-    radioClasss () {
+    radioClasss() {
       return [
         'mku-radio', {
           'mku-radio--actived': this.checked,
-          'mku-radio--disabled': this.disabled
-        }
-      ]
+          'mku-radio--disabled': this.disabled,
+        },
+      ];
     },
     // 根据是否作为group使用，定义选中时的值
-    selectedValue () {
-      if (!this.parent) return this.value
-      return this.parent.radioGroupValue
+    selectedValue() {
+      if (!this.parent) return this.value;
+      return this.parent.radioGroupValue;
     },
     // 判断是否选中
-    checked () {
-      return this.label === this.selectedValue
+    checked() {
+      return this.label === this.selectedValue;
     },
-    isButtonGroup () {
-      return this.parent && this.parent.type === 'button'
-    }
+    isButtonGroup() {
+      return this.parent && this.parent.type === 'button';
+    },
   },
-  mounted () {
-    this.parent = findComponentUpward(this, 'MkuRadioGroup')
+  mounted() {
+    this.parent = findComponentUpward(this, 'MkuRadioGroup');
   },
   methods: {
     /**
@@ -75,18 +75,17 @@ export default {
      * - 作为单独使用时，暴露change事件和支持Form表单使用、
      * - 作为group使用时，将group组件进行事件的暴露
      */
-    handleRadioChange (event) {
-      if (this.disabled) return
+    handleRadioChange() {
+      if (this.disabled) return;
 
-      const checked = event.target.checked
       if (this.parent) {
-        this.parent.change(this.label)
+        this.parent.change(this.label);
       } else {
-        this.$emit('input', this.label)
-        this.$emit('change', this.label)
-        this.dispatch('MkuFormItem', 'onFormItemChange', this.label)
+        this.$emit('input', this.label);
+        this.$emit('change', this.label);
+        this.dispatch('MkuFormItem', 'onFormItemChange', this.label);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

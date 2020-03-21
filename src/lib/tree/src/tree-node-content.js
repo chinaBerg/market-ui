@@ -6,7 +6,7 @@ export default {
     'renderContent',
     'parentData',
   ],
-  render(h, { props, parent }) {
+  render(h, { props }) {
     const {
       data, label, renderContent, parentData,
     } = props;

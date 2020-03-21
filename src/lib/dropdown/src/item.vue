@@ -5,47 +5,47 @@
 </template>
 
 <script>
-import { findComponentUpward } from '../../../utils/assist'
+import { findComponentUpward } from '../../../utils/assist';
 
 export default {
   name: 'MkuDropdownItem',
   props: {
     name: {
-      type: [Number, String]
+      type: [Number, String],
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     active: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      dropdown: null
-    }
+      dropdown: null,
+    };
   },
   computed: {
-    classs () {
-      return [ 'mku-dropdown-item', {
+    classs() {
+      return ['mku-dropdown-item', {
         'mku-dropdown-item--disabled': this.disabled,
-        'mku-dropdown-item--active': this.active
-      }]
-    }
+        'mku-dropdown-item--active': this.active,
+      }];
+    },
   },
-  created () {
-    this.dropdown = findComponentUpward(this, 'MkuDropdown')
+  created() {
+    this.dropdown = findComponentUpward(this, 'MkuDropdown');
   },
   methods: {
-    handleClick () {
-      if (this.disabled) return
+    handleClick() {
+      if (this.disabled) return;
 
       if (this.dropdown) {
-        this.dropdown.$emit('click', this.name)
+        this.dropdown.$emit('click', this.name);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

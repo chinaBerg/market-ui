@@ -5,3 +5,5 @@ export const defaultConfig = {
   iconColor: '#2d8cf0',
   background: '#fff',
 };
+
+export default {};

@@ -10,28 +10,28 @@ export default {
   props: {
     gutter: {
       type: Number,
-      default: 0
+      default: 0,
     },
     className: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  provide () {
+  provide() {
     return {
-      gutter: this.gutter
-    }
+      gutter: this.gutter,
+    };
   },
   computed: {
-    rowStyle () {
-      let offset = -this.gutter / 2 + 'px'
+    rowStyle() {
+      const offset = `${-this.gutter / 2}px`;
       return {
         marginLeft: offset,
-        marginRight: offset
-      }
-    }
-  }
-}
+        marginRight: offset,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="less">

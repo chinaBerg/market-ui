@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import { findComponentUpward } from '../../../utils/assist'
-import Emitter from '../../../utils/emitter'
+import { findComponentUpward } from '../../../utils/assist';
+import Emitter from '../../../utils/emitter';
 
 export default {
   name: 'MkuCheckbox',
@@ -40,97 +40,97 @@ export default {
   props: {
     value: {
       type: [Boolean, String, Number],
-      default: false
+      default: false,
     },
     trueValue: {
       type: [Boolean, String, Number],
-      default: true
+      default: true,
     },
     falseValue: {
       type: [Boolean, String, Number],
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     indeterminate: {
       type: Boolean,
-      default: false
+      default: false,
     },
     label: {
       type: [Boolean, String, Number],
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
       checkboxValue: false, // 单个使用时，当前checkbox的值
       checkboxSelectedArray: [], // 作为group使用时所有选中项的数组集合
       isGroup: false, // 是否作为group使用
-      parent: null // group组件
-    }
+      parent: null, // group组件
+    };
   },
   watch: {
     // 监听value，给checkboxValue赋值，包含了初始化赋值
     value: {
-      handler (newValue) {
-        const isPredict = [this.trueValue, this.falseValue].includes(newValue)
+      handler(newValue) {
+        const isPredict = [this.trueValue, this.falseValue].includes(newValue);
         if (isPredict) {
-          this.checkboxValue = newValue === this.trueValue
-          return
+          this.checkboxValue = newValue === this.trueValue;
+          return;
         }
-        throw TypeError('请绑定trueValue或falseValue指定的值')
+        throw TypeError('请绑定trueValue或falseValue指定的值');
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   computed: {
-    checkboxClasss () {
-      let isChecked
-      let indeterminate
+    checkboxClasss() {
+      let isChecked;
+      let indeterminate;
       if (!this.isGroup) {
-        isChecked = this.checkboxValue && !this.indeterminate
-        indeterminate = this.indeterminate
+        isChecked = this.checkboxValue && !this.indeterminate;
+        indeterminate = this.indeterminate;
       } else {
-        isChecked = this.checkboxSelectedArray.includes(this.label)
-        indeterminate = false
+        isChecked = this.checkboxSelectedArray.includes(this.label);
+        indeterminate = false;
       }
       return [
         'mku-checkbox-wrapper', {
           'mku-checkbox--checked': isChecked,
           'mku-checkbox--disabled': this.disabled,
-          'mku-checkbox--indeterminate': indeterminate
-        }
-      ]
-    }
+          'mku-checkbox--indeterminate': indeterminate,
+        },
+      ];
+    },
   },
-  mounted () {
-    this.parent = findComponentUpward(this, 'MkuCheckboxGroup')
+  mounted() {
+    this.parent = findComponentUpward(this, 'MkuCheckboxGroup');
     if (this.parent) {
-      this.parent.updateAllCheckbox()
+      this.parent.updateAllCheckbox();
     }
   },
   methods: {
-    handleCheckboxChange (event) {
-      if (this.disabled) return
+    handleCheckboxChange(event) {
+      if (this.disabled) return;
 
-      const checked = event.target.checked
-      const value = checked ? this.trueValue : this.falseValue
-      this.checkboxValue = value
-      this.$emit('input', value)
+      const { checked } = event.target;
+      const value = checked ? this.trueValue : this.falseValue;
+      this.checkboxValue = value;
+      this.$emit('input', value);
 
       if (this.isGroup) {
         // 作为group使用时
         // change事件、form验证等应由group组件触发
-        this.parent.change(this.checkboxSelectedArray)
+        this.parent.change(this.checkboxSelectedArray);
       } else {
         // 作为单个checkbox使用时
         // 由自身触发change事件、Form验证
-        this.$emit('change', value)
-        this.dispatch('MkuFormItem', 'onFormItemChange', value)
+        this.$emit('change', value);
+        this.dispatch('MkuFormItem', 'onFormItemChange', value);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

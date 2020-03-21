@@ -10,27 +10,25 @@ export default {
   props: {
     span: {
       type: [String, Number],
-      validator: val => {
-        return +val >= 0 && +val <= 24
-      },
-      default: 24
+      validator: (val) => +val >= 0 && +val <= 24,
+      default: 24,
     },
     className: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   inject: ['gutter'],
   computed: {
-    colStyle () {
-      let offset = this.gutter / 2 + 'px'
+    colStyle() {
+      const offset = `${this.gutter / 2}px`;
       return {
         paddingLeft: offset,
-        paddingRight: offset
-      }
-    }
-  }
-}
+        paddingRight: offset,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="less">

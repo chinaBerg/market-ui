@@ -34,7 +34,6 @@
             :key="trIndex"
             :class="tdClasss(trItem, trIndex)">
             <slot></slot>
-            <!-- <td class="mku-table__td" v-for="(tdItem, tdIndex) in tableItems" :key="tdIndex">1</td> -->
           </tr>
         </tbody>
       </table>
@@ -48,38 +47,38 @@ export default {
   props: {
     border: {
       type: Boolean,
-      default: false
+      default: false,
     },
     zebra: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      tableItems: []
-    }
+      tableItems: [],
+    };
   },
   watch: {
   },
   computed: {
-    wrapClasss () {
+    wrapClasss() {
       return ['mku-table', {
-        'mku-table--border': this.border
-      }]
+        'mku-table--border': this.border,
+      }];
     },
-    tdClasss () {
+    tdClasss() {
       return (item, index) => ['mku-table__tr', {
-        'mku-table__tr--even': this.zebra && index % 2 === 1
-      }]
-    }
+        'mku-table__tr--even': this.zebra && index % 2 === 1,
+      }];
+    },
   },
   methods: {
-    initTableItems (item) {
+    initTableItems(item) {
       if (!this.tableItems.includes(item)) {
-        this.tableItems.push(item)
+        this.tableItems.push(item);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

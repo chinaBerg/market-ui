@@ -13,108 +13,106 @@
 </template>
 
 <script>
-import kute from 'kute.js'
-import { onEvent, offEvent } from '../../../utils/dom'
-import { isString } from '../../../utils/assist'
+import kute from 'kute.js';
+import { onEvent, offEvent } from '../../../utils/dom';
+import { isString } from '../../../utils/assist';
 
 export default {
   name: 'MkuBacktop',
   props: {
     // 滚动目标
     target: {
-      type: [String, Object]
+      type: [String, Object],
     },
     // 滚动到的位置
     scroll: {
       type: Number,
-      default: 0
+      default: 0,
     },
     // 滚动时间
     duration: {
       type: Number,
-      default: 300
+      default: 300,
     },
     // 滚动到此处显示btn
     height: {
       type: Number,
-      default: 200
+      default: 200,
     },
     // 是否固定
     fixed: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 固定参数
     fixedConfig: {
       type: Object,
-      default: () => {
-        return {
-          right: '40px', bottom: '50px'
-        }
-      }
-    }
+      default: () => ({
+        right: '40px', bottom: '50px',
+      }),
+    },
   },
-  data () {
+  data() {
     return {
       targetDom: null,
-      scrollTop: 0
-    }
+      scrollTop: 0,
+    };
   },
   computed: {
-    isShow () {
-      return this.scrollTop >= this.height
+    isShow() {
+      return this.scrollTop >= this.height;
     },
-    backtopStyle () {
-      if (!this.fixed) return {}
+    backtopStyle() {
+      if (!this.fixed) return {};
       return {
         position: 'fixed',
         zIndex: 20191128,
-        ...this.fixedConfig
-      }
-    }
+        ...this.fixedConfig,
+      };
+    },
   },
-  mounted () {
-    this.initTarget()
-    onEvent(this.targetDom, 'scroll', this.onTargetScroll)
+  mounted() {
+    this.initTarget();
+    onEvent(this.targetDom, 'scroll', this.onTargetScroll);
     this.$once('hook:beforeDestroy', () => {
-      offEvent(this.targetDom, 'scroll', this.onTargetScroll)
-    })
+      offEvent(this.targetDom, 'scroll', this.onTargetScroll);
+    });
   },
   methods: {
     /**
      * @method initTarget
      * @description 初始化容器，并计算初始化时容器的滚动高度
      */
-    initTarget () {
+    initTarget() {
       this.targetDom = this.target ? (
         isString(this.target) ? document.querySelector(this.target) : this.target
-      ) : document.querySelector('body')
-      this.scrollTop = this.targetDom.scrollTop
+      ) : document.querySelector('body');
+      this.scrollTop = this.targetDom.scrollTop;
     },
     /**
      * @method onTargetScroll
      * @description 监听目标容器滚动
      */
-    onTargetScroll (event) {
-      const scrollTop = event.target.scrollTop
-      this.scrollTop = scrollTop
-      this.$emit('scroll', scrollTop)
+    onTargetScroll(event) {
+      const { scrollTop } = event.target;
+      this.scrollTop = scrollTop;
+      this.$emit('scroll', scrollTop);
     },
     /**
      * @method backToTop
      * @description 滚动方法
      */
-    backToTop () {
+    backToTop() {
       kute.to(this.targetDom, {
         // scroll: this.scroll
-        scroll: this.scroll
+        scroll: this.scroll,
       }, {
         duration: this.duration,
         complete: () => {
-          this.$emit('scroll-finish')
-        }
-      }).start()
-    }
-  }
-}
+          this.$emit('scroll-finish');
+        },
+      }).start();
+    },
+  },
+};
 </script>

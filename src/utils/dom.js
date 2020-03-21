@@ -99,9 +99,10 @@ export function inlineStyle(dom, styles = {}) {
  * @param { String } ...props 传入一个参数时，获取属性，2个参数设置属性
  */
 export function attrs(dom, ...props) {
-  if (!dom) return;
+  if (!dom) return false;
   if (props.length === 1) return dom.getAttribute(props[0]);
   if (props.length === 2) return dom.setAttribute(props[0], props[1]);
+  return false;
 }
 
 /**
@@ -135,6 +136,6 @@ export function getWindowWidth() {
 
 // 计算dom样式：宽、高、距离视口的上下左右值
 export const getRect = (dom) => {
-  if (!dom) return;
+  if (!dom) return false;
   return dom.getBoundingClientRect();
 };

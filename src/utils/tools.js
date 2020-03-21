@@ -43,11 +43,11 @@ export const floor = (num) => Math.floor(num);
  * @returns 提取后的数组
  */
 export const pickNumberInString = (str) => {
-  const timeString = str.replace(/[^\d]+/g, (v) => ',');
+  const timeString = str.replace(/[^\d]+/g, () => ',');
   return timeString.split(',')
     .filter((e) => e !== '')
     // 去掉开头的0, 且值控制在合法区域内
-    .map((e, i) => parseInt(e));
+    .map((e) => parseInt(e, 10));
   // .map((e, i) => withinNum(parseInt(e), 0, i === 0 ? 23 : 59))
 };
 
@@ -58,9 +58,9 @@ export const pickNumberInString = (str) => {
  */
 export const compareArrJoined = (arr1, arr2) => {
   const reg = /[^\d]+/g;
-  const remove = (str) => str.replace(reg, (e) => '');
-  const startNum = parseInt(remove(arr1.join(''))) || 0;
-  const endNum = parseInt(remove(arr2.join(''))) || 0;
+  const remove = (str) => str.replace(reg, () => '');
+  const startNum = parseInt(remove(arr1.join('')), 10) || 0;
+  const endNum = parseInt(remove(arr2.join('')), 10) || 0;
   return startNum > endNum;
 };
 

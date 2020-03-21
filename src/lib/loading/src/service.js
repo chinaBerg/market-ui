@@ -24,7 +24,7 @@ const getSingleLoading = singlePattern(createLoading);
  * @description Loading类
  * @param { Object } config 配置参数
  */
-const Loading = function (config = {}) {
+function Loading(config = {}) {
   if (!(this instanceof Loading)) {
     return new Loading(config);
   }
@@ -32,7 +32,7 @@ const Loading = function (config = {}) {
   this.parent = getParentDom(this.params);
 
   this.init();
-};
+}
 
 Loading.prototype.init = function () {
   this.ins = this.params.screen ? getSingleLoading() : createLoading();

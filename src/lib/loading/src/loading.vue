@@ -17,30 +17,30 @@
 </template>
 
 <script>
-import MkuIcon from '../../icon'
+import MkuIcon from '../../icon';
 
 export default {
   name: 'MkuLoading',
   components: {
-    MkuIcon
+    MkuIcon,
   },
-  data () {
+  data() {
     return {
       isVisiable: false,
       text: '',
       textColor: '',
       iconColor: '',
-      background: ''
-    }
+      background: '',
+    };
   },
   computed: {
-    domStyle () {
-      let obj = {
-        position: this.screen ? 'fixed': 'absolute',
-        background: this.background
-      }
-      return obj
-    }
-  }
-}
+    domStyle() {
+      const obj = {
+        position: this.screen ? 'fixed' : 'absolute',
+        background: this.background,
+      };
+      return obj;
+    },
+  },
+};
 </script>

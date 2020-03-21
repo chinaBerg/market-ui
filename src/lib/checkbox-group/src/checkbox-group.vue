@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { findComponentsDownward } from '../../../utils/assist'
-import Emitter from '../../../utils/emitter'
+import { findComponentsDownward } from '../../../utils/assist';
+import Emitter from '../../../utils/emitter';
 
 export default {
   name: 'MkuCheckboxGroup',
@@ -14,30 +14,30 @@ export default {
   props: {
     value: {
       type: Array,
-      default: val => ([])
-    }
+      default: () => ([]),
+    },
   },
   watch: {
-    value: 'updateAllCheckbox'
+    value: 'updateAllCheckbox',
   },
-  mounted () {
-    this.updateAllCheckbox()
+  mounted() {
+    this.updateAllCheckbox();
   },
   methods: {
-    updateAllCheckbox () {
-      const checkboxs = findComponentsDownward(this, 'MkuCheckbox')
+    updateAllCheckbox() {
+      const checkboxs = findComponentsDownward(this, 'MkuCheckbox');
       if (checkboxs && checkboxs.length) {
-        checkboxs.forEach(checkbox => {
-          checkbox.isGroup = true
-          checkbox.checkboxSelectedArray = this.value
-        })
+        checkboxs.forEach((checkbox) => {
+          checkbox.isGroup = true;
+          checkbox.checkboxSelectedArray = this.value;
+        });
       }
     },
-    change (data) {
-      this.$emit('input', data)
-      this.$emit('change', data)
-      this.dispatch('MkuForm', 'onFormItemChange', data)
-    }
-  }
-}
+    change(data) {
+      this.$emit('input', data);
+      this.$emit('change', data);
+      this.dispatch('MkuForm', 'onFormItemChange', data);
+    },
+  },
+};
 </script>

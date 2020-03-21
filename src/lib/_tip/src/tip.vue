@@ -40,75 +40,73 @@
 </template>
 
 <script>
-import MkuIcon from '../../icon'
-import { baseType2Icons } from '../../../utils/maps'
-import { createULID, isFunction } from '../../../utils/assist'
+import MkuIcon from '../../icon';
+import { baseType2Icons } from '../../../utils/maps';
+import { createULID, isFunction } from '../../../utils/assist';
 
-const TIPS = 'mku-tips'
+const TIPS = 'mku-tips';
 
 export default {
   name: 'MkuTip',
   components: {
-    MkuIcon
+    MkuIcon,
   },
   props: {
     // 标识tip的类型
     type: {
       type: String,
       required: true,
-      validator: val => {
-        return ['message', 'notice'].includes(val)
-      }
-    }
+      validator: (val) => ['message', 'notice'].includes(val),
+    },
   },
-  data () {
+  data() {
     return {
-      tips: []
-    }
+      tips: [],
+    };
   },
   computed: {
-    isNotice () {
-      return this.type === 'notice'
-    }
+    isNotice() {
+      return this.type === 'notice';
+    },
   },
   methods: {
     // 生成class name
-    tipItemClassName (item) {
+    tipItemClassName(item) {
       return [
         `${TIPS}__item`,
         {
           [`${TIPS}--info`]: item.type === 'info',
           [`${TIPS}--error`]: item.type === 'error',
           [`${TIPS}--success`]: item.type === 'success',
-          [`${TIPS}--warning`]: item.type === 'warning'
-        }
-      ]
+          [`${TIPS}--warning`]: item.type === 'warning',
+        },
+      ];
     },
     // 创建一个tip
-    add (type, config = {}) {
-      config.type = type
-      config.icon = baseType2Icons[type]
-      config._ulid = createULID()
+    add(type, config = {}) {
+      config.type = type;
+      config.icon = baseType2Icons[type];
+      config._ulid = createULID();
 
       // 创建
-      this.tips.push(config)
-      isFunction(config.onShow) && config.onShow()
+      this.tips.push(config);
+      isFunction(config.onShow) && config.onShow();
 
       // 关闭
       if (config.duration > 0) {
         setTimeout(() => {
-          this.remove(config)
-        }, config.duration)
+          this.remove(config);
+        }, config.duration);
       }
 
-      return config
+      return config;
     },
     // 移除一个tip
-    remove (config) {
-      this.tips = this.tips.filter(tip => tip._ulid !== config._ulid)
-      isFunction(config.onClose) && config.onClose()
-      this.$emit('closed')
-    }
-  }
-}
+    remove(config) {
+      this.tips = this.tips.filter((tip) => tip._ulid !== config._ulid);
+      isFunction(config.onClose) && config.onClose();
+      this.$emit('closed');
+    },
+  },
+};
 </script>

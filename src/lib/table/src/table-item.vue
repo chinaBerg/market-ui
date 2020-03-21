@@ -5,41 +5,42 @@
 </template>
 
 <script>
-import { findComponentUpward } from '../../../utils/assist'
+import { findComponentUpward } from '../../../utils/assist';
+
 export default {
   name: 'MkuTableItem',
   props: {
     border: {
       type: Boolean,
-      default: false
+      default: false,
     },
     zebra: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-    }
+    };
   },
   watch: {
   },
   computed: {
-    wrapClasss () {
-      return ['mku-table__td']
-    }
+    wrapClasss() {
+      return ['mku-table__td'];
+    },
   },
   created() {
-    this.init()
+    this.init();
   },
   methods: {
-    init () {
-      const parent = findComponentUpward(this, 'MkuTable')
-      console.log(parent)
+    init() {
+      const parent = findComponentUpward(this, 'MkuTable');
+      console.log(parent);
       if (parent) {
-        parent.initTableItems(this)
+        parent.initTableItems(this);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

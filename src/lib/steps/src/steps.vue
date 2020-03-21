@@ -6,58 +6,54 @@ export default {
     direction: {
       type: String,
       default: 'horizontal',
-      validator: val => {
-        return ['horizontal', 'vertical'].includes(val)
-      }
+      validator: (val) => ['horizontal', 'vertical'].includes(val),
     },
     // 是否居中
     center: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 当前步骤
     current: {
       type: Number,
-      default: 0
+      default: 0,
     },
     // 当前步骤的状态
     currentStatus: {
       type: String,
       default: 'process',
-      validator: val => {
-        return ['wait', 'process', 'finish', 'error'].includes(val)
-      }
+      validator: (val) => ['wait', 'process', 'finish', 'error'].includes(val),
     },
     // 已完成步骤是否显示图标
     showIcon: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
-  provide () {
+  provide() {
     return {
-      MkuSteps: this
-    }
+      MkuSteps: this,
+    };
   },
-  data () {
+  data() {
     return {
-      steps: []
-    }
+      steps: [],
+    };
   },
   computed: {
     // 拼接steps的class name
-    stepsClasss () {
-      const prefix = 'mku-steps'
+    stepsClasss() {
+      const prefix = 'mku-steps';
       return [prefix, {
         [`${prefix}--vertical`]: this.direction === 'vertical',
-        [`${prefix}--horizontal`]: this.direction === 'horizontal'
-      }]
-    }
+        [`${prefix}--horizontal`]: this.direction === 'horizontal',
+      }];
+    },
   },
-  render (h) {
+  render(h) {
     return h('div', {
-      class: this.stepsClasss
-    }, this.$slots.default)
-  }
-}
+      class: this.stepsClasss,
+    }, this.$slots.default);
+  },
+};
 </script>

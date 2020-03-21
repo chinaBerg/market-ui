@@ -20,7 +20,7 @@ const getConfig = (el, binding) => {
     background,
   };
 };
-const install = (Vue) => {
+const install = (vm) => {
   // dom的显示隐藏
   const toggleLoading = (el, binding) => {
     const { $el, ins } = el.instance;
@@ -37,8 +37,8 @@ const install = (Vue) => {
     }
   };
 
-  Vue.directive('loading', {
-    bind(el, binding, vnode) {
+  vm.directive('loading', {
+    bind(el, binding) {
       const ins = new LoadingExtend();
       const config = getConfig(el, binding);
       merge(ins, defaultConfig, config);
@@ -48,7 +48,7 @@ const install = (Vue) => {
         $el: ins.$mount().$el,
       };
 
-      binding.value && toggleLoading(el, binding);
+      if (binding.value) toggleLoading(el, binding);
     },
     update(el, binding) {
       toggleLoading(el, binding);

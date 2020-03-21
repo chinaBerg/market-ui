@@ -8,17 +8,17 @@
 export default {
   name: 'MkuSwiperItem',
   inject: [
-    'root'
+    'root',
   ],
   computed: {
-    itemStyle () {
+    itemStyle() {
       return {
-        width: this.root.swiperWidth + 'px'
-      }
-    }
+        width: `${this.root.swiperWidth}px`,
+      };
+    },
   },
-  mounted () {
-    this.root.updateItems()
-  }
-}
+  mounted() {
+    this.root.updateItems();
+  },
+};
 </script>

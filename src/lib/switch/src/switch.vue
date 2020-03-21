@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Emitter from '../../../utils/emitter'
+import Emitter from '../../../utils/emitter';
 
-const SIZE_VALUE = ['large', 'default', 'small']
+const SIZE_VALUE = ['large', 'default', 'small'];
 
 export default {
   name: 'MkuSwitch',
@@ -23,104 +23,102 @@ export default {
   props: {
     value: {
       type: [Boolean, String, Number],
-      default: false
+      default: false,
     },
     width: {
       type: Number,
-      default: 50
+      default: 50,
     },
     size: {
       type: String,
       default: 'default',
-      validator: val => {
-        return SIZE_VALUE.includes(val)
-      }
+      validator: (val) => SIZE_VALUE.includes(val),
     },
     activeColor: {
-      type: String
+      type: String,
     },
     inactiveColor: {
-      type: String
+      type: String,
     },
     trueValue: {
       type: [Boolean, String, Number],
-      default: true
+      default: true,
     },
     falseValue: {
       type: [Boolean, String, Number],
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      switchValue: this.value
-    }
+      switchValue: this.value,
+    };
   },
   watch: {
     value: {
-      handler (n, o) {
-        this.handleValueChange(n, o)
+      handler(n, o) {
+        this.handleValueChange(n, o);
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   computed: {
     // 拼接switch的className
-    switchClasss () {
+    switchClasss() {
       return [
         'mku-switch', {
           'mku-switch--lg': this.size === 'large',
           'mku-switch--sm': this.size === 'small',
           'mku-switch--opened': this.switchValue,
-          'mku-switch--disabled': this.disabled
-        }
-      ]
+          'mku-switch--disabled': this.disabled,
+        },
+      ];
     },
     // 计算switch的背景色
-    switchBgColor () {
-      let bgColor = ''
+    switchBgColor() {
+      let bgColor = '';
       if (this.switchValue && this.activeColor) {
-        bgColor = this.activeColor
+        bgColor = this.activeColor;
       }
       if (!this.switchValue && this.inactiveColor) {
-        bgColor = this.inactiveColor
+        bgColor = this.inactiveColor;
       }
-      return bgColor
+      return bgColor;
     },
     // 定义switch的样式
-    switchStyle () {
-      let obj = {}
-      obj.width = `${this.width}px`
+    switchStyle() {
+      const obj = {};
+      obj.width = `${this.width}px`;
       // 优先使用自定义背景色，否则不赋值（则使用默认主题色）
-      if (this.switchBgColor) obj.backgroundColor = this.switchBgColor
-      return obj
+      if (this.switchBgColor) obj.backgroundColor = this.switchBgColor;
+      return obj;
     },
     // 定义switch的loading样式
-    iconLoadingStyle () {
-      let obj = {}
-      if (this.switchBgColor) obj.borderColor = `transparent transparent transparent ${this.switchBgColor}`
-      return obj
-    }
+    iconLoadingStyle() {
+      const obj = {};
+      if (this.switchBgColor) obj.borderColor = `transparent transparent transparent ${this.switchBgColor}`;
+      return obj;
+    },
   },
   methods: {
     /**
      * @method handleValueChange
      * @description 监听value值变化，给switchValue赋值
      */
-    handleValueChange (newVal) {
-      const isPreicate = [this.trueValue, this.falseValue].includes(newVal)
+    handleValueChange(newVal) {
+      const isPreicate = [this.trueValue, this.falseValue].includes(newVal);
       if (!isPreicate) {
-        throw TypeError(`The switch value is invalid， expected to pass in '${this.trueValue}' and '${this.falseValue}'.`)
+        throw TypeError(`The switch value is invalid， expected to pass in '${this.trueValue}' and '${this.falseValue}'.`);
       }
-      this.switchValue = newVal === this.trueValue
+      this.switchValue = newVal === this.trueValue;
     },
     /**
      * @method handleValueChange
@@ -130,15 +128,15 @@ export default {
      * - 对外暴露change事件
      * - 支持Form表单的验证
      */
-    handleClick (e) {
-      if (this.disabled || this.loading) return
+    handleClick() {
+      if (this.disabled || this.loading) return;
 
-      this.switchValue = !this.switchValue
-      const value = this.switchValue ? this.trueValue : this.falseValue
-      this.$emit('input', value)
-      this.$emit('change', value)
-      this.dispatch('MkuFormItem', 'onFormItemChange', value)
-    }
-  }
-}
+      this.switchValue = !this.switchValue;
+      const value = this.switchValue ? this.trueValue : this.falseValue;
+      this.$emit('input', value);
+      this.$emit('change', value);
+      this.dispatch('MkuFormItem', 'onFormItemChange', value);
+    },
+  },
+};
 </script>

@@ -4,3 +4,5 @@ export const baseType2Icons = {
   error: 'error-circle',
   warning: 'warning',
 };
+
+export default {};

@@ -13,7 +13,10 @@
           {{optionsSelected[0] && optionsSelected[0].text}}
         </div>
         <div class="mku-select__labels" v-else>
-          <span class="mku-select__labels-item" v-for="(item, index) in optionsSelected" :key="index">
+          <span
+            class="mku-select__labels-item"
+            v-for="(item, index) in optionsSelected"
+            :key="index">
             <span class="mku-global-ellipsis">{{item.text}}</span>
             <i class="mku-icon mku-icon-error-circle" @click.stop="handleDelete(item)"></i>
           </span>
@@ -27,7 +30,9 @@
 
       <!-- dropdown的arrow-icon -->
       <span class="mku-select__icon" @click="handleClear">
-        <i :class="['mku-icon', isShowClearIcon ? 'mku-icon-error-circle' : 'mku-icon-arrow-down']"></i>
+        <i :class="['mku-icon',
+          isShowClearIcon ? 'mku-icon-error-circle'
+          : 'mku-icon-arrow-down']"></i>
       </span>
     </div>
 
@@ -45,149 +50,147 @@
 </template>
 
 <script>
-import Popper from 'popper.js'
-import Emitter from '../../../utils/emitter'
-import { attrs } from '../../../utils/dom'
-import { findComponentsDownward } from '../../../utils/assist'
+import Popper from 'popper.js';
+import Emitter from '../../../utils/emitter';
+import { attrs } from '../../../utils/dom';
+import { findComponentsDownward } from '../../../utils/assist';
 
 export default {
   name: 'MkuSelect',
   mixins: [Emitter],
   props: {
     value: {
-      type: [String, Number, Array]
+      type: [String, Number, Array],
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     placeholder: {
       type: String,
-      default: '请选择'
+      default: '请选择',
     },
     placement: {
       type: String,
-      default: 'bottom-start'
+      default: 'bottom-start',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     clearable: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
       popper: null,
       isOpened: false,
       optionsSelected: [], // 所有被选中的options
       isHover: false,
-      isClickAtComponent: false // 用于控制点击window时是否隐藏dropdown
-    }
+      isClickAtComponent: false, // 用于控制点击window时是否隐藏dropdown
+    };
   },
-  provide () {
+  provide() {
     return {
-      MkuSelect: this
-    }
+      MkuSelect: this,
+    };
   },
   watch: {
     value: {
       handler: 'handleValueChange',
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   computed: {
     // 拼接select的className
-    selectClasss () {
+    selectClasss() {
       return [
         'mku-select', {
           'mku-select--opened': this.isOpened,
-          'mku-select--disabled': this.disabled
-        }
-      ]
+          'mku-select--disabled': this.disabled,
+        },
+      ];
     },
     // 是否显示清除的icon
-    isShowClearIcon () {
-      return this.clearable && this.isHover && !this.multiple && !!this.optionsSelected.length
+    isShowClearIcon() {
+      return this.clearable && this.isHover && !this.multiple && !!this.optionsSelected.length;
     },
     // dropdown的style
-    dropdownStyle () {
-      let res = {}
-      const one = str => this.placement.indexOf(str) > -1
-      const isTopOrBottom = one('bottom') || one('top')
+    dropdownStyle() {
+      const res = {};
+      const one = (str) => this.placement.indexOf(str) > -1;
+      const isTopOrBottom = one('bottom') || one('top');
       if (isTopOrBottom) {
-        res.margin = '8px 0'
-      } else {
-        if (one('right')) res.marginLeft = '8px'
-      }
-      return res
-    }
+        res.margin = '8px 0';
+      } else if (one('right')) res.marginLeft = '8px';
+      return res;
+    },
   },
-  mounted () {
-    this.initPopper()
-    document.addEventListener('click', this.winClickCallback, false)
+  mounted() {
+    this.initPopper();
+    document.addEventListener('click', this.winClickCallback, false);
   },
-  beforeDestroy () {
-    document.removeEventListener('click', this.winClickCallback, false)
+  beforeDestroy() {
+    document.removeEventListener('click', this.winClickCallback, false);
   },
   methods: {
     /**
      * @method handleValueChange
      * @description 监听value值的变化
      */
-    handleValueChange (newVal) {
-      let selected = []
-      let arrs = this.multiple ? newVal : [newVal]
+    handleValueChange(newVal) {
+      const selected = [];
+      const arrs = this.multiple ? newVal : [newVal];
       this.$nextTick(() => {
-        const options = findComponentsDownward(this, 'MkuOptions')
-        if (!options) return
+        const options = findComponentsDownward(this, 'MkuOptions');
+        if (!options) return;
         for (let i = 0, len = arrs.length; i < len; i++) {
-          options.forEach(option => {
+          options.forEach((option) => {
             if (option.value === arrs[i]) {
-              selected.push(option.formatEmitData())
+              selected.push(option.formatEmitData());
             }
-          })
+          });
         }
-        this.optionsSelected = selected
-      })
+        this.optionsSelected = selected;
+      });
     },
     /**
      * @method initPopper
      * @description 初始化popper插件
      * - reference: https://popper.js.org/
      */
-    initPopper () {
-      const placement = this.placement
+    initPopper() {
+      const { placement } = this;
       this.popper = new Popper(this.$refs.mkuSelect, this.$refs.mkuSelectMenu, {
         placement,
         modifiers: {
           computeStyle: {
-            gpuAcceleration: false
+            gpuAcceleration: false,
           },
           preventOverflow: {
-            boundariesElement: 'window'
-          }
+            boundariesElement: 'window',
+          },
         },
         onCreate: () => {
           this.$nextTick(() => {
-            this.updateTransformOrigin()
-            this.popper && this.popper.scheduleUpdate()
-          })
+            this.updateTransformOrigin();
+            if (this.popper) this.popper.scheduleUpdate();
+          });
         },
         onUpdate: () => {
-          this.updateTransformOrigin()
-        }
-      })
+          this.updateTransformOrigin();
+        },
+      });
     },
     // 重新计算下拉菜单的动画原点
-    updateTransformOrigin (newVal) {
-      const poper = this.$refs.mkuSelectMenu
-      if (!poper) return
-      const popperPlacement = attrs(poper, 'x-placement')
+    updateTransformOrigin() {
+      const poper = this.$refs.mkuSelectMenu;
+      if (!poper) return;
+      const popperPlacement = attrs(poper, 'x-placement');
       poper.style.transformOrigin = popperPlacement.indexOf('top') > -1
-        ? 'bottom left' : 'top left'
+        ? 'bottom left' : 'top left';
     },
     /**
      * @method winClickCallback
@@ -195,39 +198,39 @@ export default {
      * - 在mounted后进行监听
      * - 在beforeDestroy之前取消监听
      */
-    winClickCallback () {
+    winClickCallback() {
       if (!this.isClickAtComponent) {
-        this.isOpened = false
+        this.isOpened = false;
       }
-      this.isClickAtComponent = false
+      this.isClickAtComponent = false;
     },
     /**
      * @method handleSelectClick
      * @description 点击select，收起/展开dropdown
      */
-    handleSelectClick () {
-      if (this.disabled) return
-      this.isClickAtComponent = true
+    handleSelectClick() {
+      if (this.disabled) return;
+      this.isClickAtComponent = true;
 
-      this.isOpened = !this.isOpened
-      this.popper.scheduleUpdate()
+      this.isOpened = !this.isOpened;
+      this.popper.scheduleUpdate();
 
-      this.$emit('drop-change', this.isOpened)
+      this.$emit('drop-change', this.isOpened);
     },
     /**
      * @method handleMouseHover
      * @description 鼠标滑入滑出select
      */
-    handleMouseHover (isHover) {
-      this.isHover = isHover
+    handleMouseHover(isHover) {
+      this.isHover = isHover;
     },
     /**
      * @method handleDropdownClick
      * @description 点击dropdown，如果是多选则阻止冒泡
      */
-    handleDropdownClick (event) {
+    handleDropdownClick(event) {
       if (this.multiple) {
-        event.stopPropagation()
+        event.stopPropagation();
       }
     },
     /**
@@ -237,38 +240,40 @@ export default {
      * - 单选，绑定值为一个单个值
      * - 支持Form表单验证
      */
-    change (data) {
-      let validateValue
+    change(data) {
+      let validateValue;
       if (this.multiple) {
-        const index = this.optionsSelected.findIndex(item => item.value === data.value)
+        const index = this.optionsSelected.findIndex((item) => item.value === data.value);
         if (index > -1) {
-          this.optionsSelected.splice(index, 1)
+          this.optionsSelected.splice(index, 1);
         } else {
-          this.optionsSelected.push(data)
+          this.optionsSelected.push(data);
         }
-        validateValue = this.optionsSelected.map(e => e.value)
+        validateValue = this.optionsSelected.map((e) => e.value);
       } else {
-        validateValue = data.value
-        this.optionsSelected = [data]
+        validateValue = data.value;
+        this.optionsSelected = [data];
       }
-      this.$emit('input', validateValue)
-      this.$emit('change', validateValue)
-      this.popper.scheduleUpdate()
+      this.$emit('input', validateValue);
+      this.$emit('change', validateValue);
+      this.popper.scheduleUpdate();
       // 表单验证
-      this.dispatch('MkuFormItem', 'onFormItemChange', validateValue)
+      this.dispatch('MkuFormItem', 'onFormItemChange', validateValue);
     },
-    handleDelete (option) {
-      this.optionsSelected = this.optionsSelected.filter(item => item.value !== option.value)
-      this.popper.scheduleUpdate()
-      this.$emit('input', this.optionsSelected.map(e => e.value))
+    handleDelete(option) {
+      this.optionsSelected = this.optionsSelected.filter((item) => item.value !== option.value);
+      this.popper.scheduleUpdate();
+      this.$emit('input', this.optionsSelected.map((e) => e.value));
     },
     // 清空
-    handleClear (event) {
-      if (!this.isShowClearIcon) return
-      this.optionsSelected = []
-      this.$emit('clear')
-      !this.isOpened && event.stopPropagation()
-    }
-  }
-}
+    handleClear(event) {
+      if (!this.isShowClearIcon) return;
+      this.optionsSelected = [];
+      this.$emit('clear');
+      if (!this.isOpened) {
+        event.stopPropagation();
+      }
+    },
+  },
+};
 </script>

@@ -5,8 +5,9 @@
 </template>
 
 <script>
-import { isArray } from '../../../utils/assist'
-const MENU = 'mku-menu'
+import { isArray } from '../../../utils/assist';
+
+const MENU = 'mku-menu';
 
 export default {
   name: 'MkuMenu',
@@ -15,101 +16,97 @@ export default {
     mode: {
       type: String,
       default: 'vertical',
-      validator: val => {
-        return ['horizontal', 'vertical'].includes(val)
-      }
+      validator: (val) => ['horizontal', 'vertical'].includes(val),
     },
     // 主题， TODO：尚未支持
     theme: {
       type: String,
       default: 'light',
-      validator: val => {
-        return ['light', 'dark'].includes(val)
-      }
+      validator: (val) => ['light', 'dark'].includes(val),
     },
     // 自定义宽度
     width: {
       type: Number,
-      default: 200
+      default: 200,
     },
     duration: {
       type: Number,
-      default: 0.5
+      default: 0.5,
     },
     animate: {
       type: String,
-      default: 'linear'
+      default: 'linear',
     },
     // 只允许同时展开一个子菜单
     uniqueOpen: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 默认选中的菜单项
     defaultActive: {
-      type: String
+      type: String,
     },
     // 默认展开的submenu
     defaultOpened: {
       type: Array,
-      default: () => ([])
-    }
+      default: () => ([]),
+    },
   },
-  provide () {
+  provide() {
     return {
-      menu: this
-    }
+      menu: this,
+    };
   },
-  data () {
+  data() {
     return {
       submenus: {}, // 所有submenu列表
-      activeItemName: null // 当前选中的菜单项
-    }
+      activeItemName: null, // 当前选中的菜单项
+    };
   },
   watch: {
   },
   computed: {
-    menuClasses () {
+    menuClasses() {
       return [
         MENU,
         {
           [`${MENU}--vertical`]: this.mode === 'vertical',
           [`${MENU}--horizontal`]: this.mode === 'horizontal',
           [`${MENU}--light`]: this.theme === 'light',
-          [`${MENU}--dark`]: this.theme === 'dark'
-        }
-      ]
+          [`${MENU}--dark`]: this.theme === 'dark',
+        },
+      ];
     },
-    menuStyle () {
-      let obj = {}
+    menuStyle() {
+      const obj = {};
       // 只有vertical模式，才支持定宽
       if (this.mode === 'vertical') {
         Object.assign(obj, {
-          width: `${this.width}px`
-        })
+          width: `${this.width}px`,
+        });
       }
-      return obj
-    }
+      return obj;
+    },
   },
-  created () {
-    this.$on('menu-item-click', this.handleMenuItemClick)
+  created() {
+    this.$on('menu-item-click', this.handleMenuItemClick);
   },
   methods: {
     /**
      * @method cacheSubmenu
      * @description 缓存所有的submenu，由submenu调用
      */
-    cacheSubmenu (submenu) {
-      this.$set(this.submenus, submenu.name, submenu)
+    cacheSubmenu(submenu) {
+      this.$set(this.submenus, submenu.name, submenu);
     },
     /**
      * @method updateSubmenu
      * @description 由submenu组件调用触发的事件
      * 用来更新submenu的opened状态，并触发opened-change、opened、closed事件给用户
      */
-    updateSubmenu (names, isOpen, siblingsNames) {
-      this.updateSubmenuState(names, isOpen, siblingsNames)
-      this.openedChangeCallback(names, isOpen)
+    updateSubmenu(names, isOpen, siblingsNames) {
+      this.updateSubmenuState(names, isOpen, siblingsNames);
+      this.openedChangeCallback(names, isOpen);
     },
     /**
      * @method updateSubmenuState
@@ -118,26 +115,26 @@ export default {
      * @param { Boolean } isOpen 更新的状态
      * @param { Array<String> } siblingsNames 当前submenu的兄弟submenu的name集合，非必填
      */
-    updateSubmenuState (names, isOpen, siblingsNames) {
-      if (!names || !names.length) return
-      let targetNames = isArray(names) ? names : [names]
+    updateSubmenuState(names, isOpen, siblingsNames) {
+      if (!names || !names.length) return;
+      let targetNames = isArray(names) ? names : [names];
       // 如果开启了uniqueOpen属性，则只对第一个name生效
       if (this.uniqueOpen) {
-        targetNames = targetNames.slice(0, 1)
+        targetNames = targetNames.slice(0, 1);
       }
 
       // 更新submenu的状态
-      targetNames.forEach(submenu => {
+      targetNames.forEach((submenu) => {
         if (submenu in this.submenus) {
-          this.submenus[submenu].isOpen = isOpen
+          this.submenus[submenu].isOpen = isOpen;
         }
-      })
+      });
 
       // 更新兄弟submenu的状态
       if (siblingsNames && siblingsNames.length) {
-        siblingsNames.forEach(submenu => {
-          this.submenus[submenu] = false
-        })
+        siblingsNames.forEach((submenu) => {
+          this.submenus[submenu] = false;
+        });
       }
     },
     /**
@@ -145,16 +142,17 @@ export default {
      * @description 由submenu opened 状态变化后触发的回调函数
      *  暴露给用户事件接口
      */
-    openedChangeCallback (submenuName, openedState) {
+    openedChangeCallback(submenuName, openedState) {
       // 查询所有打开、关闭以及全部的submenu的name
-      let openedNames = []
-      let closedNames = []
-      let allNames = []
-      for (let prop in this.submenus) {
-        const submenu = this.submenus[prop]
-        const name = submenu.name
-        allNames.push(name)
-        submenu.isOpen ? openedNames.push(name) : closedNames.push(name)
+      const openedNames = [];
+      const closedNames = [];
+      const allNames = [];
+      for (const prop in this.submenus) {
+        const submenu = this.submenus[prop];
+        const { name } = submenu;
+        allNames.push(name);
+        if (submenu.isOpen) openedNames.push(name);
+        else closedNames.push(name);
       }
 
       // 暴露opened、closed、opened-change事件
@@ -163,11 +161,11 @@ export default {
         state: openedState,
         openedNames,
         closedNames,
-        allNames
-      }
-      if (openedState) this.$emit('opened', cbParams)
-      else this.$emit('closed', cbParams)
-      this.$emit('opened-change', cbParams)
+        allNames,
+      };
+      if (openedState) this.$emit('opened', cbParams);
+      else this.$emit('closed', cbParams);
+      this.$emit('opened-change', cbParams);
     },
     /**
      * @method routeTo
@@ -176,17 +174,17 @@ export default {
      * @param { Function } onComplete vue-router跳转完成的回调
      * @param { Function } onAbord vue-router跳转失败或终止的回调
      */
-    routeTo (item, onComplete, onAbord) {
-      const { target, routeType, route } = item
+    routeTo(item, onComplete, onAbord) {
+      const { target, routeType, route } = item;
       // target属性存在时，优先以外链进行跳转
       if (target) {
-        window.open(route, target)
-        return
+        window.open(route, target);
+        return;
       }
       try {
-        this.$router[routeType](item.route, onComplete, onAbord)
+        this.$router[routeType](item.route, onComplete, onAbord);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
     /**
@@ -195,16 +193,16 @@ export default {
      * - 暴露给用户select事件
      * - 如果开启了route属性，则进行外链/路由跳转
      */
-    handleMenuItemClick (item) {
-      const currentActiveName = this.activeItemName
-      this.activeItemName = item.name
-      this.$emit('select', item.name)
+    handleMenuItemClick(item) {
+      const currentActiveName = this.activeItemName;
+      this.activeItemName = item.name;
+      this.$emit('select', item.name);
 
       if (item.route) {
-        this.routeTo(item, () => {}, err => {
-          this.activeItemName = currentActiveName
-          if (err) console.error(err)
-        })
+        this.routeTo(item, () => {}, (err) => {
+          this.activeItemName = currentActiveName;
+          if (err) console.error(err);
+        });
       }
     },
     /**
@@ -212,34 +210,34 @@ export default {
      * @description 手动展开submenu的方法
      * @param { String | Array<string> } names submenus的name或name集合
      */
-    open (names) {
-      const isNeedUpdate = this.checkSubmenuState(names, true)
-      if (!isNeedUpdate) return
-      this.updateSubmenuState(names, true)
-      this.openedChangeCallback(null, true)
+    open(names) {
+      const isNeedUpdate = this.checkSubmenuState(names, true);
+      if (!isNeedUpdate) return;
+      this.updateSubmenuState(names, true);
+      this.openedChangeCallback(null, true);
     },
     /**
      * @method close
      * @description 手动关闭submenu的方法
      * @param { String | Array<string> } names submenus的name或name集合
      */
-    close (names) {
-      const isNeedUpdate = this.checkSubmenuState(names, false)
-      if (!isNeedUpdate) return
-      this.updateSubmenuState(names, false)
-      this.openedChangeCallback(null, true)
+    close(names) {
+      const isNeedUpdate = this.checkSubmenuState(names, false);
+      if (!isNeedUpdate) return;
+      this.updateSubmenuState(names, false);
+      this.openedChangeCallback(null, true);
     },
     // 检测是否需要触发open或close方法
-    checkSubmenuState (names, state) {
-      let isNeedUpdate = false
-      let submenus = isArray(names) ? names : [names]
-      submenus.forEach(name => {
+    checkSubmenuState(names, state) {
+      let isNeedUpdate = false;
+      const submenus = isArray(names) ? names : [names];
+      submenus.forEach((name) => {
         if (this.submenus[name].isOpen !== state) {
-          isNeedUpdate = true
+          isNeedUpdate = true;
         }
-      })
-      return isNeedUpdate
-    }
-  }
-}
+      });
+      return isNeedUpdate;
+    },
+  },
+};
 </script>

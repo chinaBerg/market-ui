@@ -14,36 +14,36 @@ export default {
     // 自定义class
     className: {
       type: String,
-      default: ''
+      default: '',
     },
     // 图标类型
     type: {
       type: String,
-      required: true
+      required: true,
     },
     size: {
-      type: String
+      type: String,
     },
     color: {
-      type: String
-    }
+      type: String,
+    },
   },
   computed: {
     // 图标的class name
-    iconClassNames () {
+    iconClassNames() {
       return [
         'mku-icon',
         `mku-icon-${this.type}`,
-        this.className
-      ]
+        this.className,
+      ];
     },
     // 鼠标划过的样式
-    iconStyle () {
-      let obj = {}
-      if (this.color) obj.color = this.color
-      if (this.size) obj.fontSize = this.size
-      return obj
-    }
-  }
-}
+    iconStyle() {
+      const obj = {};
+      if (this.color) obj.color = this.color;
+      if (this.size) obj.fontSize = this.size;
+      return obj;
+    },
+  },
+};
 </script>

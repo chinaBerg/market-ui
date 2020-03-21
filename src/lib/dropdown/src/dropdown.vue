@@ -24,60 +24,58 @@
 </template>
 
 <script>
-import MkuDrop from '../../_drop'
+import MkuDrop from '../../_drop';
 
 export default {
   name: 'MkuDropdown',
-  components: {MkuDrop},
+  components: { MkuDrop },
   props: {
     trigger: {
       type: String,
       default: 'click',
-      validator: val => {
-        return ['click', 'hover'].includes(val)
-      }
+      validator: (val) => ['click', 'hover'].includes(val),
     },
     placement: {
       type: String,
-      default: 'bottom-start'
-    }
+      default: 'bottom-start',
+    },
   },
-  data () {
+  data() {
     return {
       visiable: false,
       timeout: null,
-      isClickAtComponent: false // 用于控制点击window时是否隐藏dropdown
-    }
+      isClickAtComponent: false, // 用于控制点击window时是否隐藏dropdown
+    };
   },
   watch: {
-    visiable: 'visiableChange'
+    visiable: 'visiableChange',
   },
   computed: {
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
-      this.monitorWindowEvent()
-    })
+      this.monitorWindowEvent();
+    });
   },
   methods: {
-    visiableChange (newVal) {
-      this.$emit('visible-change', newVal)
+    visiableChange(newVal) {
+      this.$emit('visible-change', newVal);
     },
     // 点击reference显示/取消dropdown
-    handleClick () {
-      if (this.trigger !=='click') return false
-      this.isClickAtComponent = true
-      this.visiable = !this.visiable
+    handleClick() {
+      if (this.trigger !== 'click') return false;
+      this.isClickAtComponent = true;
+      this.visiable = !this.visiable;
     },
-    handleMounseover () {
-      if (this.trigger !=='hover') return false
-      this.timeout && clearTimeout(this.timeout)
-      this.visiable = true
+    handleMounseover() {
+      if (this.trigger !== 'hover') return false;
+      this.timeout && clearTimeout(this.timeout);
+      this.visiable = true;
     },
-    handleMounseout () {
-      if (this.trigger !=='hover') return false
+    handleMounseout() {
+      if (this.trigger !== 'hover') return false;
       this.timeout = setTimeout(() => {
-        this.visiable = false
+        this.visiable = false;
       }, 50);
     },
     /**
@@ -86,19 +84,19 @@ export default {
      * - 如果是点击reference区域冒泡导致的窗口点击事件，则不关闭dropdown
      * - 组件销毁时取消监听
      */
-    monitorWindowEvent () {
+    monitorWindowEvent() {
       const cb = () => {
         if (!this.isClickAtComponent && this.visiable) {
-          this.visiable = false
-          this.$emit('click-aside')
+          this.visiable = false;
+          this.$emit('click-aside');
         }
-        this.isClickAtComponent = false
-      }
-      window.addEventListener('click', cb, false)
+        this.isClickAtComponent = false;
+      };
+      window.addEventListener('click', cb, false);
       this.$once('hook:beforeDestroy', () => {
-        window.removeEventListener('click', cb, false)
-      })
-    }
-  }
-}
+        window.removeEventListener('click', cb, false);
+      });
+    },
+  },
+};
 </script>

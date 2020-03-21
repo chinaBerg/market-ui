@@ -12,31 +12,31 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     label: {
-      type: [String, Number]
+      type: [String, Number],
     },
-    disabled: Boolean
+    disabled: Boolean,
   },
   inject: [
-    'MkuSelect'
+    'MkuSelect',
   ],
   computed: {
     // 返回所有被选中的options
-    optionsSelected () {
-      return this.MkuSelect.optionsSelected
+    optionsSelected() {
+      return this.MkuSelect.optionsSelected;
     },
     // 拼接options的className
-    optionsClasss () {
-      const isActived = this.optionsSelected.some(item => item.value === this.value)
+    optionsClasss() {
+      const isActived = this.optionsSelected.some((item) => item.value === this.value);
       return [
         'mku-options', {
           'mku-options--actived': isActived,
-          'mku-options--disabled': this.disabled
-        }
-      ]
-    }
+          'mku-options--disabled': this.disabled,
+        },
+      ];
+    },
   },
   methods: {
     /**
@@ -45,19 +45,19 @@ export default {
      * - 如果是disabled项，则阻止冒泡
      * - 触发select组件的change函数
      */
-    handleOptionsClick (event) {
+    handleOptionsClick(event) {
       if (this.disabled) {
-        return event.stopPropagation()
+        return event.stopPropagation();
       }
 
-      this.MkuSelect.change(this.formatEmitData())
+      return this.MkuSelect.change(this.formatEmitData());
     },
-    formatEmitData () {
+    formatEmitData() {
       return {
         value: this.value,
-        text: this.label || (this.$el && this.$el.textContent)
-      }
-    }
-  }
-}
+        text: this.label || (this.$el && this.$el.textContent),
+      };
+    },
+  },
+};
 </script>
