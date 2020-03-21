@@ -17,6 +17,8 @@ module.exports = merge(baseConf, {
     library: 'marketUi',
     libraryTarget: 'umd',
     libraryExport: 'default',
+    umdNamedDefine: true,
+    globalObject: 'this'
   },
   plugins: [
     new CleanWebpackPlugin(),

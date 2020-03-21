@@ -1,6 +1,8 @@
 {
   "name": "market-ui",
   "version": "0.1.0",
+  "description": "",
+  "author": "刘顺利 <1563940776@qq.com>",
   "main": "./lib/market-ui.js",
   "files": [
     "lib",
@@ -14,8 +16,9 @@
     "lint": "vue-cli-service lint",
     "eslint": "eslint ./src --ext .js --fix",
     "build:file": "webpack --config ./build/webpack.prod.js",
+    "build:sperate": "webpack --config ./build/webpack.sperate.js",
     "build:style": "gulp --gulpfile ./build/bin/generate-css.js",
-    "build:lib": "npm run build:file && npm run build:style"
+    "deploy": "npm run build:file && npm run build:sperate && npm run build:style"
   },
   "dependencies": {
     "async-validator": "^3.2.3",

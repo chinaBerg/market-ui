@@ -1,0 +1,1 @@
+@-webkit-keyframes mkuIconRotate{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes mkuIconRotate{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.mku-icon{display:inline-block;line-height:1;vertical-align:middle;text-align:center}.mku-icon-loading{-webkit-animation:mkuIconRotate 2s linear infinite;animation:mkuIconRotate 2s linear infinite}

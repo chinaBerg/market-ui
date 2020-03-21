@@ -19,18 +19,17 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.less$/,
+        test: /\.(c|le)ss$/,
         use: [
           'vue-style-loader',
           'css-loader',
           'less-loader'
+        ]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+        use: [
+          'file-loader'
         ]
       },
     ]
@@ -43,5 +42,13 @@ module.exports = {
       'vue$': 'vue/dist/vue.runtime.esm.js'
     },
     extensions: ['*', '.js', '.vue']
-  }
+  },
+  externals: {
+    vue: {
+        root: 'Vue',
+        commonjs: 'vue',
+        commonjs2: 'vue',
+        amd: 'vue',
+    },
+  },
 };
