@@ -14,7 +14,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "elt": "eslint --ext .vue ./src",
+    "elt": "eslint ./build --ext .js --fix",
     "eslint": "eslint ./src --ext .js --fix",
     "build:file": "webpack --config ./build/webpack.prod.js",
     "build:sperate": "webpack --config ./build/webpack.sperate.js",

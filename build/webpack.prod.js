@@ -1,9 +1,8 @@
-'use strict';
 const path = require('path');
 const merge = require('webpack-merge');
-const baseConf = require('./webpack.base');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const baseConf = require('./webpack.base');
 
 module.exports = merge(baseConf, {
   mode: 'none',
@@ -18,7 +17,7 @@ module.exports = merge(baseConf, {
     libraryTarget: 'umd',
     libraryExport: 'default',
     umdNamedDefine: true,
-    globalObject: 'this'
+    globalObject: 'this',
   },
   plugins: [
     new CleanWebpackPlugin(),

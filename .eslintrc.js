@@ -26,6 +26,7 @@ module.exports = {
     'no-nested-ternary': 'off',
     'consistent-return': 'off',
     'no-unused-expressions': 'off',
+    'import/no-extraneous-dependencies': 'off'
   },
   overrides: [
     {

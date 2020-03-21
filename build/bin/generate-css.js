@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const glob = require('glob');
 const gulp = require('gulp');
@@ -11,7 +10,7 @@ const stylesOutput = path.join(__dirname, '../../lib/styles');
 const stylesEntry = path.join(__dirname, '../../src/styles');
 
 // generate base.css file for babel-plugin-component
-function genBaseCss (next) {
+function genBaseCss(next) {
   const baseCssPath = path.join(stylesEntry, 'base.less');
   gulp.src(baseCssPath)
     .pipe(less())
@@ -23,11 +22,11 @@ function genBaseCss (next) {
 }
 
 // generate components cssfiles
-function genSeperateCss (next) {
+function genSeperateCss(next) {
   // 读取所有组件的css路径
   const entryFiles = glob.sync(path.join(stylesEntry, 'components/*.less'));
 
-  entryFiles.forEach(filePath => {
+  entryFiles.forEach((filePath) => {
     const match = filePath.match(/src\/styles\/components\/(.+)\.less/);
     const name = match && match[1];
     gulp.src(filePath)
@@ -36,12 +35,12 @@ function genSeperateCss (next) {
       .pipe(cleanCSS())
       .pipe(rename(`${name}.css`))
       .pipe(gulp.dest(stylesOutput));
-  })
+  });
   next();
 }
 
 // generate index.css file
-function genAllCss (next) {
+function genAllCss(next) {
   const cssEntry = path.join(stylesEntry, 'index.less');
   gulp.src(cssEntry)
     .pipe(less())
@@ -50,14 +49,14 @@ function genAllCss (next) {
     .pipe(rename('index.css'))
     .pipe(gulp.dest(stylesOutput));
   next();
-};
+}
 
 // copy fonts resources
-function copyFonts (next) {
+function copyFonts(next) {
   const fontEntry = path.join(stylesEntry, 'fonts/fonts/*.*');
-  const fontOutput = path.join(stylesEntry, 'fonts')
+  const fontOutput = path.join(stylesEntry, 'fonts');
   gulp.src(fontEntry)
-    .pipe(gulp.dest(fontOutput))
+    .pipe(gulp.dest(fontOutput));
   next();
 }
 

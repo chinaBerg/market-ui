@@ -1,4 +1,3 @@
-'use strict';
 const glob = require('glob');
 const path = require('path');
 const merge = require('webpack-merge');
@@ -9,13 +8,13 @@ const genEntries = () => {
   const entryPath = path.join(__dirname, '../src/lib/*/index.js');
   const files = glob.sync(entryPath);
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const match = file.match(/src\/lib\/(.*)\/index\.js/);
     const dirName = match && match[1];
     if (dirName && dirName.charAt(0) !== '_') {
       entries[dirName] = file;
     }
-  })
+  });
   return entries;
 };
 
@@ -29,6 +28,6 @@ module.exports = merge(baseConf, {
     filename: '[name].js',
     chunkFilename: '[id].js',
     libraryTarget: 'umd',
-    umdNamedDefine: true
-  }
+    umdNamedDefine: true,
+  },
 });
