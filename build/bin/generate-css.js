@@ -54,7 +54,7 @@ function genAllCss(next) {
 // copy fonts resources
 function copyFonts(next) {
   const fontEntry = path.join(stylesEntry, 'fonts/fonts/*.*');
-  const fontOutput = path.join(stylesEntry, 'fonts');
+  const fontOutput = path.join(stylesOutput, 'fonts');
   gulp.src(fontEntry)
     .pipe(gulp.dest(fontOutput));
   next();

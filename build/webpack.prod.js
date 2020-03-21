@@ -22,11 +22,20 @@ module.exports = merge(baseConf, {
   plugins: [
     new CleanWebpackPlugin(),
   ],
+  devtool: 'source-map',
   optimization: {
     minimize: true,
     minimizer: [
       new TerserWebpackPlugin({
         include: /\.min\.js$/,
+        parallel: true,
+        cache: true,
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+        extractComments: false,
       }),
     ],
   },

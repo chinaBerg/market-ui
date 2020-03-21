@@ -2,6 +2,7 @@ const glob = require('glob');
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConf = require('./webpack.base');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const genEntries = () => {
   const entries = {};
@@ -29,5 +30,20 @@ module.exports = merge(baseConf, {
     chunkFilename: '[id].js',
     libraryTarget: 'umd',
     umdNamedDefine: true,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserWebpackPlugin({
+        parallel: true,
+        cache: true,
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+    ],
   },
 });

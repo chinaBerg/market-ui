@@ -1,4 +1,7 @@
+const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   module: {
@@ -7,7 +10,19 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          // 开启多进程多实例构建
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: 3, // 开启三个进程
+            },
+          },
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            },
+          }
         ],
       },
       {
@@ -30,10 +45,22 @@ module.exports = {
           'file-loader',
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: path.join(__dirname, 'images/[name].[ext]')
+        }
+      },
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
+    // 开启模块的缓存
+    new HardSourceWebpackPlugin(),
+    // 友好的构建提示
+    new FriendlyErrorsWebpackPlugin(),
   ],
   resolve: {
     alias: {
@@ -49,4 +76,5 @@ module.exports = {
       amd: 'vue',
     },
   },
+  stats: 'errors-only',
 };
