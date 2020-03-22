@@ -66,7 +66,7 @@ import 'market-ui/lib/styles/button.css';
 Vue.use(Button);
 ```
 
-- 借助[babel-plugin-component]()插件按需加载，会自动导入对应的css文件。
+- 借助[babel-plugin-component](https://github.com/ElementUI/babel-plugin-component)插件按需加载，会自动导入对应的css文件。
 
 首先安装babel-plugin-component插件:
 
