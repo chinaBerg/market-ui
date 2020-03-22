@@ -17,7 +17,25 @@ const router = new Router({
         type: 'page',
         title: 'Market-Ui|一款基于vue的ui组件库',
       },
-      component: () => import('@/components/home'),
+      component: () => import('@/views/home'),
+    },
+    {
+      path: '/docs/install',
+      name: 'Install',
+      meta: {
+        type: 'component',
+        title: '安装',
+      },
+      component: () => import('@/docs/zh_CN/install.md'),
+    },
+    {
+      path: '/docs/quick_start',
+      name: 'QuickStart',
+      meta: {
+        type: 'component',
+        title: '快速开始',
+      },
+      component: () => import('@/docs/zh_CN/quick-start.md'),
     },
     ...navConfigs,
   ],

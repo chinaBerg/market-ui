@@ -2,29 +2,16 @@
   <div class="main-container">
     <div class="main__head">
       <div class="main__head-logo">
-        <div class="main__head-image"></div>
-        <h3 class="main__head-title">Market-Ui</h3>
-        <p class="main__head-desc">灵活与艺术的组件库</p>
-      </div>
-      <div class="main__head-right">
-        <ul class="main__head-nav">
-          <li class="main__head-nav-item">
-            <router-link to="">快速开始</router-link>
-          </li>
-          <li class="main__head-nav-item">
-            <router-link to="">组件</router-link>
-          </li>
-          <li class="main__head-nav-item">
-            <router-link to="">资源</router-link>
-          </li>
-        </ul>
+        <router-link class="main__head-image" to="/">
+          <img src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png" alt="">
+        </router-link>
       </div>
     </div>
     <div class="main__content-container">
-      <div class="main__nav-container">
+      <div class="main__nav-container docs-scroller">
         <nav-slide />
       </div>
-      <div class="main_content">
+      <div class="main_content docs-scroller">
         <transition name="doc-page-toogle">
           <router-view />
         </transition>
@@ -59,11 +46,20 @@ export default {
     height: 120px;
     background: #478efa;
     .main__head-logo {
-      width: 300px;
+      display: flex;
+      align-items: center;
+      width: 240px;
       height: 100%;
-      padding: 0 30px;
+      padding: 0 10px;
       .main__head-image {
-        height: 60px;
+        width: 240px;
+        height: 100px;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
       .main__head-title {
         margin-bottom: 10px;
@@ -72,23 +68,6 @@ export default {
       }
       .main__head-desc {
         color: #fff;
-      }
-    }
-    .main__head-right {
-      flex: 1;
-      height: 70px;
-      .main__head-nav {
-        display: flex;
-        align-items: center;
-        height: 70px;
-        padding: 0 30px;
-        font-size: 16px;
-      }
-      .main__head-nav-item {
-        margin-right: 20px;
-        a {
-          color: #fff;
-        }
       }
     }
   }
@@ -101,27 +80,24 @@ export default {
     /* 左侧菜单 */
     .main__nav-container {
       position: absolute;
-      left: 30px;
-      top: 20px;
-      bottom: 20px;
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 240px;
       overflow-x: hidden;
       overflow-y: auto;
       background: #fff;
-      border-radius: 10px;
       box-shadow: 0 0 0 1px #e8e8e8;
     }
     /* 右侧主体*/
     .main_content {
       position: absolute;
-      top: -50px;
-      left: 300px;
-      right: 30px;
-      bottom: 20px;
+      top: -120px;
+      left: 240px;
+      right: 0;
+      bottom: 0;
       padding: 10px 30px 20px;
-      border-radius: 6px;
       background: #fff;
-      box-shadow: 0 9px 7px #e8eef5;
       overflow-x: hidden;
       overflow-y: auto;
     }
@@ -178,6 +154,16 @@ export default {
       border-radius: 2px;
       background: #ececec;
       font-weight: bold;
+    }
+    > pre {
+      padding: 20px 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      background: #e0f3fe;
+      code {
+        background: transparent;
+        font-weight: normal;
+      }
     }
   }
 }
