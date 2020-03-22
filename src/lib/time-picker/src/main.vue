@@ -218,7 +218,6 @@ export default {
       }
     },
     checkIsChange(newVal, oldVal) {
-      console.log('newVal', newVal, 'oldVal', oldVal);
       if (oldVal === undefined) return false;
       if (newVal === oldVal) return false;
       if (isArray(newVal) && isArray(oldVal)) {

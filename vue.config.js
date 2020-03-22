@@ -2,6 +2,9 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? './'
+    : '/',
   pages: {
     index: path.join(__dirname, './examples/main.js'),
   },
