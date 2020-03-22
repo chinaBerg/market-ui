@@ -1,10 +1,10 @@
-<p align="center">
+<div align="center">
   <a href="https://github.com/chinaBerg/market-ui">
     <img width="350" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png?e=1584855375&token=kapOfBKVqNMRy8IF58K74QP1t7om0aZT6JlZ8j1q:v726z1GrCHHDgPsT8HOqoRHyF3U=">
   </a>
-</p>
+</div>
 
-<p align="center">
+<div align="center">
   <a href="https://www.npmjs.com/package/market-ui">
     <img src="https://img.shields.io/npm/dm/market-ui.svg?color=%232d8cf0">
   </a>
@@ -28,7 +28,7 @@
   <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/chinaBerg/market-ui?color=%232d8cf0">
   </a>
-</p>
+</div>
 
 
 # Market-Ui
@@ -105,17 +105,17 @@ Vue.use(Button).use(Switch);
 
 If you like market-ui, you can buy us a cup of coffee.
 
-<p>
+<div>
   <span>支付宝扫一扫</span>
   <br>
-  <img width="200" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat_pay_code.jpg" alt="donation">
-</p>
+  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/zfb-pay.jpg" alt="donation">
+</div>
 
-<p>
+<div>
   <span>微信扫一扫</span>
   <br>
-  <img width="200" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/zfb_pay_code.jpg" alt="donation">
-</p>
+  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat-pay.jpg" alt="donation">
+</div>
 
 ## LICENSE
 [MIT](./LICENSE)
