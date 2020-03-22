@@ -111,10 +111,13 @@ export default {
       font-size: 26px;
     }
     > h2 {
-      font-size: 20px;
+      margin: 10px 0 40px;
+      font-size: 24px;
+      font-weight: 700;
     }
     > h3 {
-      font-size: 18px;
+      margin: 10px 0 20px;
+      font-size: 22px;
     }
     > h4 {
       font-size: 16px;
@@ -154,6 +157,9 @@ export default {
       border-radius: 2px;
       background: #ececec;
       font-weight: bold;
+    }
+    > p {
+      margin: 10px 0;
     }
     > pre {
       padding: 20px 10px;
