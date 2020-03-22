@@ -1,5 +1,7 @@
 <p align="center">
-  <img width="350" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png?e=1584855375&token=kapOfBKVqNMRy8IF58K74QP1t7om0aZT6JlZ8j1q:v726z1GrCHHDgPsT8HOqoRHyF3U=">
+  <a href="https://github.com/chinaBerg/market-ui">
+    <img width="350" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png?e=1584855375&token=kapOfBKVqNMRy8IF58K74QP1t7om0aZT6JlZ8j1q:v726z1GrCHHDgPsT8HOqoRHyF3U=">
+  </a>
 </p>
 
 <p align="center">
@@ -106,13 +108,13 @@ If you like market-ui, you can buy us a cup of coffee.
 <p>
   <span>支付宝扫一扫</span>
   <br>
-  <img width="200" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat_pay_code.jpeg" alt="donation">
+  <img width="200" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat_pay_code.jpg" alt="donation">
 </p>
 
 <p>
   <span>微信扫一扫</span>
   <br>
-  <img width="200" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/zfb_pay_code.jpeg" alt="donation">
+  <img width="200" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/zfb_pay_code.jpg" alt="donation">
 </p>
 
 ## LICENSE
