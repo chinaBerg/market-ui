@@ -33,20 +33,24 @@
 
 # Market-Ui
 
-> A beautiful component library of Vue.js2+.
+> 致力于高效开发PC端中后台产品的Vue.js组件库。  
+> 众多vue爱好者共同维护一个友好的组件社区。
 
-## Links
+![首页展示图](http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-home.png)
+![文档展示gif](http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-preview.gif)
 
-- [Document](https://lengchui.gitee.io/market-ui-docs)
+## 链接
+
+- [中文文档 & 在线演示DEMO](https://lengchui.gitee.io/market-ui-docs)
 - [FAQ](./FAQ.md)
 
-## Install
+## 安装
 
 ```shell
 npm i market-ui -S
 ```
 
-## Usage
+## 使用
 
 - 全局引入
 
@@ -101,9 +105,27 @@ import { Button, Switch } from 'market-ui'
 Vue.use(Button).use(Switch);
 ```
 
-## Donation
 
-If you like market-ui, you can buy us a cup of coffee.
+## 加群讨论
+
+欢迎进群与作者面对面讨论问题、组件库基础架构与开发经验、提出需求和共同维护！期待你的加入～～
+
+<div>
+  <span>QQ讨论群</span>
+  <br>
+  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/qq-tlak.jpeg" alt="qq群二维码">
+</div>
+
+<div>
+  <span>微信讨论群</span>
+  <br>
+  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat-talk.jpeg" alt="微信群二维码">
+</div>
+
+
+## 捐赠
+
+如果您喜欢market-ui这个组件库，您可以打赏我们一杯续命的咖啡～
 
 <div>
   <span>支付宝扫一扫</span>
@@ -117,5 +139,5 @@ If you like market-ui, you can buy us a cup of coffee.
   <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat-pay.jpg" alt="donation">
 </div>
 
-## LICENSE
+## 协议
 [MIT](./LICENSE)
