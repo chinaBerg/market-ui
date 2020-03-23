@@ -54,8 +54,8 @@ npm i babel-plugin-component -D
     [
       "component",
       {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
+        "libraryName": "market-ui",
+        "styleLibraryName": "styles"
       }
     ]
   ]
