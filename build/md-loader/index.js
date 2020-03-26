@@ -27,7 +27,7 @@ module.exports = function (source) {
     const html = stripTemplate(commentContent);
     const script = stripScript(commentContent);
     const demoComponentContent = genInlineComponentText(html, script);
-    const demoComponentName = `element-demo${id}`;
+    const demoComponentName = `mku-example-${id}`;
     output.push(`<template slot="source"><${demoComponentName} /></template>`);
     componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`;
 

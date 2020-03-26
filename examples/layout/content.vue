@@ -1,187 +1,116 @@
 <template>
-  <div class="main-container">
-    <div class="main__head">
-      <div class="main__head-logo">
-        <router-link class="main__head-image" to="/">
-          <img src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png" alt="">
-        </router-link>
-      </div>
-    </div>
-    <div class="main__content-container">
-      <div class="main__nav-container docs-scroller">
-        <nav-slide />
-      </div>
-      <div class="main_content docs-scroller">
-        <transition name="doc-page-toogle">
-          <router-view />
-        </transition>
-      </div>
-    </div>
+  <div class="main-container docs-scroller">
+    <nav class="docs__nav-wrap">
+      <router-link class="docs__logo" to="/">
+        <img src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png" alt="">
+      </router-link>
+      <nav-slide class="docs__nav" />
+    </nav>
+    <section class="docs__content">
+      <router-view />
+      <doc-footer />
+    </section>
   </div>
 </template>
 
 <script>
 import NavSlide from './nav-slide';
+import DocFooter from './footer';
+
 
 export default {
   name: 'DemoContent',
   components: {
     NavSlide,
+    DocFooter,
   },
 };
 </script>
 
 <style lang="less">
 .main-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  background: #fff;
-
-  /* 头部 */
-  .main__head {
+  padding: 26px 40px 0 340px;
+  .docs__nav-wrap {
     display: flex;
-    flex-direction: row;
-    height: 120px;
-    background: #478efa;
-    .main__head-logo {
-      display: flex;
-      align-items: center;
-      width: 240px;
-      height: 100%;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    box-shadow: 0 0 6px #dcdee2;
+    .docs__logo {
+      width: 100%;
+      height: 90px;
       padding: 0 10px;
-      .main__head-image {
-        width: 240px;
-        height: 100px;
-        border-radius: 10px;
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-        }
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      img {
+        width: 100%;
+        height: 100%;
       }
-      .main__head-title {
-        margin-bottom: 10px;
-        font-size: 20px;
-        color: #fff;
-      }
-      .main__head-desc {
-        color: #fff;
-      }
+    }
+    .docs__nav {
+      flex: 1;
     }
   }
 
-  /* 主体 */
-  .main__content-container {
-    position: relative;
-    flex: 1;
-    background: #f2f2f2;
-    /* 左侧菜单 */
-    .main__nav-container {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 240px;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background: #fff;
-      box-shadow: 0 0 0 1px #e8e8e8;
-    }
-    /* 右侧主体*/
-    .main_content {
-      position: absolute;
-      top: -120px;
-      left: 240px;
-      right: 0;
-      bottom: 0;
-      padding: 10px 30px 20px;
-      background: #fff;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
+  .docs__content {
+    min-height: 100%;
+    background: #fff;
   }
+
   .market-doc-container {
     > h1, > h2, > h3, > h4, > h5, > h6 {
       font-weight: 400;
       margin: 12px 0;
     }
-    > h1 {
-      font-size: 26px;
-    }
     > h2 {
-      margin: 10px 0 40px;
+      margin: 0;
       font-size: 24px;
       font-weight: 700;
     }
     > h3 {
-      margin: 10px 0 20px;
+      margin: 40px 0 0;
       font-size: 22px;
     }
-    > h4 {
-      font-size: 16px;
-    }
-    > h5 {
-      font-size: 14px;
-    }
-    > h6 {
-      font-size: 12px;
-    }
+
     > table {
       width: 100%;
-      margin-bottom: 30px;
+      margin-top: 20px;
       border: 1px solid #EBEEF5;
       border-collapse: collapse;
       border-spacing: 0;
       empty-cells: show;
       background: #fff;
       th, td {
+        padding: 10px;
         border: 1px solid #EBEEF5;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: Consolas,Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
       }
       th {
-        padding: 10px;
-        font-weight: normal;
+        font-weight: bold;
         background: #fafafa;
       }
-      td {
-        padding: 10px;
-        font-size: 12px;
-      }
-    }
-    code {
-      display: inline-block;
-      margin: 0 4px;
-      padding: 2px 4px;
-      font-family: miscrosoft yahei;
-      border-radius: 2px;
-      background: #ececec;
-      font-weight: bold;
     }
     > p {
-      margin: 10px 0;
+      margin-top: 10px;
     }
     > pre {
+      margin-top: 20px;
       padding: 20px 10px;
-      margin: 10px 0;
-      border-radius: 10px;
-      background: #e0f3fe;
+      border: 1px solid #ebeef5;
+      border-radius: 4px;
+      background: #fafafa;
+      font-family: Consolas,Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
       code {
-        background: transparent;
+        font-size: 14px;
         font-weight: normal;
+        font-family: Consolas,Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        background: transparent;
       }
     }
   }
-}
-.doc-page-toogle-enter-active {
-  transition: all .4s linear;
-}
-.doc-page-toogle-leave-active {
-  transition: all .4s linear;
-}
-.doc-page-toogle-enter,
-.doc-page-toogle-leave-to {
-  transform: translateY(50px);
-  opacity: 0;
 }
 </style>

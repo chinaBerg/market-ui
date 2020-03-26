@@ -19,7 +19,7 @@
           <p>Committed to rapid and efficient development of PC end in the background products!</p>
         </div>
         <div class="home__operation">
-          <mku-button @click="handleStart">立即开始</mku-button>
+          <mku-button @click="handleStart">快速开始</mku-button>
         </div>
       </section>
     </section>
@@ -91,7 +91,13 @@ export default {
         }
       }
       .home__operation {
-        margin-top: 50px;
+        margin-top: 100px;
+        .mku-button-wrapper {
+          width: 200px;
+          /deep/ .mku-button {
+            border-radius: 16px;
+          }
+        }
       }
     }
   }

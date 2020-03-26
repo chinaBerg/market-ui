@@ -1,9 +1,9 @@
 <template>
-  <div class="nav-slide-container">
-    <mku-menu :default-active="$route.name" :width="240">
+  <div class="nav-slide-container docs-scroller">
+    <mku-menu :default-active="$route.name" :width="300">
       <mku-menu-group
         :title="group.name"
-        v-for="(group, groupIndex) in navConfig"
+        v-for="(group, groupIndex) in NavConfigs"
         :key="groupIndex">
         <mku-menu-item
           class-name="nav-item__name"
@@ -19,28 +19,13 @@
 </template>
 
 <script>
-import navConfig from '../router/routes';
+import { NavConfigs } from '@/router/routes/index.js';
 
 export default {
   name: 'DemoHeader',
   data() {
-    navConfig.unshift({
-      name: '指南',
-      children: [
-        {
-          name: 'Install',
-          path: '/docs/install',
-          meta: { title: '安装' },
-        },
-        {
-          name: 'QuickStart',
-          path: '/docs/quick_start',
-          meta: { title: '快速上手' },
-        },
-      ],
-    });
     return {
-      navConfig,
+      NavConfigs,
     };
   },
   methods: {
@@ -54,13 +39,14 @@ export default {
 <style lang="less" scoped>
 .nav-slide-container {
   background: #fff;
+  padding: 20px 0;
   overflow-x: hidden;
   overflow-y: auto;
   .nav-item__name {
     text-indent: 1em;
   }
   .mku-menu {
-    border-right: 1px solid transparent;
+    border-right: 1px solid transparent !important;
   }
 }
 </style>

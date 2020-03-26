@@ -1,18 +1,22 @@
 ## 安装
 
-<br>
-<br>
-<br>
-
 ### 使用npm安装
 
 ```shell
 npm i market-ui -S
 ```
 
-<br>
-<br>
-<br>
+### 使用cnpm加速安装
+
+```shell
+# 若您npm安装速度较慢，建议您安装cnpm镜像，然后使用cnpm安装项目依赖
+
+# 安装cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+# 使用cnpm安装market-ui
+cnpm i market-ui -S
+```
 
 ### 使用CDN
 

@@ -1,3 +1,4 @@
+import GuideRoutes from './guide';
 import BasicRoutes from './basic';
 import NavigationRoutes from './navigation';
 import FormRoutes from './form';
@@ -25,7 +26,8 @@ import OtherRoutes from './other';
  * ]
  */
 
-export default [
+export const NavConfigs = [
+  ...GuideRoutes,
   ...BasicRoutes,
   ...NavigationRoutes,
   ...FormRoutes,
@@ -33,3 +35,17 @@ export default [
   ...TipRoutes,
   ...OtherRoutes,
 ];
+
+const routes = NavConfigs.map((item) => item.children).flat(Infinity);
+
+routes.unshift({
+  path: '/',
+  name: 'Home',
+  meta: {
+    type: 'page',
+    title: 'Market-Ui|一款基于vue的ui组件库',
+  },
+  component: () => import('@/views/home'),
+});
+
+export default routes;
