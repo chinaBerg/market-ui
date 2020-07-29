@@ -2,10 +2,6 @@
   <div class="docs-page__home">
     <section class="home__wrap">
       <header class="home__head">
-        <router-link class="home__logo" to="/">
-          <img src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png" alt="">
-        </router-link>
-
         <nav class="home__nav">
           <router-link class="nav__item" to="/docs/install">安装</router-link>
           <router-link class="nav__item" to="/component/button">组件</router-link>
@@ -14,7 +10,8 @@
       </header>
 
       <section class="home__detail">
-        <div class="home__title">
+        <h3 class="home__title">Market-ui</h3>
+        <div class="home__desc">
           <h3>致力于快速高效开发PC端中后台产品！</h3>
           <p>Committed to rapid and efficient development of PC end in the background products!</p>
         </div>
@@ -41,8 +38,7 @@ export default {
 @media screen and (min-width: 769px) {
   .docs-page__home {
     min-height: 100vh;
-    background: url(http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-home-bg.png) no-repeat top center;
-    background-size: 100% auto;
+    background: url(http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-home-bg.png) no-repeat top center #f2f3f7;
     .home__wrap {
       width: 1200px;
       margin: 0 auto;
@@ -50,18 +46,8 @@ export default {
     .home__head {
       height: 100px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
     }
-    .home__logo {
-      height: 100%;
-      border-radius: 10px;
-      overflow: hidden;
-      transform: translateY(10px);
-      img {
-        height: 100%;
-      }
-    }
-
     .home__nav {
       display: flex;
       align-items: center;
@@ -70,7 +56,7 @@ export default {
     .nav__item {
       margin-left: 20px;
       font-size: 16px;
-      color: #fff;
+      color: #18adbe;
     }
 
     .home__detail {
@@ -79,15 +65,18 @@ export default {
       background: url(http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-home-bg2.png) no-repeat right 40px;
       background-size: auto 500px;
       .home__title {
-        color: #fff;
+        font-size: 38px;
+        color: #18adbe;
+      }
+      .home__desc {
         h3 {
-          font-size: 24px;
+          margin-top: 20px;
+          font-size: 16px;
           font-weight: 500;
         }
         p {
-          margin-top: 14px;
+          line-height: 24px;
           font-size: 14px;
-          color: #f3f3f3;
         }
       }
       .home__operation {

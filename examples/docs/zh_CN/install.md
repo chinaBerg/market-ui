@@ -2,13 +2,13 @@
 
 ### 使用npm安装
 
-```shell
+```bash
 npm i market-ui -S
 ```
 
 ### 使用cnpm加速安装
 
-```shell
+```bash
 # 若您npm安装速度较慢，建议您安装cnpm镜像，然后使用cnpm安装项目依赖
 
 # 安装cnpm

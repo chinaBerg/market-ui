@@ -9,15 +9,21 @@
       <p><a href="https://vuex.vuejs.org/zh/">Vuex</a></p>
     </div>
     <div class="footer__item">
-      <p class="footer__title">QQ交流群</p>
-      <div class="footer__qrcode">
-        <img src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/qq_qrcode.png" alt="">
+      <p class="footer__title">微信公众号</p>
+      <div class="footer__qrcode" style="width: 240px">
+        <img src="../assets/images/qrcode-lc.jpg" alt="">
       </div>
     </div>
     <div class="footer__item">
       <p class="footer__title">微信交流群</p>
+      <div class="footer__qrcode" style="width: 240px">
+        <img src="../assets/images/qun-wechat.jpeg" alt="">
+      </div>
+    </div>
+    <div class="footer__item">
+      <p class="footer__title">QQ交流群</p>
       <div class="footer__qrcode">
-        <img src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat_qrcode.png" alt="">
+        <img src="../assets/images/qun-qq.png" alt="">
       </div>
     </div>
   </div>
@@ -57,7 +63,6 @@ export default {
   }
   .footer__qrcode {
     width: 200px;
-    height: 200px;
     margin-top: 10px;
     img {
       width: 100%;

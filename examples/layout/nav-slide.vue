@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-slide-container docs-scroller">
+  <div class="nav-slide-container">
     <mku-menu :default-active="$route.name" :width="300">
       <mku-menu-group
         :title="group.name"
@@ -40,8 +40,6 @@ export default {
 .nav-slide-container {
   background: #fff;
   padding: 20px 0;
-  overflow-x: hidden;
-  overflow-y: auto;
   .nav-item__name {
     text-indent: 1em;
   }
