@@ -41,11 +41,11 @@ const routes = NavConfigs.map((item) => item.children).flat(Infinity);
 routes.unshift({
   path: '/',
   name: 'Home',
+  redirect: '/docs/install',
   meta: {
     type: 'page',
     title: 'Market-Ui|一款基于vue的ui组件库',
   },
-  component: () => import('@/views/home'),
 });
 
 export default routes;

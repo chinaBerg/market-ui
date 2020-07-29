@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/chinaBerg/market-ui">
-    <img width="350" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/logo.png?e=1584855375&token=kapOfBKVqNMRy8IF58K74QP1t7om0aZT6JlZ8j1q:v726z1GrCHHDgPsT8HOqoRHyF3U=">
+    <img width="350" src="https://statics.1data.info/market-ui/assets/img/logo.png">
   </a>
 </div>
 
@@ -17,6 +17,9 @@
   <a href="https://github.com/chinaBerg/market-ui/network/members">
     <img src="https://img.shields.io/github/issues/chinaBerg/market-ui?color=%232d8cf0">
   </a>
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/github/license/chinaBerg/market-ui?color=%232d8cf0">
+  </a>
 
   <br>
   <a href="https://unpkg.com/market-ui">
@@ -25,34 +28,29 @@
   <a href="https://unpkg.com/market-ui/lib/styles/index.css">
     <img src="http://img.badgesize.io/https://unpkg.com/market-ui/lib/styles/index.css?compression=gzip&label=gzip%20size:%20CSS">
   </a>
-  <a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/chinaBerg/market-ui?color=%232d8cf0">
-  </a>
 </div>
 
 
-# Market-Ui
+## Market-Ui
 
-> 致力于高效开发PC端中后台产品的Vue.js组件库。  
-> 众多vue爱好者共同维护一个友好的组件社区。
+Committed to the efficient development of PC end in the background products Vue.js Component library.
 
-![首页展示图](http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-home.png)
-![文档展示gif](http://q7kvtumoa.bkt.clouddn.com/market-ui/images/docs-preview.gif)
+![文档截图](https://statics.1data.info/market-ui/assets/img/doc-demo.png)
 
-## 链接
+### Document
 
-- [中文文档 & 在线演示DEMO](https://lengchui.gitee.io/market-ui-docs)
+- [中文文档DEMO](https://lengchui.gitee.io/market-ui-docs)
 - [FAQ](./FAQ.md)
 
-## 安装
+### Install
 
-```shell
+```bash
 npm i market-ui -S
 ```
 
-## 使用
+### Quick Start
 
-- 全局引入
+- Global
 
 ```javascript
 import Vue from 'vue'
@@ -62,7 +60,7 @@ import 'market-ui/lib/styles/index.css'
 Vue.use(MarketUi);
 ```
 
-- 按需加载
+- On demand
 
 ```javascript
 import Vue from 'vue'
@@ -72,15 +70,14 @@ import 'market-ui/lib/styles/button.css';
 Vue.use(Button);
 ```
 
-- 借助[babel-plugin-component](https://github.com/ElementUI/babel-plugin-component)插件按需加载，会自动导入对应的css文件。
+- Through [babel-plugin-component](https://github.com/ElementUI/babel-plugin-component), the corresponding CSS file will be automatically imported!
 
-首先安装babel-plugin-component插件:
-
-```shell
+install babel-plugin-component:
+```bash
 npm i babel-plugin-component -D
 ```
 
-修改`.babelrc`配置文件:
+Create the `. Babelrc` configuration file in the root directory:
 
 ```json
 {
@@ -96,7 +93,7 @@ npm i babel-plugin-component -D
 }
 ```
 
-最后直接导入对应的模块就好：
+use demo：
 
 ```javascript
 import Vue from 'vue'
@@ -106,38 +103,25 @@ Vue.use(Button).use(Switch);
 ```
 
 
-## 加群讨论
+### Organization
 
-欢迎进群与作者面对面讨论问题、组件库基础架构与开发经验、提出需求和共同维护！期待你的加入～～
+Welcome to the group and the author face-to-face discussion, component library infrastructure and development experience, put forward requirements and common maintenance! Looking forward to your joining ~
 
-<div>
-  <span>QQ讨论群</span>
+<div style="display: inline-block;">
+  <span>QQ</span>
   <br>
-  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/qq-tlak.jpeg" alt="qq群二维码">
+  <img width="210" src="https://statics.1data.info/market-ui/assets/img/qun-qq.png" alt="qq群二维码">
 </div>
 
-<div>
-  <span>微信讨论群</span>
+<div style="display: inline-block;">
+  <span>Wechat</span>
   <br>
-  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat-talk.jpeg" alt="微信群二维码">
+  <img width="210" src="https://statics.1data.info/market-ui/assets/img/qun-wechat.jpeg" alt="微信群二维码">
 </div>
 
-
-## 捐赠
-
-如果您喜欢market-ui这个组件库，您可以打赏我们一杯续命的咖啡～
-
-<div>
-  <span>支付宝扫一扫</span>
-  <br>
-  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/zfb-pay.jpg" alt="donation">
-</div>
-
-<div>
-  <span>微信扫一扫</span>
-  <br>
-  <img width="210" src="http://q7kvtumoa.bkt.clouddn.com/market-ui/images/wechat-pay.jpg" alt="donation">
-</div>
-
-## 协议
+### LICENSE
 [MIT](./LICENSE)
+
+### Star
+
+If you like the market UI component library, thank you very much for giving a star or participating in project maintenance ~
