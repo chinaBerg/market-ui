@@ -42,7 +42,7 @@
     "async-validator": "^3.2.3",
     "autosize": "^4.0.2",
     "core-js": "^3.6.4",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "kute.js": "^1.6.6",
     "nprogress": "^0.2.0",
     "popper.js": "^1.16.1",
